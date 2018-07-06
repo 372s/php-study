@@ -1,0 +1,8 @@
+{
+    "name": "study",
+    "description": "php study composer",
+    "require": {
+        "aileshe/upload": "~0.1",
+        "wq455133/php-curl": "0.*"
+    }
+}

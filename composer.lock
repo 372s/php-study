@@ -1,0 +1,54 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ee70fd6b4bfefa4bdd389a427d55cd84",
+    "packages": [
+        {
+            "name": "aileshe/upload",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aileshe/Upload.git",
+                "reference": "6fa844619d97b1ed30f5fe6fdb460bc0db3c6c6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/aileshe/Upload/6fa844619d97b1ed30f5fe6fdb460bc0db3c6c6d.zip",
+                "reference": "6fa844619d97b1ed30f5fe6fdb460bc0db3c6c6d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dj\\": "src/Upload"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dejan",
+                    "email": "673008865@qq.com"
+                }
+            ],
+            "description": "file upload",
+            "time": "2018-04-25T09:48:10+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
