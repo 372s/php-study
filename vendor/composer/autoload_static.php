@@ -6,7 +6,15 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
 {
+    public static $files = array (
+        '4bbef8c365970ac1980bb53ed27fb456' => __DIR__ . '/..' . '/qous/sort/init.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'Q' => 
+        array (
+            'Qous\\' => 5,
+        ),
         'D' => 
         array (
             'Dj\\' => 3,
@@ -14,6 +22,10 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
     );
 
     public static $prefixDirsPsr4 = array (
+        'Qous\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qous/curl/src',
+        ),
         'Dj\\' => 
         array (
             0 => __DIR__ . '/..' . '/aileshe/upload/src/Upload',

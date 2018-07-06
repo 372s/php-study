@@ -3,6 +3,7 @@
     "description": "php study composer",
     "require": {
         "aileshe/upload": "~0.1",
-        "wq455133/php-curl": "0.*"
+        "qous/sort": "1.*",
+        "qous/curl": "1.0.1"
     }
 }

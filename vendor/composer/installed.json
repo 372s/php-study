@@ -10,7 +10,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://files.phpcomposer.com/files/aileshe/Upload/6fa844619d97b1ed30f5fe6fdb460bc0db3c6c6d.zip",
+            "url": "https://api.github.com/repos/aileshe/Upload/zipball/6fa844619d97b1ed30f5fe6fdb460bc0db3c6c6d",
             "reference": "6fa844619d97b1ed30f5fe6fdb460bc0db3c6c6d",
             "shasum": ""
         },
@@ -36,5 +36,68 @@
             }
         ],
         "description": "file upload"
+    },
+    {
+        "name": "qous/curl",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/qous/php-curl.git",
+            "reference": "b5283a30a254b60a6c7a03cb000c518ea3c6074c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/qous/php-curl/zipball/b5283a30a254b60a6c7a03cb000c518ea3c6074c",
+            "reference": "b5283a30a254b60a6c7a03cb000c518ea3c6074c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2018-07-06T15:58:08+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Qous\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "王强",
+                "email": "wq455133@163.com"
+            }
+        ],
+        "description": "php curl study"
+    },
+    {
+        "name": "qous/sort",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/qous/sort-array.git",
+            "reference": "f0cfa6bfebc1a34e1e6bf3ef1883f0a56059c5de"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/qous/sort-array/zipball/f0cfa6bfebc1a34e1e6bf3ef1883f0a56059c5de",
+            "reference": "f0cfa6bfebc1a34e1e6bf3ef1883f0a56059c5de",
+            "shasum": ""
+        },
+        "time": "2018-07-06T15:22:53+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "init.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/"
     }
 ]

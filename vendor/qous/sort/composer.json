@@ -1,0 +1,10 @@
+{
+    "name": "qous/sort",
+    "type": "library",
+    "require": {},
+    "autoload": {
+        "files": [
+            "init.php"
+        ]
+    }
+}
