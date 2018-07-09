@@ -6,4 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Upload' => array($vendorDir . '/codeguy/upload/src'),
+    'SimpleExcel\\' => array($vendorDir . '/faisalman/simple-excel-php/src'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
+    'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
 );

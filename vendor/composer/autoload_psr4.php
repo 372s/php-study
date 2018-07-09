@@ -6,6 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Qous\\' => array($vendorDir . '/qous/curl/src'),
+    'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
+    'PhpOffice\\PhpSpreadsheet\\' => array($vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet'),
+    'PFinal\\Excel\\' => array($vendorDir . '/pfinal/excel/src'),
     'Dj\\' => array($vendorDir . '/aileshe/upload/src/Upload'),
+    'Cron\\' => array($vendorDir . '/cron/cron/src', $vendorDir . '/mtdowling/cron-expression/src/Cron'),
 );

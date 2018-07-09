@@ -7,29 +7,102 @@ namespace Composer\Autoload;
 class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
 {
     public static $files = array (
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '4bbef8c365970ac1980bb53ed27fb456' => __DIR__ . '/..' . '/qous/sort/init.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Component\\Process\\' => 26,
+        ),
         'Q' => 
         array (
             'Qous\\' => 5,
+        ),
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PFinal\\Excel\\' => 13,
         ),
         'D' => 
         array (
             'Dj\\' => 3,
         ),
+        'C' => 
+        array (
+            'Cron\\' => 5,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
         'Qous\\' => 
         array (
             0 => __DIR__ . '/..' . '/qous/curl/src',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'PFinal\\Excel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pfinal/excel/src',
         ),
         'Dj\\' => 
         array (
             0 => __DIR__ . '/..' . '/aileshe/upload/src/Upload',
         ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cron/cron/src',
+            1 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'Upload' => 
+            array (
+                0 => __DIR__ . '/..' . '/codeguy/upload/src',
+            ),
+        ),
+        'S' => 
+        array (
+            'SimpleExcel\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/faisalman/simple-excel-php/src',
+            ),
+        ),
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'XLSXWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
+        'XLSXWriter_BuffererWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
+        'upload' => __DIR__ . '/..' . '/verot/class.upload.php/src/class.upload.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -37,6 +110,8 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$classMap;
 
         }, null, ClassLoader::class);
     }
