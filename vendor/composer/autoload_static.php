@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '4bbef8c365970ac1980bb53ed27fb456' => __DIR__ . '/..' . '/qous/sort/init.php',
     );
@@ -14,6 +15,8 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Process\\' => 26,
         ),
         'Q' => 
@@ -26,6 +29,10 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PFinal\\Excel\\' => 13,
         ),
+        'J' => 
+        array (
+            'Jenssegers\\Date\\' => 16,
+        ),
         'D' => 
         array (
             'Dj\\' => 3,
@@ -37,6 +44,14 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
         'Symfony\\Component\\Process\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
@@ -57,6 +72,10 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         array (
             0 => __DIR__ . '/..' . '/pfinal/excel/src',
         ),
+        'Jenssegers\\Date\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jenssegers/date/src',
+        ),
         'Dj\\' => 
         array (
             0 => __DIR__ . '/..' . '/aileshe/upload/src/Upload',
@@ -66,6 +85,10 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
             0 => __DIR__ . '/..' . '/cron/cron/src',
             1 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -110,6 +133,7 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$classMap;
 

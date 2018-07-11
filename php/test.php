@@ -3,7 +3,8 @@
 </textarea>
 
 <?php
-
+echo mt_getrandmax();
+echo '?v='.mt_rand()/mt_getrandmax();die;
 // $js = file_get_contents('array1.js');
 if ($js = @file_get_contents('array1.js')) {
     echo 1;
