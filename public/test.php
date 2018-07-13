@@ -1,4 +1,5 @@
 <?php
+
 $order = [
     ['product_id' => 1, 'price' => 99, 'count' => 1],
     ['product_id' => 2, 'price' => 50, 'count' => 2],
