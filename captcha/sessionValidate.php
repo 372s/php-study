@@ -34,26 +34,14 @@ session_destroy();
         </p>
     </form>
 <?php
-//��ӡ��һ��session;
-//echo "��һ��session��<b>".$_SESSION["authnum_session"]."</b><br>";
-$validate="";
+$validate = "";
 if(isset($_POST["validate"])){
     $validate=$_POST["validate"];
-    echo "���ղ�������ǣ�".$_POST["validate"]."<br>״̬��";
+    echo "".$_POST["validate"]."<br>";
     if($validate!=$_SESSION["authnum_session"]){
-//�ж�sessionֵ���û��������֤���Ƿ�һ��;
-        echo "<font color=red>��������</font>";
+        echo "验证码错误";
     }else{
-        echo "<font color=green>ͨ����֤</font>";
+        echo "正确";
     }
 }
-/*
-//��ӡȫ��session;
-PrintArr($_SESSION);
-function PrintArr($aArray){
-echo '<xmp>';
-print_r($aArray);
-echo '</xmp>';
-}
-*/
 ?>
