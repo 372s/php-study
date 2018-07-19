@@ -14,7 +14,7 @@
 // imagepng($im);
 // imagedestroy($im);
 
-
+################################################################
 header ('Content-Type: image/png');
 $im = @imagecreatetruecolor(120, 20);
 $bg_white = imagecolorallocate($im, 255, 255, 255);
