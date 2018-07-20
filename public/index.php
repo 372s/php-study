@@ -1,10 +1,85 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+
+use Carbon\Carbon;
+
+printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
+printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
+
+/**
+ * 
+ * 
+ */
+// use Gregwar\Captcha\CaptchaBuilder;
+
+// header('Content-type: image/jpeg');
+
+// CaptchaBuilder::create()->build()->output();
+
+
+// print_r(glob(dirname(__FILE__).'/*.php'));die;
+
+
+/**
+ * 验证码
+ * 
+ * 
+ */
+// use Qous\Captcha\Captcha;
+// $cap = new Captcha();
+// // print_r($cap);die;
+// $cap->create();
+
+/**
+ * finder
+ * 
+ * 
+ */
+// use Symfony\Component\Finder\Finder;
+
+// $finder = Finder::create()->files()->ignoreDotFiles(true)->in(dirname(__FILE__))->depth(0);
+// print_r($finder);die;
+
+// $arr = [];
+// foreach ($finder as $key => $file) {
+//     $arr[$key]['getPathName'] = $file->getPathName();
+
+//     // dumps the absolute path
+//     $arr[$key]['getRealPath'] = $file->getRealPath();
+
+//     // dumps the relative path to the file, omitting the filename
+//     $arr[$key]['getRelativePath'] = $file->getRelativePath();
+
+//     // dumps the relative path to the file
+//     $arr[$key]['getRelativePathname'] = $file->getRelativePathname();
+// }
+// print_r($arr);die;
+
+// $arr = iterator_to_array(
+//     Finder::create()->files()->ignoreDotFiles(true)->in(dirname(__FILE__))->depth(0),
+//     false
+// );
+// $arr = array_map(function($file) {
+//     return $file->getPathName();
+// }, $arr);
+// print_r($arr);die;
+
+
+/**
+ * mt_rand
+ * 
+ */
 // echo mt_rand(0, 99)/100+1;
 
-// require 'preg.class.php';
 
+
+
+/**
+ * 正则验证
+ * 
+ */
+// require 'preg.class.php';
 // $str = '<>9_';
 // $str1 = 'http://www.baidu';
 // $preg = new Preg();
@@ -12,6 +87,12 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 // var_dump($preg->checkURL($str1));
 
 
+
+/**
+ * mb_strpos
+ * strpos
+ * 
+ */
 // $mystring = 12345678;
 // $findme   = 8;
 // $pos = mb_strpos($mystring, $findme);

@@ -18,9 +18,11 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Process\\' => 26,
+            'Symfony\\Component\\Finder\\' => 25,
         ),
         'Q' => 
         array (
+            'Qous\\Captcha\\' => 13,
             'Qous\\' => 5,
         ),
         'P' => 
@@ -32,6 +34,10 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         'J' => 
         array (
             'Jenssegers\\Date\\' => 16,
+        ),
+        'G' => 
+        array (
+            'Gregwar\\' => 8,
         ),
         'D' => 
         array (
@@ -56,6 +62,14 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
+        'Qous\\Captcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qous/captcha/src',
+        ),
         'Qous\\' => 
         array (
             0 => __DIR__ . '/..' . '/qous/curl/src',
@@ -75,6 +89,10 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         'Jenssegers\\Date\\' => 
         array (
             0 => __DIR__ . '/..' . '/jenssegers/date/src',
+        ),
+        'Gregwar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar',
         ),
         'Dj\\' => 
         array (

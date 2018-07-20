@@ -1,6 +1,12 @@
 {
     "name": "study",
     "description": "php study composer",
+    "repositories": {
+        "qous/captcha": {
+            "url": "git@github.com:qous/captcha.git",
+            "type": "vcs"
+        }
+    },
     "require": {
         "aileshe/upload": "~0.1",
         "qous/sort": "1.*",
@@ -13,6 +19,9 @@
         "phpoffice/phpspreadsheet": "^1.3",
         "mtdowling/cron-expression": "^1.2",
         "cron/cron": "^1.3",
-        "jenssegers/date": "^3.4"
+        "jenssegers/date": "^3.4",
+        "gregwar/captcha": "^1.1",
+        "qous/captcha": "1.0.1",
+        "nesbot/carbon": "^1.32"
     }
 }
