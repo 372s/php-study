@@ -1,14 +1,16 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+/**
+ * 时间类
+ */
+// use Carbon\Carbon;
 
-use Carbon\Carbon;
-
-printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
-printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
+// printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
+// printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
 
 /**
- * 
+ * 验证码
  * 
  */
 // use Gregwar\Captcha\CaptchaBuilder;
@@ -16,14 +18,11 @@ printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
 // header('Content-type: image/jpeg');
 
 // CaptchaBuilder::create()->build()->output();
-
-
 // print_r(glob(dirname(__FILE__).'/*.php'));die;
 
 
 /**
  * 验证码
- * 
  * 
  */
 // use Qous\Captcha\Captcha;
@@ -33,7 +32,6 @@ printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
 
 /**
  * finder
- * 
  * 
  */
 // use Symfony\Component\Finder\Finder;
@@ -79,12 +77,10 @@ printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
  * 正则验证
  * 
  */
-// require 'preg.class.php';
-// $str = '<>9_';
-// $str1 = 'http://www.baidu';
-// $preg = new Preg();
-// var_dump($preg->checkPsd($str));
-// var_dump($preg->checkURL($str1));
+require 'preg.class.php';
+$str = '455122@qq.com';
+$preg = new Preg();
+var_dump($preg->checkEmail($str));
 
 
 
