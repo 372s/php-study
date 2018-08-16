@@ -9,5 +9,9 @@ return array(
     'Upload' => array($vendorDir . '/codeguy/upload/src'),
     'SimpleExcel\\' => array($vendorDir . '/faisalman/simple-excel-php/src'),
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
+    'Neutron' => array($vendorDir . '/neutron/temporary-filesystem/src'),
+    'FFMpeg' => array($vendorDir . '/php-ffmpeg/php-ffmpeg/src'),
+    'Evenement' => array($vendorDir . '/evenement/evenement/src'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
+    'Alchemy' => array($vendorDir . '/alchemy/binary-driver/src'),
 );

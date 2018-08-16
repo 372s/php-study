@@ -22,6 +22,7 @@
         "jenssegers/date": "^3.4",
         "gregwar/captcha": "^1.1",
         "qous/captcha": "1.0.1",
-        "nesbot/carbon": "^1.32"
+        "nesbot/carbon": "^1.32",
+        "php-ffmpeg/php-ffmpeg": "^0.12.0"
     }
 }

@@ -85,7 +85,7 @@ class Preg{
      * @return bool
      */
     public function checkEmail($str) {
-        $pattern = '/^\w+([−+.]\w+)∗@\w+([−.]\w+)∗\.\w+([−.]\w+)∗$/'; 
+        $pattern = '/^(\w)+([-.]\w+)*@(\w)+(\.\w{2,4}){1,3}$/';
         if (preg_match($pattern, $str)) {
             return true;
         } else {
