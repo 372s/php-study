@@ -1,8 +1,24 @@
-<textarea name="" id="" cols="30" rows="10">
-<input type="button" value="确定" />
-</textarea>
-
 <?php
+
+
+$order = [
+    ['product_id' => 1, 'price' => 99, 'count' => 1],
+    ['product_id' => 2, 'price' => 50, 'count' => 2],
+    ['product_id' => 2, 'price' => 17, 'count' => 3],
+];
+
+print_r(array_map(function ($product_row) {
+    return $product_row['price'] * $product_row['count'];
+}, $order));
+$sum = array_sum(array_map(function ($product_row) {
+    return $product_row['price'] * $product_row['count'];
+}, $order));
+
+print_r($sum);// 250
+
+
+
+
 echo mt_getrandmax();
 echo '?v='.mt_rand()/mt_getrandmax();die;
 // $js = file_get_contents('array1.js');

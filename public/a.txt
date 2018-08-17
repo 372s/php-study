@@ -1,4 +1,0 @@
-array (
-  0 => 'George,John,Thomas,USA',
-  1 => 'James,Adrew,Martin,USA',
-)
