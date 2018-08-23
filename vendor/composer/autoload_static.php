@@ -7,29 +7,197 @@ namespace Composer\Autoload;
 class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '4bbef8c365970ac1980bb53ed27fb456' => __DIR__ . '/..' . '/qous/sort/init.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Translation\\' => 30,
+            'Symfony\\Component\\Process\\' => 26,
+            'Symfony\\Component\\Finder\\' => 25,
+            'Symfony\\Component\\Filesystem\\' => 29,
+        ),
         'Q' => 
         array (
+            'Qous\\Captcha\\' => 13,
             'Qous\\' => 5,
+        ),
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'Psr\\Log\\' => 8,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PFinal\\Excel\\' => 13,
+        ),
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
+        'J' => 
+        array (
+            'Jenssegers\\Date\\' => 16,
+        ),
+        'G' => 
+        array (
+            'Gregwar\\' => 8,
         ),
         'D' => 
         array (
+            'Doctrine\\Common\\Cache\\' => 22,
             'Dj\\' => 3,
+        ),
+        'C' => 
+        array (
+            'Cron\\' => 5,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Symfony\\Component\\Process\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/process',
+        ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
+        'Symfony\\Component\\Filesystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/filesystem',
+        ),
+        'Qous\\Captcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qous/captcha/src',
+        ),
         'Qous\\' => 
         array (
             0 => __DIR__ . '/..' . '/qous/curl/src',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'PFinal\\Excel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pfinal/excel/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Jenssegers\\Date\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jenssegers/date/src',
+        ),
+        'Gregwar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar',
+        ),
+        'Doctrine\\Common\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
         'Dj\\' => 
         array (
             0 => __DIR__ . '/..' . '/aileshe/upload/src/Upload',
         ),
+        'Cron\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cron/cron/src',
+            1 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+    );
+
+    public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'Upload' => 
+            array (
+                0 => __DIR__ . '/..' . '/codeguy/upload/src',
+            ),
+        ),
+        'S' => 
+        array (
+            'SimpleExcel\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/faisalman/simple-excel-php/src',
+            ),
+        ),
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
+        'N' => 
+        array (
+            'Neutron' => 
+            array (
+                0 => __DIR__ . '/..' . '/neutron/temporary-filesystem/src',
+            ),
+        ),
+        'F' => 
+        array (
+            'FFMpeg' => 
+            array (
+                0 => __DIR__ . '/..' . '/php-ffmpeg/php-ffmpeg/src',
+            ),
+        ),
+        'E' => 
+        array (
+            'Evenement' => 
+            array (
+                0 => __DIR__ . '/..' . '/evenement/evenement/src',
+            ),
+        ),
+        'A' => 
+        array (
+            'Assetic' => 
+            array (
+                0 => __DIR__ . '/..' . '/kriswallsmith/assetic/src',
+            ),
+            'Alchemy' => 
+            array (
+                0 => __DIR__ . '/..' . '/alchemy/binary-driver/src',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'XLSXWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
+        'XLSXWriter_BuffererWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
+        'upload' => __DIR__ . '/..' . '/verot/class.upload.php/src/class.upload.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -37,6 +205,9 @@ class ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitfccf643e50af3a5089e1972876cf4dfa::$classMap;
 
         }, null, ClassLoader::class);
     }
