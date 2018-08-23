@@ -1,0 +1,42 @@
+<?php
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+// 项目根目录
+define('BASE_PATH', dirname(__DIR__));
+// 项目调试模式
+define('DEBUG', true);
+// 项目host
+define('BASE_DOMAIN', 'localhost');
+
+$router = include_once BASE_PATH . '/config/config.php';
+
+$request_path = str_replace('./index.php', '', $_SERVER['PHP_SELF']);
+
+
+
+$request_query = getCurrentQuery();
+
+print_r($request_query);die;
+
+if (array_key_exists($request_path, $router)) {
+    $module_file = BASE_PATH.$router[$request_path]['file_name'];
+    $class_name = $router[$request_path]['class_name'];
+    $method_name = $router[$request_path]['method_name'];
+
+    if (file_exists($module_file)) {
+        include $module_file;
+        $obj_module = new $class_name();
+
+        if (!method_exists($obj_module, $method_name)) {
+            die('调用的方法不存在');
+        } else {
+            if (is_callable(array($obj_module, $method_name))) {
+                $obj_module->$method_name($request_path, $_POST);
+            }
+        }
+    } else {
+        die('定义的模块不存在；');
+    }
+} else {
+    die('页面不存在');
+}
