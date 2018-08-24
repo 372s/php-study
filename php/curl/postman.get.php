@@ -15,6 +15,7 @@ function request($url, $method = 'GET', $params = array(), $headers = array())
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "GET",
         CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_REFERER => 'http://m.medlive.test/mymedlive/invite_setinfo.php'
     ));
     $response = curl_exec($curl);
     $err = curl_error($curl);
@@ -27,6 +28,9 @@ function request($url, $method = 'GET', $params = array(), $headers = array())
         return $response;
     }
 }
+
+$url = 'http://m.medlive.test/mymedlive/invite/invite_edit_user.php?operate=username&token=&hashid=79830732805682&checkid=418380283106482';
+echo request($url, 'GET');die;
 
 $url = "http://api.medlive.test/adcms/ads?platform=2&branch=0&type=0&post=139604";
 $params = array('platform' => 2, 'branch' => 0, 'type' => 0, 'post' => 139604);
