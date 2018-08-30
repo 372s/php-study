@@ -74,7 +74,8 @@ function curl_post($url, $data)
 }
 
 
-$d = isset($_GET['d']) ? $_GET['d'] : "";
+// $d = isset($_GET['d']) ? $_GET['d'] : "";
+$d = @$_GET['d'];
 
 if ($d == 'invite_edit_user') {
     $url = 'http://m.medlive.test/mymedlive/invite/invite_edit_user.php?operate=username&token=&hashid=79830732805682&checkid=418380283106482';
@@ -87,12 +88,14 @@ if ($d == 'invite_edit_user') {
     // $data = http_build_query($data);
     echo post($url, $data);die;
 } else {
-    $url = "http://api.medlive.test/adcms/ads?platform=2&branch=0&type=0&post=139604";
+    // $url = "http://api.medlive.test/adcms/ads?platform=2&branch=0&type=0&post=139604";
+    $url = 'http://www.baidu.com';
     $params = array('platform' => 2, 'branch' => 0, 'type' => 0, 'post' => 139604);
     $headers = array(
         "Api-Key: 34819d7beeabb9260a5c854bc85b3e44",
         "Cache-Control: no-cache",
         "Postman-Token: e23e4623-63ef-4c21-95d9-f9863e1f72b1",
     );
-    var_dump(get($url, $params, $headers));
+    echo get($url);
+    // var_dump(get($url, $params, $headers));
 }

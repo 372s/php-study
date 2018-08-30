@@ -1,19 +1,14 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
-header('Location: http://activity.medlive.test/invitation/index?token=Yn7prvF7MN1w86eLcP7J0uHxYeY734S7&c='. urlencode('JUIzJUMxJTg4JUI4JTk3JTFGJTE2JTNCMiVFNkklREFSJThGJUU2JUI4'));
 
-// $a =  AESMcrypt::getInstance()->encrypt(2021101);
-// echo $a . '<br>';
-// echo AESMcrypt::getInstance()->decrypt($a);die;
-// //        echo $_GET['c'] . '<br>'; //f5oi4vat1hh4yy4kD/wx/6iSAzQ59RK3hYyS+w==
-// //        echo urlencode('f5oi4vat1hh4yy4kD/wx/6iSAzQ59RK3hYyS+w==') . '<br>';
-// //        echo BaseService::aesEncrypt(2021101);die;
-// if (BaseService::aesDecrypt($_GET['c']) == 2021101) {
-//     echo 1;die;
-// }
 
-echo urlencode('http://www.baidu.com');die;
-echo urldecode('http%3A%2F%2Fsetting.medlive.test%2F1118568%2Freg_last%3Fhashid%3D79830732805682%26checkid%3D418380283106482%26url%3Dhttp%253A%252F%252Fm.medlive.test%252Fcms%252Fclassicallist%252F99');die;
+$a = "50.2323%";
+echo intval($a)/100; die;
+
+// require_once dirname(__DIR__). '/class/AESCrypt.class.php';
+// echo AESCrypt::random(1);die;
+
+
 
 ###############################
 # Carbon\Carbon
