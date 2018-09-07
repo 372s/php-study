@@ -1,7 +1,49 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+$a = [1,2,3];
+unset($a);
+print_r($a);die;
 
+require_once dirname(__DIR__). '/class/csv.class.php';
+$csv = new Csv();
+$csv->params = 1000;
+$csv->test();die;
+
+print_r(setBatchInfo(500, 900000));
+function setBatchInfo($batch, $amount){
+    $num = $amount/$batch;
+    if (ceil($num) > 5000) {
+        echo '每组人数最多为5000，请增加分组数量；';die;
+    }
+    $num_per = round($amount/$batch, 1); // 保留一位小数
+    $dot = strpos((string) $num_per, '.');
+    $num_dot_next = substr($num_per,$dot+1, strlen($num_per));
+    $arr = array();
+    for ($i = 0; $i < $batch; $i++) {
+        if ($num_dot_next > 6) {
+            if ($i+1 == $batch ) {
+                array_push($arr, $amount - round($num)*($batch-1));
+            } else {
+                array_push($arr, round($num));
+            }
+        } else if ($num_dot_next == 0) {
+            array_push($arr, round($num));
+        } else {
+            if ($i+1 == $batch ) {
+                array_push($arr, $amount - floor($num)*($batch-1));
+            } else {
+                array_push($arr,floor($num));
+            }
+        }
+    }
+    return $arr;
+}
+
+die;
+$arr = [1,2,3];
+print_r(array_slice($arr, 2, 10));
+echo ceil(101/100);die;
 $a = "50.2323%";
 echo intval($a)/100; die;
 

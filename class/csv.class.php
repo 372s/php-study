@@ -10,6 +10,8 @@ class Csv
     private $filename;
     private $out;
 
+    public  $params;
+
     public function import($file) {
         return $this->readCsv($file);
     }
@@ -53,5 +55,9 @@ class Csv
         header("Content-type:application/vnd.ms-excel");
         header("Content-Disposition:filename=".$this->filename);
         echo $this->out;
+    }
+
+    public function test () {
+        print_r($this->params); 
     }
 }
