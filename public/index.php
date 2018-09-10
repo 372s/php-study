@@ -1,5 +1,6 @@
 <?php
-require dirname(__FILE__) . '/../vendor/autoload.php';
+require __DIR__ . '/../bootstrap/autoload.php';
+echo microtime(true);die; // 浮点型
 
 $a = [1,2,3];
 // unset($a);
