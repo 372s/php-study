@@ -24,5 +24,6 @@ return array(
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'Dj\\' => array($vendorDir . '/aileshe/upload/src/Upload'),
     'Cron\\' => array($vendorDir . '/cron/cron/src', $vendorDir . '/mtdowling/cron-expression/src/Cron'),
+    'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
     '' => array($vendorDir . '/nesbot/carbon/src'),
 );
