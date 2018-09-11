@@ -1,27 +1,50 @@
 <?php
 require __DIR__ . '/../bootstrap/autoload.php';
-echo microtime(true);die; // 浮点型
 
-$a = [1,2,3];
-// unset($a);
-print_r($a);die;
+spl_autoload_register(function ($class) {
+    include dirname(__DIR__) . '/class/' . $class . '.class.php';
+});
 
-require_once dirname(__DIR__). '/class/csv.class.php';
-$csv = new Csv();
-$csv->params = 1000;
-$csv->test();die;
+// $file = new CsvReader();
+// $res = $file->readFile('export.csv');
+// print_r($res);die;
 
+// $c = new CSV('export.csv');
+// $start_time = time();
+// $res = $c->get_data(0, 1);
+// print_r(var_export($res, true));die;
 
-$arr = [1,2,3];
-print_r(array_slice($arr, 2, 10));
-echo ceil(101/100);die;
-$a = "50.2323%";
-echo intval($a)/100; die;
+$e = new ExportCsv();
+$exprot = array(
+    0 => array(
+        0 => 'ID',
+        1 => '姓名',
+    ),
+    1 => array(
+        0 => '1',
+        1 => 'wangqiang1',
+    ),
+    2 => array(
+        0 => '2',
+        1 => 'wangqiang2',
+    ),
+    3 => array(
+        0 => '3',
+        1 => 'wangqiang3',
+    ),
+    4 => array(
+        0 => '4',
+        1 => 'wangqiang4',
+    ),
+    5 => array(
+        0 => '5',
+        1 => 'wangqiang5',
+    ),
+);
+// $e->export_csv_2($exprot);die;
+$e->export_excel('234234', $exprot);die;
 
-// require_once dirname(__DIR__). '/class/AESCrypt.class.php';
-// echo AESCrypt::random(1);die;
-
-
+// echo microtime(true);die; // 浮点型
 
 ###############################
 # Carbon\Carbon
@@ -31,10 +54,6 @@ echo intval($a)/100; die;
 // printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
 // printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
 
-
-
-
-
 // 验证码
 // use Gregwar\Captcha\CaptchaBuilder;
 
@@ -43,19 +62,11 @@ echo intval($a)/100; die;
 // CaptchaBuilder::create()->build()->output();
 // print_r(glob(dirname(__FILE__).'/*.php'));die;
 
-
-
-
-
 // 验证码
 // use Qous\Captcha\Captcha;
 // $cap = new Captcha();
 // // print_r($cap);die;
 // $cap->create();
-
-
-
-
 
 // 获取文件夹内文件
 // use Symfony\Component\Finder\Finder;
@@ -87,12 +98,8 @@ echo intval($a)/100; die;
 // }, $arr);
 // print_r($arr);die;
 
-
-
-
 // 随机数 1~2之间
 // echo mt_rand(0, 99)/100+1;
-
 
 ###############################
 # 正则验证
@@ -101,9 +108,6 @@ echo intval($a)/100; die;
 // $str = '455122@qq.com.';
 // $preg = new Preg();
 // var_dump($preg->checkEmail($str));
-
-
-
 
 // mb_strpos | strpos
 // $mystring = 12345678;
@@ -127,53 +131,57 @@ echo intval($a)/100; die;
 // imagepng($im);
 // imagedestroy($im);
 
-
 ##########################################################
 # 递归函数
 ##########################################################
-$arr=array(
-    array('id'=>1,'name'=>'河南省','pid'=>0),
-    array('id'=>2,'name'=>'信阳市','pid'=>1),
-    array('id'=>3,'name'=>'开封市','pid'=>1),
-    array('id'=>6,'name'=>'广州市','pid'=>4),
-    array('id'=>4,'name'=>'广东省','pid'=>0),
-    array('id'=>5,'name'=>'深圳市','pid'=>4),
+$arr = array(
+    array('id' => 1, 'name' => '河南省', 'pid' => 0),
+    array('id' => 2, 'name' => '信阳市', 'pid' => 1),
+    array('id' => 3, 'name' => '开封市', 'pid' => 1),
+    array('id' => 6, 'name' => '广州市', 'pid' => 4),
+    array('id' => 4, 'name' => '广东省', 'pid' => 0),
+    array('id' => 5, 'name' => '深圳市', 'pid' => 4),
 );
 
-function recursive($data, $pid=0)
+function recursive($data, $pid = 0)
 {
-    $arr=array();
+    $arr = array();
     $i = 0;
-    foreach($data as $k => $v){
-        if($v['pid']==$pid){
-            $arr[$i]=$v;
+    foreach ($data as $k => $v) {
+        if ($v['pid'] == $pid) {
+            $arr[$i] = $v;
             // $arr[$i]=array_merge($arr,recursive($data, $v['id']));
-            $arr[$i]['city']=recursive($data,$v['id']);
+            $arr[$i]['city'] = recursive($data, $v['id']);
         }
-        $i ++;
+        $i++;
     }
     return $arr;
 }
 // print_r(recursive($arr, 0));
-
-
 
 ##########################################################
 # 读取目录下所有文件和子目录
 # 队列方式：read_dir_queue
 # 递归方式：read_dir
 ##########################################################
-function read_dir_queue($dir){
-    $files=array();
-    $queue=array($dir);
-    while($data=each($queue)){
+function read_dir_queue($dir)
+{
+    $files = array();
+    $queue = array($dir);
+    while ($data = each($queue)) {
         // print_r($data);die;
-        $path=$data['value'];
-        if(is_dir($path) && $handle=opendir($path)){
-            while($file=readdir($handle)){
-                if($file=='.'||$file=='..') continue;
-                $files[] = $real_path=$path.'/'.$file;
-                if (is_dir($real_path)) $queue[] = $real_path;
+        $path = $data['value'];
+        if (is_dir($path) && $handle = opendir($path)) {
+            while ($file = readdir($handle)) {
+                if ($file == '.' || $file == '..') {
+                    continue;
+                }
+
+                $files[] = $real_path = $path . '/' . $file;
+                if (is_dir($real_path)) {
+                    $queue[] = $real_path;
+                }
+
             }
         }
         closedir($handle);
@@ -182,22 +190,21 @@ function read_dir_queue($dir){
 }
 // print_r(read_dir_queue('E:/laragon/www/study/php-study'));
 
-function read_dir($dir){
-    $files=array();
-    $dir_list=scandir($dir);
-    foreach($dir_list as $file){
-        if($file!='..' && $file!='.'){
-            if(is_dir($dir.'/'.$file)){
-                $files[]=read_dir($dir.'/'.$file);
-            }else{
-                $files[]=$file;
+function read_dir($dir)
+{
+    $files = array();
+    $dir_list = scandir($dir);
+    foreach ($dir_list as $file) {
+        if ($file != '..' && $file != '.') {
+            if (is_dir($dir . '/' . $file)) {
+                $files[] = read_dir($dir . '/' . $file);
+            } else {
+                $files[] = $file;
             }
         }
     }
     return $files;
 }
-
-
 
 #########################################################
 # fputcsv
@@ -205,15 +212,14 @@ function read_dir($dir){
 // $nav = array('aa', 'bb', 'cc', 'dd');
 $nav = array('姓名', '外号', '曾用名', '国家');
 $list = array
-(
+    (
     "George,John,Thomas,USA",
     "James,Adrew,Martin,USA",
 );
-file_put_contents("./a.txt", var_export ($list, true). "\n");
-$file = fopen("./contacts.csv","a+");
+file_put_contents("./a.txt", var_export($list, true) . "\n");
+$file = fopen("./contacts.csv", "a+");
 fputcsv2($file, $nav);
-foreach ($list as $line)
-{
+foreach ($list as $line) {
     fputcsv2($file, explode(',', $line));
 }
 fclose($file);
@@ -235,96 +241,84 @@ fclose($file);
 // // 关闭句柄
 // fclose($output) or die("can't close php://output");
 
-function fputcsv2($handle, array $fields, $delimiter = ",", $enclosure = '"', $escape_char = "\\") {
+function fputcsv2($handle, array $fields, $delimiter = ",", $enclosure = '"', $escape_char = "\\")
+{
     foreach ($fields as $k => $v) {
-        $fields[$k] = iconv("UTF-8", "GB2312//IGNORE", $v);  // 这里将UTF-8转为GB2312编码
+        $fields[$k] = iconv("UTF-8", "GB2312//IGNORE", $v); // 这里将UTF-8转为GB2312编码
     }
     fputcsv($handle, $fields, $delimiter, $enclosure, $escape_char);
 }
 
-
-
-
-
-
-
-
-
 ##########################################################
 # RecursiveTreeIterator 以可视在方式显示一个树形结构。
 ##########################################################
-$hey = array("a" => "lemon", "b" => "orange", array("a" => "apple", "p" => "pear")); 
-$awesome = new RecursiveTreeIterator( 
-    new RecursiveArrayIterator($hey), 
-    null, null, RecursiveIteratorIterator::LEAVES_ONLY 
-); 
+$hey = array("a" => "lemon", "b" => "orange", array("a" => "apple", "p" => "pear"));
+$awesome = new RecursiveTreeIterator(
+    new RecursiveArrayIterator($hey),
+    null, null, RecursiveIteratorIterator::LEAVES_ONLY
+);
 foreach ($awesome as $line) {
-    // echo $line . PHP_EOL;  
+    // echo $line . PHP_EOL;
 }
-
-
-
 
 ##########################################################
 # 迭代器 CachingIterator
 ##########################################################
-// 
-$cache  = new CachingIterator(new ArrayIterator(range(1,100)), CachingIterator::FULL_CACHE);
+//
+$cache = new CachingIterator(new ArrayIterator(range(1, 100)), CachingIterator::FULL_CACHE);
 foreach ($cache as $c) {
 
 }
 // print_r($cache->getCache());
 
-
 ##########################################################
 # 迭代器 目录文件遍历器
 ##########################################################
-$it = new DirectoryIterator("./"); 
-foreach ($it as $file) { 
-    //用isDot()方法分别过滤掉“.”和“..”目录 
-    if (!$it->isDot() && $file->isFile()) { 
-        // echo $file->getFilename() . "\n" . $file->getExtension() . "<br />"; 
-    } 
-}  
+$it = new DirectoryIterator("./");
+foreach ($it as $file) {
+    //用isDot()方法分别过滤掉“.”和“..”目录
+    if (!$it->isDot() && $file->isFile()) {
+        // echo $file->getFilename() . "\n" . $file->getExtension() . "<br />";
+    }
+}
 
-$it = new FilesystemIterator(dirname(__FILE__)); 
-foreach ($it as $fileinfo) { 
+$it = new FilesystemIterator(dirname(__FILE__));
+foreach ($it as $fileinfo) {
     if ($fileinfo->isFile()) {
         // echo $fileinfo->getFilename() . "\n";
     }
-} 
-
-
+}
 
 ##########################################################
 # php数组函数 each()和reset()连用
 ##########################################################
-$a = array(1,2,3);
-foreach ($a AS $k => $v) $a[$k] = 2*$v;
-// If you forget to reset the array before each(), the same code may give different results with different php versions. 
-reset($a);
-while(list($k2, $v2) = each($a)) { 
-    // echo($v2."\n");
+$a = array(1, 2, 3);
+foreach ($a as $k => $v) {
+    $a[$k] = 2 * $v;
 }
 
-
+// If you forget to reset the array before each(), the same code may give different results with different php versions.
+reset($a);
+while (list($k2, $v2) = each($a)) {
+    // echo($v2."\n");
+}
 
 ##########################################################
 # 迭代器 ArrayIterator() | ArrayObject()
 ##########################################################
-$b = array( 
-    'name'=> 'mengzhi', 
-    'age' => '12', 
-    'city'=> 'shanghai' 
+$b = array(
+    'name' => 'mengzhi',
+    'age' => '12',
+    'city' => 'shanghai',
 );
-$a = new ArrayIterator($b); 
-// $a->append(array( 
-//                 'home' => 'china', 
-//                 'work' => 'developer' 
-//            )); 
+$a = new ArrayIterator($b);
+// $a->append(array(
+//                 'home' => 'china',
+//                 'work' => 'developer'
+//            ));
 $c = $a->getArrayCopy();
 
-$obj = new ArrayObject($b);//创建数组对象
+$obj = new ArrayObject($b); //创建数组对象
 $d = $obj->getIterator();
 $e = $obj->getArrayCopy();
 // print_r($a);
@@ -341,11 +335,8 @@ foreach ($d as $key => $value) {
     // echo $key ." : ".$value."<br/>";
 }
 
-
-$d->rewind();//如果要使用current必须使用rewind
-while ($d -> valid()) {
+$d->rewind(); //如果要使用current必须使用rewind
+while ($d->valid()) {
     // echo $d->key()." : ".$d->current()."<br/>";
-    $d -> next();
+    $d->next();
 }
-
-?>

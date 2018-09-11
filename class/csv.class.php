@@ -1,63 +1,86 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wangqiang
- * Date: 2018/9/4
- * Time: 12:03
- */
-class Csv
+
+class CSV
 {
-    private $filename;
-    private $out;
+    private $csv_file;
+    private $spl_object = null;
+    private $error;
 
-    public  $params;
-
-    public function import($file) {
-        return $this->readCsv($file);
-    }
-
-    public function readCsv($filename) {
-        $file = new SplFileObject($filename);
-        $aCache = array();
-        while (!$file->eof()) {
-            $row = $file->fgetcsv();
-            $row = eval('return '.iconv('gbk','utf-8',var_export($row,true)).';');
-            $aCache[] = $row;
+    public function __construct($csv_file = '')
+    {
+        if ($csv_file && file_exists($csv_file)) {
+            $this->csv_file = $csv_file;
         }
-        array_shift($aCache);
-        array_pop($aCache);
-        return array(count($aCache), $aCache);
     }
 
-    public function export($keys, $data, $filename='export.csv') {
-        $this->filename = $filename;
-
-        if(empty($data)) {
+    public function set_csv_file($csv_file)
+    {
+        if (!$csv_file || !file_exists($csv_file)) {
+            $this->error = 'File invalid';
             return false;
         }
-        $sOut = implode(',', $keys) . "\n";
-        foreach ($data as $key => $value) {
-            $temp = array();
-            foreach ($keys as $k => $v) {
-                $temp[] = $value[$k];
-            }
-            $sOut .= implode(',', $temp)."\n";
+        $this->csv_file = $csv_file;
+        $this->spl_object = null;
+    }
+
+    public function get_csv_file()
+    {
+        return $this->csv_file;
+    }
+
+    private function _file_valid($file = '')
+    {
+        $file = $file ? $file : $this->csv_file;
+        if (!$file || !file_exists($file)) {
+            return false;
         }
-        $this->out = $sOut;
-        $this->exportCsv();
+        if (!is_readable($file)) {
+            return false;
+        }
+        return true;
     }
 
-    public function exportCsv() {
-        $this->out = iconv('utf8', 'gb2312', $this->out);
-        // $this->filename = iconv('utf8', 'gb2312', $this->filename);
-        // $this->out = mb_convert_encoding($this->out, 'gb2312');
-        // $this->filename = mb_convert_encoding($this->filename, 'gb2312');
-        header("Content-type:application/vnd.ms-excel");
-        header("Content-Disposition:filename=".$this->filename);
-        echo $this->out;
+    private function _open_file()
+    {
+        if (!$this->_file_valid()) {
+            $this->error = 'File invalid';
+            return false;
+        }
+        if ($this->spl_object == null) {
+            $this->spl_object = new SplFileObject($this->csv_file, 'rb');
+        }
+        return true;
+    }
+    public function get_data($length = 0, $start = 0)
+    {
+        if (!$this->_open_file()) {
+            return false;
+        }
+        $length = $length ? $length : $this->get_lines();
+        $start = $start - 1;
+        $start = ($start < 0) ? 0 : $start;
+        $data = array();
+        $this->spl_object->seek($start);
+        while ($length--) {
+            // while ($length-- && !$this->spl_object->eof()) {
+            $str = iconv('gbk', 'utf-8', implode(',', $this->spl_object->fgetcsv()));
+            $data[] = explode(',', $str);
+            $this->spl_object->next();
+        }
+        return $data;
     }
 
-    public function test () {
-        print_r($this->params); 
+    public function get_lines()
+    {
+        if (!$this->_open_file()) {
+            return false;
+        }
+        $this->spl_object->seek(filesize($this->csv_file));
+        return $this->spl_object->key();
+    }
+
+    public function get_error()
+    {
+        return $this->error;
     }
 }
