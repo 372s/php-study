@@ -66,6 +66,7 @@ class CsvReader
         $content = trim(file_get_contents($filename));
         $excelData = explode("\n", $content);
 
+        // str_getcsv  解析 CSV 字符串为一个数组
         $resoure = [];
         foreach ($excelData as $value) {
             $string = mb_convert_encoding(trim(strip_tags($value)), 'utf-8', 'gbk');
