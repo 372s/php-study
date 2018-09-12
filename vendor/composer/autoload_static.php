@@ -7,25 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '4bbef8c365970ac1980bb53ed27fb456' => __DIR__ . '/..' . '/qous/sort/init.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
-        array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\Yaml\\' => 23,
-            'Symfony\\Component\\Translation\\' => 30,
-            'Symfony\\Component\\Process\\' => 26,
-            'Symfony\\Component\\Finder\\' => 25,
-            'Symfony\\Component\\Filesystem\\' => 29,
-            'Symfony\\Component\\Config\\' => 25,
-        ),
         'Q' => 
         array (
             'Qous\\Captcha\\' => 13,
@@ -34,66 +19,15 @@ class ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
-            'Psr\\Log\\' => 8,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
-            'PFinal\\Excel\\' => 13,
-        ),
-        'M' => 
-        array (
-            'Mpdf\\' => 5,
-        ),
-        'J' => 
-        array (
-            'Jenssegers\\Date\\' => 16,
-        ),
-        'G' => 
-        array (
-            'Gregwar\\' => 8,
         ),
         'D' => 
         array (
             'Dj\\' => 3,
-            'DeepCopy\\' => 9,
-        ),
-        'C' => 
-        array (
-            'Cron\\' => 5,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Polyfill\\Ctype\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Symfony\\Component\\Yaml\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/yaml',
-        ),
-        'Symfony\\Component\\Translation\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/translation',
-        ),
-        'Symfony\\Component\\Process\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/process',
-        ),
-        'Symfony\\Component\\Finder\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/finder',
-        ),
-        'Symfony\\Component\\Filesystem\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/filesystem',
-        ),
-        'Symfony\\Component\\Config\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/config',
-        ),
         'Qous\\Captcha\\' => 
         array (
             0 => __DIR__ . '/..' . '/qous/captcha/src',
@@ -106,47 +40,14 @@ class ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
-        ),
-        'PFinal\\Excel\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pfinal/excel/src',
-        ),
-        'Mpdf\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
-        ),
-        'Jenssegers\\Date\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/jenssegers/date/src',
-        ),
-        'Gregwar\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/gregwar/captcha/src/Gregwar',
         ),
         'Dj\\' => 
         array (
             0 => __DIR__ . '/..' . '/aileshe/upload/src/Upload',
         ),
-        'DeepCopy\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
-        ),
-        'Cron\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cron/cron/src',
-            1 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
-        ),
-    );
-
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -157,32 +58,9 @@ class ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde
                 0 => __DIR__ . '/..' . '/codeguy/upload/src',
             ),
         ),
-        'S' => 
-        array (
-            'SimpleExcel\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/faisalman/simple-excel-php/src',
-            ),
-        ),
-        'P' => 
-        array (
-            'PHPExcel' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
-            ),
-        ),
     );
 
     public static $classMap = array (
-        'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
-        'FPDI' => __DIR__ . '/..' . '/setasign/fpdi/fpdi.php',
-        'FilterASCII85' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCII85.php',
-        'FilterASCIIHexDecode' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCIIHexDecode.php',
-        'FilterLZW' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterLZW.php',
-        'XLSXWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
-        'XLSXWriter_BuffererWriter' => __DIR__ . '/..' . '/mk-j/php_xlsxwriter/xlsxwriter.class.php',
-        'fpdi_pdf_parser' => __DIR__ . '/..' . '/setasign/fpdi/fpdi_pdf_parser.php',
-        'pdf_context' => __DIR__ . '/..' . '/setasign/fpdi/pdf_context.php',
         'upload' => __DIR__ . '/..' . '/verot/class.upload.php/src/class.upload.php',
     );
 
@@ -191,7 +69,6 @@ class ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitfd2c53b692bc47f56228daf3f60f9fde::$classMap;
 
