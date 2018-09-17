@@ -6,6 +6,17 @@ spl_autoload_register(function ($class) {
 });
 
 print_r($_SERVER);die;
+
+$array1 = array("a" => "green", "red", "blue");
+$array2 = array("b" => "green", "red", "yellow");
+$result = array_diff($array2, $array1);
+
+print_r($result);die;
+
+
+echo $_GET['a'] ?? 0; die; // 1
+echo !empty($_GET['a']) ?: 0;die; // 1
+
 function gen_one_to_three()
 {
     for ($i = 1; $i <= 3; $i++) {
