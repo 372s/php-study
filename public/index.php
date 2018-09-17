@@ -5,6 +5,7 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+print_r($_SERVER);die;
 function gen_one_to_three()
 {
     for ($i = 1; $i <= 3; $i++) {
