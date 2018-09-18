@@ -5,6 +5,7 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+echo max('2', 1);die;
 
 $array1 = array("a" => "green", "red", "blue");
 $array2 = array("b" => "green", "red", "yellow");
@@ -13,7 +14,7 @@ $result = array_diff($array2, $array1);
 print_r($result);die;
 
 
-echo $_GET['a'] ?? 0; die; // 1
+echo $_GET['a'] ?: 0; die; // 1
 echo !empty($_GET['a']) ?: 0;die; // 1
 function gen_one_to_three()
 {

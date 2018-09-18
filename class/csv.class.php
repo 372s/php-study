@@ -51,6 +51,7 @@ class CSV
         }
         return true;
     }
+    
     public function get_data($length = 0, $start = 0)
     {
         if (!$this->_open_file()) {
