@@ -71,13 +71,13 @@ class ExportCsv
             }
             fputcsv($fp, $header_data);
         }
-        $num = 0;
-        //每隔$limit行，刷新一下输出buffer，不要太大，也不要太小
-        $limit = 100000;
-        //逐行取出数据，不浪费内存
+        
         $count = count($data);
         if ($count > 0) {
-            for ($i = 0; $i < $count; $i++) {
+            $num = 0;
+            //每隔$limit行，刷新一下输出buffer，不要太大，也不要太小
+            $limit = 100000;
+            foreach ($data as $item) {
                 $num++;
                 //刷新一下输出buffer，防止由于数据过多造成问题
                 if ($limit == $num) {
@@ -85,11 +85,10 @@ class ExportCsv
                     flush();
                     $num = 0;
                 }
-                $row = $data[$i];
-                foreach ($row as $key => $value) {
-                    $row[$key] = iconv('utf-8', 'gbk', $value);
+                foreach ($item as $key => $value) {
+                    $item[$key] = iconv('utf-8', 'gbk', $value);
                 }
-                fputcsv($fp, $row);
+                fputcsv($fp, $item);
             }
         }
         fclose($fp);

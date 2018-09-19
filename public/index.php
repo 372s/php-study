@@ -5,10 +5,16 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
-echo max('2', 1);die;
+$i = 1;
+while ($i < 5 && $i) {
+    echo 23423 . "\n";
+    $i++;
+}
+echo date('Y-m-d H:i:s', '1536283681') . "\n";
+echo date('Y-m-d H:i:s', '1536653955') . "\n";
+echo max('2', 2);die;
 
 print_r($_SERVER);die;
-
 
 $array1 = array("a" => "green", "red", "blue");
 $array2 = array("b" => "green", "red", "yellow");
