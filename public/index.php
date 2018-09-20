@@ -5,6 +5,8 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+
+echo '123456789123456789123';die;
 $i = 1;
 while ($i < 5 && $i) {
     echo 23423 . "\n";
