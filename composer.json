@@ -24,10 +24,10 @@
         }
     },
     "require": {
-        "aileshe/upload": "~0.1",
         "qous/curl": "dev-master",
         "qous/captcha": "dev-master",
         "qous/sort": "dev-master",
+        "aileshe/upload": "~0.1",
         "codeguy/upload": "^1.3",
         "verot/class.upload.php": "dev-master",
         "phpoffice/phpspreadsheet": "dev-master",
