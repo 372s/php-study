@@ -93,11 +93,11 @@ function curlPost($url, $data)
     return $output;
 }
 
-var_dump(curlPost('http://sms-cly.cn/smsSend.do', array(
+var_dump(curlPost('http://sms-cly.cn/sendData.do?', array(
     'username' => 'clyymt',
     'password' => '55b4bfec5492cf0aadfe8f1ec2962781',
-    'mobile' => '18612651314,18518369066',
-    'content' => 'PHP个性短信测试1，链接：http://m.medlive.cn',
+    'mobile' => '18612651314,13733822332',
+    'content' => '您的验证码是465654【医脉通】,您的验证码是132131【医脉通】',
     'dstime' => '',
     'ext'=> '',
     'msgid'=> ''
