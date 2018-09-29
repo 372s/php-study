@@ -13,16 +13,16 @@ spl_autoload_register(function ($class) {
 
 // echo $newphrase;die;
 
-$arrrr = array(2, 3, 1, 4);
-sort($arrrr);
-print_r($arrrr);die;
+// $arrrr = array(2, 3, 1, 4);
+// sort($arrrr);
+// print_r($arrrr);die;
 
 $str = '{user_name}老师，你好！文案+{URL}+回TD退订。';
 $pattern = '/{.+?}/';
 
 preg_match_all($pattern, $str, $matchs);
 
-// print_r($matchs[0]);die;
+print_r($matchs);die;
 
 $matchs = $matchs[0];
 
