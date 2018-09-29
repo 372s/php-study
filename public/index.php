@@ -5,6 +5,71 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+// $phrase = "You should eat fruits, vegetables, and fiber every day.";
+// $healthy = array("fruits", "vegetables", "fiber");
+// $yummy = array("pizza", "beer", "ice cream");
+
+// $newphrase = str_replace($healthy, $yummy, $phrase);
+
+// echo $newphrase;die;
+
+$arrrr = array(2, 3, 1, 4);
+sort($arrrr);
+print_r($arrrr);die;
+
+$str = '{user_name}老师，你好！文案+{URL}+回TD退订。';
+$pattern = '/{.+?}/';
+
+preg_match_all($pattern, $str, $matchs);
+
+// print_r($matchs[0]);die;
+
+$matchs = $matchs[0];
+
+$data = array(
+    'username' => 'wangqiang',
+    'short_url' => 'http://www.baidu.com',
+);
+$config = array(
+    '{user_name}' => 'username',
+    '{URL}' => 'short_url',
+    '{link}' => 'link',
+);
+
+$arr = array();
+foreach ($data as $k => $v) {
+    if ($key = array_search($k, $config)) {
+        $arr[$key] = $data[$k];
+    }
+}
+
+$new = strtr($str, $arr);
+print_r($new);
+// set_time_limit(0);
+// ignore_user_abort(false);
+// while (0) {
+//     $isAborted = connection_aborted();
+//     $status = connection_status();
+//     file_put_contents('test.txt', 'time: ' . date('Y-m-d H:i:s') . '; abroted:' . $isAborted . '; status: ' . $status);
+//     if (0 !== $status || $isAborted) {
+//         break;
+//     }
+//     break;
+//     sleep(2);
+// }
+// die;
+
+function shutdown()
+{
+    // This is our shutdown function, in
+    // here we can do any last operations
+    // before the script is complete.
+
+    echo 'Script executed with success', PHP_EOL;
+}
+
+register_shutdown_function('shutdown');
+die;
 
 echo '123456789123456789123';die;
 $i = 1;
@@ -24,8 +89,7 @@ $result = array_diff($array2, $array1);
 
 print_r($result);die;
 
-
-echo $_GET['a'] ?: 0; die; // 1
+echo $_GET['a'] ?: 0;die; // 1
 echo !empty($_GET['a']) ?: 0;die; // 1
 
 function gen_one_to_three()
