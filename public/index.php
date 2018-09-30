@@ -5,6 +5,11 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+$report = 'report=13800000000|DELIVRD|777342392938043392|73249|2016-09-10 11:08:00; 13800000001|DELIVRD|777342392938043393|73249|2016-09-10 11:08:00;13800000001|REPEATD|777342392938043393|73249|2016-09-10 11:08:00';
+
+$str = 1234134;
+echo json_decode($str, true);die;
+
 // $phrase = "You should eat fruits, vegetables, and fiber every day.";
 // $healthy = array("fruits", "vegetables", "fiber");
 // $yummy = array("pizza", "beer", "ice cream");
