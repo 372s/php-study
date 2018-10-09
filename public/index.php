@@ -6,10 +6,11 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+$request = Requests::get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
+print_r($request->body);die;
+
 // curl类
 $curl = new Curl();
-
-// 
 $res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
 preg_match_all('/.*?jsonpCallback\((.*?)\)/', trim($res), $data);
 $da = json_decode($data[1][0], true);
