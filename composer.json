@@ -2,16 +2,16 @@
     "name": "study",
     "description": "php study composer",
     "repositories": {
-        "qous/captcha": {
-            "url": "git@github.com:qous/captcha.git",
+        "wpollen/captcha": {
+            "url": "git@github.com:wpollen/captcha.git",
             "type": "vcs"
         },
-        "qous/curl": {
-            "url": "git@github.com:qous/php-curl.git",
+        "wpollen/curl": {
+            "url": "git@github.com:wpollen/php-curl.git",
             "type": "vcs"
         },
-        "qous/sort": {
-            "url": "git@github.com:qous/sort-array.git",
+        "wpollen/sort": {
+            "url": "git@github.com:wpollen/sort-array.git",
             "type": "vcs"
         },
         "TinyLara/TinyLara": {
@@ -24,14 +24,13 @@
         }
     },
     "require": {
-        "qous/curl": "dev-master",
-        "qous/captcha": "dev-master",
-        "qous/sort": "dev-master",
+        "wpollen/curl": "dev-master",
+        "wpollen/captcha": "dev-master",
+        "wpollen/sort": "dev-master",
         "aileshe/upload": "~0.1",
         "codeguy/upload": "^1.3",
         "verot/class.upload.php": "dev-master",
         "phpoffice/phpspreadsheet": "dev-master",
-        "TinyLara/TinyLara": "^2.0",
-        "league/csv": "^9.1"
+        "league/csv": "^8.2"
     }
 }

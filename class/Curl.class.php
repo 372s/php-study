@@ -27,14 +27,17 @@ class Curl
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($ch);
-        if ($output === false) {
-            return 'ERROR: ' . curl_error($ch);
-        }
         curl_close($ch);
+        if ($output === false) {
+            $output = array('error' => 'ERROR: ' . curl_error($ch));
+        } else {
+            $output = json_decode($output, true);
+        }
         return $output;
     }
 
@@ -102,12 +105,3 @@ class Curl
         return $response;
     }
 }
-
-$curl = new Curl();
-$url = "http://api.medlive.test/adcms/ads";
-$params = array('platform' => 2, 'branch' => 0, 'type' => 0, 'post' => 139604);
-$headers = array('Api-Key:34819d7beeabb9260a5c854bc85b3e44');
-// $str=$curl->https_post($url, array('name' => 'name'));
-// $str = $curl->https_get($url);
-$str = $curl->curl_request($url, 'GET', $params, $headers);
-var_dump($str);
