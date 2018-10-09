@@ -7,7 +7,8 @@ spl_autoload_register(function ($class) {
 
 $curl = new Curl();
 // $res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
-$res = $curl->https_post('http://api.medlive.test/sms/report.php', array('report' => '18612651314|DELIVRD|1049207374241983489|78084|2018-10-08 15:58:28'));
+$res = $curl->https_post('http://api.medlive.test/sms/report.php', array(
+    'report' => '18612651314|DELIVRD|1049207374241983489|78084|2018-10-08 15:58:28'));
 print_r($res);die;
 
 preg_match_all('/.*?jsonpCallback\((.*?)\)/', trim($res), $data);
