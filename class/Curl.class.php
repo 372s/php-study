@@ -12,12 +12,15 @@ class Curl
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $data = curl_exec($curl);
-        if ($data === false) {
-            return 'ERROR: ' . curl_error($curl);
-        }
+        $output = curl_exec($curl);
+        $error = curl_error($curl);
         curl_close($curl);
-        return $data;
+        if ($output === false) {
+            $output = array('error' => 'ERROR: ' . $error);
+        } else {
+            $output = json_decode($output, true);
+        }
+        return $output;
     }
 
     /**
@@ -25,16 +28,17 @@ class Curl
      */
     public function https_post($url, $post_data = array())
     {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-        $output = curl_exec($ch);
-        curl_close($ch);
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+        $output = curl_exec($curl);
+        $error = curl_error($curl);
+        curl_close($curl);
         if ($output === false) {
-            $output = array('error' => 'ERROR: ' . curl_error($ch));
+            $output = array('error' => 'ERROR: ' . $error);
         } else {
             $output = json_decode($output, true);
         }
@@ -43,24 +47,26 @@ class Curl
 
     public function https_request($url, $method = 'GET', $data = array())
     {
-        $ch = curl_init(); //1.初始化
-        curl_setopt($ch, CURLOPT_URL, $url); //2.请求地址
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method); //3.请求方式
+        $curl = curl_init(); //1.初始化
+        curl_setopt($curl, CURLOPT_URL, $url); //2.请求地址
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method); //3.请求方式
         //4.参数如下
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 
         if ($method == "POST") { //5.post方式的时候添加数据
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
         }
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $output = curl_exec($ch);
-
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($curl);
+        $error = curl_error($curl);
+        curl_close($curl);
         if ($output === false) {
-            return curl_error($ch);
+            $output = array('error' => 'ERROR: ' . $error);
+        } else {
+            $output = json_decode($output, true);
         }
-        curl_close($ch);
         return $output;
     }
 
@@ -93,15 +99,15 @@ class Curl
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         $response = curl_exec($curl);
+        $error = curl_error($curl);
+        curl_close($curl);
         // var_dump($response);
         if ($response === false) {
-            curl_error($curl);
-            curl_close($curl);
-            return array();
+            $response = array('error' => 'ERROR: ' . $error);
         } else {
             $response = json_decode($response, true);
         }
-        curl_close($curl);
+        
         return $response;
     }
 }

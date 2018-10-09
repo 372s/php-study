@@ -1,16 +1,16 @@
 <?php
 require __DIR__ . '/../bootstrap/autoload.php';
 
+// 类自动加载
 spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+// curl类
 $curl = new Curl();
-// $res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
-$res = $curl->https_post('http://api.medlive.test/sms/report.php', array(
-    'report' => '18612651314|DELIVRD|1049207374241983489|78084|2018-10-08 15:58:28'));
-print_r($res);die;
 
+// 
+$res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
 preg_match_all('/.*?jsonpCallback\((.*?)\)/', trim($res), $data);
 $da = json_decode($data[1][0], true);
 print_r($da['data']);die;
