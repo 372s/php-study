@@ -15,7 +15,7 @@
 
     // 测试判断ajax请求
     $.getJSON(
-        '/ajax/check_ajax_request.php',
+        'check_ajax_request.php',
         function(d) {
             console.log(d)
         }
