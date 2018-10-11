@@ -6,6 +6,7 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+echo PUBLIC_PATH;die;
 // $request = Requests::post('http://api.medlive.test/sms/custom_sms_send.php', array(), array(
 //     'mobile' => '18612651314',
 //     'content' => '您的验证码是351556【医脉通】',
