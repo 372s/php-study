@@ -6,5 +6,10 @@ spl_autoload_register(function ($class) {
 });
 // echo 2233;die;
 $curl = new Curl();
-$res = $curl->https_post('http://dev.local.test/api.test.php', array('name' => 'wangqiang'));
+$res = $curl->https_post('http://dev.local.test/api.test.php', array(
+    'name' => 'wangqiang',
+    'token' => '8888'
+));
 print_r($res);
+?>
+
