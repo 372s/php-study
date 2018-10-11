@@ -6,21 +6,25 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
-$request = Requests::get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
-print_r($request->body);die;
+// $request = Requests::post('http://api.medlive.test/sms/custom_sms_send.php', array(), array(
+//     'mobile' => '18612651314',
+//     'content' => '您的验证码是351556【医脉通】',
+//     'dstime' => '',
+// ));
+// print_r($request->body);die;
 
 // curl类
 $curl = new Curl();
-$res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1538989265954');
-preg_match_all('/.*?jsonpCallback\((.*?)\)/', trim($res), $data);
-$da = json_decode($data[1][0], true);
-print_r($da['data']);die;
 
-echo date('Y-m-d H:i:s', '1538989265954');die;
-$report = 'report=13800000000|DELIVRD|777342392938043392|73249|2016-09-10 11:08:00; 13800000001|DELIVRD|777342392938043393|73249|2016-09-10 11:08:00;13800000001|REPEATD|777342392938043393|73249|2016-09-10 11:08:00';
+$res = $curl->https_post('http://api.medlive.test/sms/custom_sms_send.php', array(
+    'mobile' => '18612651314',
+    'content' => '您的验证码是351556【医脉通】',
+));
+print_r($res);die;
 
-$str = 1234134;
-echo json_decode($str, true);die;
+$res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1539137510506');
+preg_match_all('/.*?\((.*?)\)/', trim($res), $data);
+print_r($data[1][0]);die;
 
 // $phrase = "You should eat fruits, vegetables, and fiber every day.";
 // $healthy = array("fruits", "vegetables", "fiber");
@@ -36,32 +40,10 @@ echo json_decode($str, true);die;
 
 $str = '{user_name}老师，你好！文案+{URL}+回TD退订。';
 $pattern = '/{.+?}/';
-
 preg_match_all($pattern, $str, $matchs);
-
 print_r($matchs);die;
 
-$matchs = $matchs[0];
 
-$data = array(
-    'username' => 'wangqiang',
-    'short_url' => 'http://www.baidu.com',
-);
-$config = array(
-    '{user_name}' => 'username',
-    '{URL}' => 'short_url',
-    '{link}' => 'link',
-);
-
-$arr = array();
-foreach ($data as $k => $v) {
-    if ($key = array_search($k, $config)) {
-        $arr[$key] = $data[$k];
-    }
-}
-
-$new = strtr($str, $arr);
-print_r($new);
 // set_time_limit(0);
 // ignore_user_abort(false);
 // while (0) {
@@ -75,28 +57,6 @@ print_r($new);
 //     sleep(2);
 // }
 // die;
-
-function shutdown()
-{
-    // This is our shutdown function, in
-    // here we can do any last operations
-    // before the script is complete.
-
-    echo 'Script executed with success', PHP_EOL;
-}
-
-register_shutdown_function('shutdown');
-die;
-
-echo '123456789123456789123';die;
-$i = 1;
-while ($i < 5 && $i) {
-    echo 23423 . "\n";
-    $i++;
-}
-echo date('Y-m-d H:i:s', '1536283681') . "\n";
-echo date('Y-m-d H:i:s', '1536653955') . "\n";
-echo max('2', 2);die;
 
 print_r($_SERVER);die;
 

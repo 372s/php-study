@@ -15,11 +15,11 @@ class Curl
         $output = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
-        if ($output === false) {
-            $output = array('error' => 'ERROR: ' . $error);
-        } else {
-            $output = json_decode($output, true);
-        }
+        // if ($output === false) {
+        //     $output = array('error' => 'ERROR: ' . $error);
+        // } else {
+        //     $output = json_decode($output, true);
+        // }
         return $output;
     }
 
@@ -33,7 +33,7 @@ class Curl
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post_data));
         $output = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
