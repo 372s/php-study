@@ -20,4 +20,17 @@
             console.log(d)
         }
     );
+
+    
+    $.post(
+        'http://api.medlive.test/sms/custom_sms_send.php',
+        {
+            name: 'wangqiang',
+            token: '8888999'
+        },
+        function(d) {
+            console.log(d)
+        },
+        'json'
+    );
 </script>
