@@ -6,16 +6,6 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
-$data = array(
-    array('year','month','amount'),
-    array('2003','1','220'),
-    array('2003','2','153.5'),
-);
-
-$writer = new XLSXWriter();
-$writer->writeSheet($data);
-$writer->writeToFile('output.xlsx');
-
 // $request = Requests::post('http://api.medlive.test/sms/custom_sms_send.php', array(), array(
 //     'mobile' => '18612651314',
 //     'content' => '您的验证码是351556【医脉通】',
