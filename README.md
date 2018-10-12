@@ -13,6 +13,7 @@
     "phpoffice/phpspreadsheet": "dev-master",
     "league/csv": "^9.1",
     "mpdf/mpdf": "^7.1",
+    "rap2hpoutre/fast-excel": "^0.10.1",
     
     "mtdowling/cron-expression": "^1.2",
     "cron/cron": "^1.3",
@@ -25,7 +26,8 @@
     
     "gregwar/captcha": "^1.1",
 
-    "rmccue/requests": "^1.7"
+    "rmccue/requests": "^1.7",
+
 }
 
 国内镜像源
