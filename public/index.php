@@ -6,6 +6,17 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+// echo strlen ('7b17b22fa32eb0e0ab9772594a34bb08.csv');die;
+$input = array("red", "green", "blue", "yellow");
+echo md5(json_encode($input));die;
+$arr = array_splice($input, 0, 2);
+print_r($arr);
+print_r($input);
+$arr = array_splice($input, 0, 1);
+print_r($arr);
+print_r($input);
+die;
+
 echo PUBLIC_PATH;die;
 // $request = Requests::post('http://api.medlive.test/sms/custom_sms_send.php', array(), array(
 //     'mobile' => '18612651314',
