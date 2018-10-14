@@ -6,6 +6,46 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+$str = 'aaaa1111';
+// preg_replace('/\d*/', '', $str);
+header("Content-Type:text/html;charset=utf-8");
+// 新浪列表
+$res = file_get_contents('https://interface.sina.cn/wap_api/layout_col.d.json?showcid=12635&col=12658&level=1%2C2%2C3');
+// echo $res;die;
+// $arr = json_decode($res['result']['data']['list'], true);
+// 新浪详情
+$content = file_get_contents('https://eladies.sina.cn/feel/answer/2018-10-14/detail-ihkvrhps4532630.d.html?&cid=12635');
+// echo $content;die;
+//(<p class="art_p">.*?<\/p>)\s\S*?
+$num = preg_match_all("/(<img class=\"sharePic hide\"[\s\S]*?>)([\s\S]*?)(<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>)([\s\S]*?)<p class=\"art_p\">.*?<a onmouseover[\s\S]*?>/", trim($content), $data);
+// echo $num;die;
+
+echo preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $data[1][0]);die;
+echo "<div>".$data[2][0].$data[1][0].$data[4][0]."</div>";die;
+print_r($data);die;
+$content = $data[0][0];
+// print_r($content);die;
+// 匹配图片
+preg_match_all("/<img class=\"sharePic hide\"[\s\S]*?>/", $content, $img);
+// print_r($img[0][0]);die;
+// 匹配figure
+/*preg_match_all("#<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>#", $content, $figure);*/
+// print_r($figure);die;
+$content = preg_replace("/<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>/", $img[0][0], $content);
+print_r($content);die;
+
+// 搜狐
+$souhu = file_get_contents('https://v2.sohu.com/integration-api/mix/region/98');
+print_r(json_decode($souhu, true)['data']);
+die;
+
+$ress = file_get_contents('https://interface.sina.cn/wap_api/layout_col.d.json?showcid=34978&col=34978&level=1%2C2&show_num=30&page=2&act=more&jsoncallback=callbackFunction&_=1539500212952&callback=Zepto1539500207743');
+// echo $ress;die;
+preg_match_all('/.*?\((.*?)\)$/', trim($ress), $data);
+$ress = $data[1][0];
+// print_r($ress);die;
+print_r(json_decode($ress, true));
+die;
 // $request = Requests::post('http://api.medlive.test/sms/custom_sms_send.php', array(), array(
 //     'mobile' => '18612651314',
 //     'content' => '您的验证码是351556【医脉通】',
@@ -20,11 +60,13 @@ $res = $curl->https_post('http://api.medlive.test/sms/custom_sms_send.php', arra
     'mobile' => '18612651314',
     'content' => '您的验证码是351556【医脉通】',
 ));
-print_r($res);die;
+print_r($res);
+die;
 
 $res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1539137510506');
 preg_match_all('/.*?\((.*?)\)/', trim($res), $data);
-print_r($data[1][0]);die;
+print_r($data[1][0]);
+die;
 
 // $phrase = "You should eat fruits, vegetables, and fiber every day.";
 // $healthy = array("fruits", "vegetables", "fiber");
@@ -41,7 +83,8 @@ print_r($data[1][0]);die;
 $str = '{user_name}老师，你好！文案+{URL}+回TD退订。';
 $pattern = '/{.+?}/';
 preg_match_all($pattern, $str, $matchs);
-print_r($matchs);die;
+print_r($matchs);
+die;
 
 
 // set_time_limit(0);
@@ -58,16 +101,20 @@ print_r($matchs);die;
 // }
 // die;
 
-print_r($_SERVER);die;
+print_r($_SERVER);
+die;
 
 $array1 = array("a" => "green", "red", "blue");
 $array2 = array("b" => "green", "red", "yellow");
 $result = array_diff($array2, $array1);
 
-print_r($result);die;
+print_r($result);
+die;
 
-echo $_GET['a'] ?: 0;die; // 1
-echo !empty($_GET['a']) ?: 0;die; // 1
+echo $_GET['a'] ? : 0;
+die; // 1
+echo !empty($_GET['a']) ? : 0;
+die; // 1
 
 function gen_one_to_three()
 {
@@ -79,7 +126,8 @@ function gen_one_to_three()
 
 $generator = gen_one_to_three();
 
-print_r(iterator_to_array($generator));die;
+print_r(iterator_to_array($generator));
+die;
 foreach ($generator as $value) {
     echo "$value\n";
 }
@@ -121,7 +169,8 @@ $exprot = array(
     ),
 );
 // $e->export_csv_2($exprot);die;
-$e->export_excel('234234', $exprot);die;
+$e->export_excel('234234', $exprot);
+die;
 
 // echo microtime(true);die; // 浮点型
 
@@ -290,8 +339,7 @@ function read_dir($dir)
 #########################################################
 // $nav = array('aa', 'bb', 'cc', 'dd');
 $nav = array('姓名', '外号', '曾用名', '国家');
-$list = array
-    (
+$list = array(
     "George,John,Thomas,USA",
     "James,Adrew,Martin,USA",
 );
@@ -334,7 +382,9 @@ function fputcsv2($handle, array $fields, $delimiter = ",", $enclosure = '"', $e
 $hey = array("a" => "lemon", "b" => "orange", array("a" => "apple", "p" => "pear"));
 $awesome = new RecursiveTreeIterator(
     new RecursiveArrayIterator($hey),
-    null, null, RecursiveIteratorIterator::LEAVES_ONLY
+    null,
+    null,
+    RecursiveIteratorIterator::LEAVES_ONLY
 );
 foreach ($awesome as $line) {
     // echo $line . PHP_EOL;
