@@ -20,8 +20,8 @@ $content = file_get_contents('https://eladies.sina.cn/feel/answer/2018-10-14/det
 $num = preg_match_all("/(<img class=\"sharePic hide\"[\s\S]*?>)([\s\S]*?)(<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>)([\s\S]*?)<p class=\"art_p\">.*?<a onmouseover[\s\S]*?>/", trim($content), $data);
 // echo $num;die;
 
-echo preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $data[1][0]);die;
-echo "<div>".$data[2][0].$data[1][0].$data[4][0]."</div>";die;
+$img = preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $data[1][0]);
+echo "<div>".$data[2][0].$img.$data[4][0]."</div>";die;
 print_r($data);die;
 $content = $data[0][0];
 // print_r($content);die;
@@ -29,9 +29,7 @@ $content = $data[0][0];
 preg_match_all("/<img class=\"sharePic hide\"[\s\S]*?>/", $content, $img);
 // print_r($img[0][0]);die;
 // 匹配figure
-/*preg_match_all("#<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>#", $content, $figure);*/
-// print_r($figure);die;
-$content = preg_replace("/<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>/", $img[0][0], $content);
+$content = preg_replace("/<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>/", '', $content);
 print_r($content);die;
 
 // 搜狐
