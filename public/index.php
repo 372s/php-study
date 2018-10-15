@@ -6,6 +6,133 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+function zynews() {
+    header("Content-Type:text/html;charset=utf-8");
+    set_time_limit(0);
+
+    $urls = array(
+        'http://news.zynews.cn/node_4263.htm',
+        'http://news.zynews.cn/zz/node_4277.htm',
+        'http://news.zynews.cn/hn/node_4276.htm',
+    );
+    $i = 0;
+    foreach ($urls as $url) {
+
+        preg_match_all("/(http:\/\/.*?\/)node/", $url, $u_matches);
+        // print_r($u_matches);die;
+        $prefix = $u_matches[1][0];
+        // echo $prefix;die;
+        $html =  $this->my_curl($url);
+        // echo $html;die;
+        preg_match_all("/<div class=\"newslistbox\">[\s\S]*?<a[\s\S]*?href=\"([\s\S]*?)\"[\s\S]*?>([\s\S]*?)<\/a>/", $html, $matches);
+        // print_r($matches);die;
+        $url_c_s = $matches[1];
+        $title_c_s = $matches[2];
+
+        foreach ($url_c_s as $k => $u) {
+            preg_match_all("/.*?content_(\d*)\.htm/", $u, $ids);
+            $id = 'zy'.$ids[1][0];
+            $title = $title_c_s[$k];
+
+            $html_s = $this->my_curl($prefix.$u);
+            // echo 'http://news.zynews.cn/'.$u;die;
+            $res = preg_match_all("/(<div class=\"content\"[\s\S]*?>[\s\S]*?)<div class=\"editor\"/", $html_s, $matchs);
+            // print_r($matchs);die;
+            if ($res) {
+                $content = $matchs[1][0]."</div>";
+                $content = preg_replace("/<script>[\s\S]*?<\/script>/i", '', $content);
+
+                // echo $id . "<br>";
+                // echo $title . "<br>";
+                $content = $this->img_replace($content);
+                echo $content . "<br>";
+                $i++;
+                $this->addNews("中原网", $prefix.$u, "新闻", $title, $content,1,$id);
+            } else {
+                continue;
+            }
+
+        }
+    }
+}
+
+
+/*$html = Requests::get('http://news.zynews.cn/node_4263.htm');
+// print_r($html);die;
+preg_match_all("/class=\"newslistbox\"[\s\S]*?<a[\s\S]*?href=\"([\s\S]*?)\"[\s\S]*?>([\s\S]*?)<\/a>/", $html->body, $matches);
+print_r($matches);die;*/
+//<div id="_3fz6j9jkphq"></div>
+$html = Requests::get('http://news.zynews.cn/zz/2018-10/15/content_11547549.htm');
+preg_match_all("/(<div class=\"content\".*?>[\s\S]*?)<div class=\"editor\"/", $html->body, $matchs);
+
+$content = $matchs[1][0]."</div>";
+
+$content = preg_replace("/<script>[\s\S]*?<\/script>/", '', $content);
+echo $content;die;
+print_r($matchs);die;
+
+// http://news.zynews.cn
+// $str = '{"province":["\u5317\u4eac"],"city_level":["\u4e00\u7ebf"],"dept_name":["\u666e\u901a\u5185\u79d1"],"carclass2":["\u975e\u533b\u836f\u7c7b\u4e2d\u7ea7"]}';
+// $res = preg_replace_callback('/\\\u([0-9a-f]{4})/i',function($match) {
+//     return $match[1];
+// }, $str);
+// print_r($res);die;
+function decodeUnicode($str)
+{
+    return preg_replace_callback('/\\\u([0-9a-f]{4})/i',
+    create_function(
+        '$matches',
+        'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'
+    ),
+    $str);
+}
+$arr = array('姓名' =>'张三', '李四');
+echo serialize($arr);
+echo json_encode($arr);
+echo json_encode($arr, JSON_UNESCAPED_UNICODE);
+$res = decodeUnicode(json_encode($arr));
+print_r(json_decode($res, true));
+die;
+
+
+
+$b = array(1,1,2,3,5,8);
+$arr = get_defined_vars();
+// 打印 $b
+print_r($arr["b"]);
+
+// 打印 PHP 解释程序的路径（如果 PHP 作为 CGI 使用的话）
+// 例如：/usr/local/bin/php
+echo $arr["_"]; 
+
+// 打印命令行参数（如果有的话）
+print_r($arr["argv"]);
+
+// 打印所有服务器变量
+print_r($arr["_SERVER"]);
+
+// print_r($arr['php_errormsg']);
+
+// 打印变量数组的所有可用键值
+print_r(array_keys(get_defined_vars()));
+die;
+
+function fuc () {
+    // $arr = func_get_args();
+    // extract($arr, EXTR_PREFIX_ALL, 'var');
+    print_r(get_defined_vars());
+}
+fuc(1, 2);die;
+
+$newfunc = create_function('$a,$b', 'return "ln($a) + ln($b) = " . log($a * $b);');
+// echo "New anonymous function: $newfunc\n";
+// echo $newfunc(2, M_E) . "\n";
+
+$farr = create_function('$a,$b', 'return $a+$b;');
+echo $farr . "\n\r";
+echo $farr(1, 2);
+die;
+
 $str = 'aaaa1111';
 // preg_replace('/\d*/', '', $str);
 header("Content-Type:text/html;charset=utf-8");
