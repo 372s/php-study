@@ -6,7 +6,29 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
-function zynews() {
+$html = file_get_contents('http://m.zynews.cn/zz/2018-10/15/content_11547998.htm');
+$doc = new DOMDocument();
+@$doc->loadHTML($html);
+$xpath = new DOMXpath($doc);
+$elements = $xpath->query("//div[@class='text']");
+// print_r($elements);die;
+if (!is_null($elements)) {
+    foreach ($elements as $element) {
+        echo "<br/>[" . $element->nodeName . "]";
+        print_r($element) ;die;
+        $nodes = $element->childNodes;
+        foreach ($nodes as $node) {
+            echo $node->nodeValue . "\n";
+        }
+    }
+}
+die;
+
+/**
+ * 中原网
+ */
+function zynews()
+{
     header("Content-Type:text/html;charset=utf-8");
     set_time_limit(0);
 
@@ -22,7 +44,7 @@ function zynews() {
         // print_r($u_matches);die;
         $prefix = $u_matches[1][0];
         // echo $prefix;die;
-        $html =  $this->my_curl($url);
+        $html = $this->my_curl($url);
         // echo $html;die;
         preg_match_all("/<div class=\"newslistbox\">[\s\S]*?<a[\s\S]*?href=\"([\s\S]*?)\"[\s\S]*?>([\s\S]*?)<\/a>/", $html, $matches);
         // print_r($matches);die;
@@ -31,15 +53,15 @@ function zynews() {
 
         foreach ($url_c_s as $k => $u) {
             preg_match_all("/.*?content_(\d*)\.htm/", $u, $ids);
-            $id = 'zy'.$ids[1][0];
+            $id = 'zy' . $ids[1][0];
             $title = $title_c_s[$k];
 
-            $html_s = $this->my_curl($prefix.$u);
+            $html_s = $this->my_curl($prefix . $u);
             // echo 'http://news.zynews.cn/'.$u;die;
             $res = preg_match_all("/(<div class=\"content\"[\s\S]*?>[\s\S]*?)<div class=\"editor\"/", $html_s, $matchs);
             // print_r($matchs);die;
             if ($res) {
-                $content = $matchs[1][0]."</div>";
+                $content = $matchs[1][0] . "</div>";
                 $content = preg_replace("/<script>[\s\S]*?<\/script>/i", '', $content);
 
                 // echo $id . "<br>";
@@ -47,7 +69,7 @@ function zynews() {
                 $content = $this->img_replace($content);
                 echo $content . "<br>";
                 $i++;
-                $this->addNews("中原网", $prefix.$u, "新闻", $title, $content,1,$id);
+                $this->addNews("中原网", $prefix . $u, "新闻", $title, $content, 1, $id);
             } else {
                 continue;
             }
@@ -57,84 +79,6 @@ function zynews() {
 }
 
 
-/*$html = Requests::get('http://news.zynews.cn/node_4263.htm');
-// print_r($html);die;
-preg_match_all("/class=\"newslistbox\"[\s\S]*?<a[\s\S]*?href=\"([\s\S]*?)\"[\s\S]*?>([\s\S]*?)<\/a>/", $html->body, $matches);
-print_r($matches);die;*/
-//<div id="_3fz6j9jkphq"></div>
-$html = Requests::get('http://news.zynews.cn/zz/2018-10/15/content_11547549.htm');
-preg_match_all("/(<div class=\"content\".*?>[\s\S]*?)<div class=\"editor\"/", $html->body, $matchs);
-
-$content = $matchs[1][0]."</div>";
-
-$content = preg_replace("/<script>[\s\S]*?<\/script>/", '', $content);
-echo $content;die;
-print_r($matchs);die;
-
-// http://news.zynews.cn
-// $str = '{"province":["\u5317\u4eac"],"city_level":["\u4e00\u7ebf"],"dept_name":["\u666e\u901a\u5185\u79d1"],"carclass2":["\u975e\u533b\u836f\u7c7b\u4e2d\u7ea7"]}';
-// $res = preg_replace_callback('/\\\u([0-9a-f]{4})/i',function($match) {
-//     return $match[1];
-// }, $str);
-// print_r($res);die;
-function decodeUnicode($str)
-{
-    return preg_replace_callback('/\\\u([0-9a-f]{4})/i',
-    create_function(
-        '$matches',
-        'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'
-    ),
-    $str);
-}
-$arr = array('姓名' =>'张三', '李四');
-echo serialize($arr);
-echo json_encode($arr);
-echo json_encode($arr, JSON_UNESCAPED_UNICODE);
-$res = decodeUnicode(json_encode($arr));
-print_r(json_decode($res, true));
-die;
-
-
-
-$b = array(1,1,2,3,5,8);
-$arr = get_defined_vars();
-// 打印 $b
-print_r($arr["b"]);
-
-// 打印 PHP 解释程序的路径（如果 PHP 作为 CGI 使用的话）
-// 例如：/usr/local/bin/php
-echo $arr["_"]; 
-
-// 打印命令行参数（如果有的话）
-print_r($arr["argv"]);
-
-// 打印所有服务器变量
-print_r($arr["_SERVER"]);
-
-// print_r($arr['php_errormsg']);
-
-// 打印变量数组的所有可用键值
-print_r(array_keys(get_defined_vars()));
-die;
-
-function fuc () {
-    // $arr = func_get_args();
-    // extract($arr, EXTR_PREFIX_ALL, 'var');
-    print_r(get_defined_vars());
-}
-fuc(1, 2);die;
-
-$newfunc = create_function('$a,$b', 'return "ln($a) + ln($b) = " . log($a * $b);');
-// echo "New anonymous function: $newfunc\n";
-// echo $newfunc(2, M_E) . "\n";
-
-$farr = create_function('$a,$b', 'return $a+$b;');
-echo $farr . "\n\r";
-echo $farr(1, 2);
-die;
-
-$str = 'aaaa1111';
-// preg_replace('/\d*/', '', $str);
 header("Content-Type:text/html;charset=utf-8");
 // 新浪列表
 $res = file_get_contents('https://interface.sina.cn/wap_api/layout_col.d.json?showcid=12635&col=12658&level=1%2C2%2C3');
@@ -148,7 +92,7 @@ $num = preg_match_all("/(<img class=\"sharePic hide\"[\s\S]*?>)([\s\S]*?)(<figur
 // echo $num;die;
 
 $img = preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $data[1][0]);
-echo "<div>".$data[2][0].$img.$data[4][0]."</div>";die;
+echo "<div>" . $data[2][0] . $img . $data[4][0] . "</div>";die;
 print_r($data);die;
 $content = $data[0][0];
 // print_r($content);die;
@@ -172,223 +116,54 @@ $ress = $data[1][0];
 print_r(json_decode($ress, true));
 die;
 
-// echo strlen ('7b17b22fa32eb0e0ab9772594a34bb08.csv');die;
-$input = array("red", "green", "blue", "yellow");
-echo md5(json_encode($input));die;
-$arr = array_splice($input, 0, 2);
-print_r($arr);
-print_r($input);
-$arr = array_splice($input, 0, 1);
-print_r($arr);
-print_r($input);
-die;
 
-echo PUBLIC_PATH;die;
+/**
+ * Carbon\Carbon
+ */
+use Carbon\Carbon;
+printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
+printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
 
-// $request = Requests::post('http://api.medlive.test/sms/custom_sms_send.php', array(), array(
-//     'mobile' => '18612651314',
-//     'content' => '您的验证码是351556【医脉通】',
-//     'dstime' => '',
-// ));
-// print_r($request->body);die;
+/**
+ * 验证码
+ */
+use Gregwar\Captcha\CaptchaBuilder;
+header('Content-type: image/jpeg');
+CaptchaBuilder::create()->build()->output();
+print_r(glob(dirname(__FILE__).'/*.php'));die;
 
-// curl类
-$curl = new Curl();
+/**
+ * 获取文件夹内文件
+ */
+use Symfony\Component\Finder\Finder;
 
-$res = $curl->https_post('http://api.medlive.test/sms/custom_sms_send.php', array(
-    'mobile' => '18612651314',
-    'content' => '您的验证码是351556【医脉通】',
-));
-print_r($res);
-die;
+$finder = Finder::create()->files()->ignoreDotFiles(true)->in(dirname(__FILE__))->depth(0);
+print_r($finder);die;
 
-$res = $curl->https_get('http://s.eastday.com/json/search/dajiakan.json?jsonpCallback=jsonpCallback&_=1539137510506');
-preg_match_all('/.*?\((.*?)\)/', trim($res), $data);
-print_r($data[1][0]);
-die;
+$arr = [];
+foreach ($finder as $key => $file) {
+    $arr[$key]['getPathName'] = $file->getPathName();
 
-// $phrase = "You should eat fruits, vegetables, and fiber every day.";
-// $healthy = array("fruits", "vegetables", "fiber");
-// $yummy = array("pizza", "beer", "ice cream");
+    // dumps the absolute path
+    $arr[$key]['getRealPath'] = $file->getRealPath();
 
-// $newphrase = str_replace($healthy, $yummy, $phrase);
+    // dumps the relative path to the file, omitting the filename
+    $arr[$key]['getRelativePath'] = $file->getRelativePath();
 
-// echo $newphrase;die;
-
-// $arrrr = array(2, 3, 1, 4);
-// sort($arrrr);
-// print_r($arrrr);die;
-
-$str = '{user_name}老师，你好！文案+{URL}+回TD退订。';
-$pattern = '/{.+?}/';
-preg_match_all($pattern, $str, $matchs);
-print_r($matchs);
-die;
-
-
-// set_time_limit(0);
-// ignore_user_abort(false);
-// while (0) {
-//     $isAborted = connection_aborted();
-//     $status = connection_status();
-//     file_put_contents('test.txt', 'time: ' . date('Y-m-d H:i:s') . '; abroted:' . $isAborted . '; status: ' . $status);
-//     if (0 !== $status || $isAborted) {
-//         break;
-//     }
-//     break;
-//     sleep(2);
-// }
-// die;
-
-print_r($_SERVER);
-die;
-
-$array1 = array("a" => "green", "red", "blue");
-$array2 = array("b" => "green", "red", "yellow");
-$result = array_diff($array2, $array1);
-
-print_r($result);
-die;
-
-echo $_GET['a'] ? : 0;
-die; // 1
-echo !empty($_GET['a']) ? : 0;
-die; // 1
-
-function gen_one_to_three()
-{
-    for ($i = 1; $i <= 3; $i++) {
-        //注意变量$i的值在不同的yield之间是保持传递的。
-        yield $i;
-    }
+    // dumps the relative path to the file
+    $arr[$key]['getRelativePathname'] = $file->getRelativePathname();
 }
+print_r($arr);die;
 
-$generator = gen_one_to_three();
-
-print_r(iterator_to_array($generator));
-die;
-foreach ($generator as $value) {
-    echo "$value\n";
-}
-die;
-// $file = new CsvReader();
-// $res = $file->readFile('export.csv');
-// print_r($res);die;
-
-// $c = new CSV('export.csv');
-// $start_time = time();
-// $res = $c->get_data(0, 1);
-// print_r(var_export($res, true));die;
-
-$e = new ExportCsv();
-$exprot = array(
-    0 => array(
-        0 => 'ID',
-        1 => '姓名',
-    ),
-    1 => array(
-        0 => '1',
-        1 => 'wangqiang1',
-    ),
-    2 => array(
-        0 => '2',
-        1 => 'wangqiang2',
-    ),
-    3 => array(
-        0 => '3',
-        1 => 'wangqiang3',
-    ),
-    4 => array(
-        0 => '4',
-        1 => 'wangqiang4',
-    ),
-    5 => array(
-        0 => '5',
-        1 => 'wangqiang5',
-    ),
+$arr = iterator_to_array(
+    Finder::create()->files()->ignoreDotFiles(true)->in(dirname(__FILE__))->depth(0),
+    false
 );
-// $e->export_csv_2($exprot);die;
-$e->export_excel('234234', $exprot);
-die;
+$arr = array_map(function($file) {
+    return $file->getPathName();
+}, $arr);
+print_r($arr);die;
 
-// echo microtime(true);die; // 浮点型
-
-###############################
-# Carbon\Carbon
-###############################
-// use Carbon\Carbon;
-
-// printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
-// printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
-
-// 验证码
-// use Gregwar\Captcha\CaptchaBuilder;
-
-// header('Content-type: image/jpeg');
-
-// CaptchaBuilder::create()->build()->output();
-// print_r(glob(dirname(__FILE__).'/*.php'));die;
-
-// 验证码
-// use Qous\Captcha\Captcha;
-// $cap = new Captcha();
-// // print_r($cap);die;
-// $cap->create();
-
-// 获取文件夹内文件
-// use Symfony\Component\Finder\Finder;
-
-// $finder = Finder::create()->files()->ignoreDotFiles(true)->in(dirname(__FILE__))->depth(0);
-// print_r($finder);die;
-
-// $arr = [];
-// foreach ($finder as $key => $file) {
-//     $arr[$key]['getPathName'] = $file->getPathName();
-
-//     // dumps the absolute path
-//     $arr[$key]['getRealPath'] = $file->getRealPath();
-
-//     // dumps the relative path to the file, omitting the filename
-//     $arr[$key]['getRelativePath'] = $file->getRelativePath();
-
-//     // dumps the relative path to the file
-//     $arr[$key]['getRelativePathname'] = $file->getRelativePathname();
-// }
-// print_r($arr);die;
-
-// $arr = iterator_to_array(
-//     Finder::create()->files()->ignoreDotFiles(true)->in(dirname(__FILE__))->depth(0),
-//     false
-// );
-// $arr = array_map(function($file) {
-//     return $file->getPathName();
-// }, $arr);
-// print_r($arr);die;
-
-// 随机数 1~2之间
-// echo mt_rand(0, 99)/100+1;
-
-###############################
-# 正则验证
-###############################
-// require 'preg.class.php';
-// $str = '455122@qq.com.';
-// $preg = new Preg();
-// var_dump($preg->checkEmail($str));
-
-// mb_strpos | strpos
-// $mystring = 12345678;
-// $findme   = 8;
-// $pos = mb_strpos($mystring, $findme);
-
-// 注意这里使用的是 ===。简单的 == 不能像我们期待的那样工作，
-// 因为 'a' 是第 0 位置上的（第一个）字符。
-// if ($pos === false) {
-//     echo "The string '$findme' was not found in the string '$mystring'";
-// } else {
-//     echo "The string '$findme' was found in the string '$mystring'";
-//     echo " and exists at position $pos";
-// }
 
 // $im = imagecreatetruecolor(100, 100);
 // // 将背景设为红色
