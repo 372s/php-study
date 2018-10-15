@@ -6,7 +6,55 @@ spl_autoload_register(function ($class) {
     include dirname(__DIR__) . '/class/' . $class . '.class.php';
 });
 
+
+$html = file_get_contents('http://m.zynews.cn/zz/node_9025.htm');
+//建立Dom对象，分析HTML文件；
+$doc = new DOMDocument;
+@$doc->loadHTML($html);
+$doc->validateOnParse = true;
+$doc->preserveWhiteSpace = false;
+$params = $doc->getElementsByTagName("li");
+echo $doc->saveHTML($doc->getElementsByTagName("li")->item(0));die;
+$i=0;
+foreach($params as $param)
+{
+    foreach($params->item($i)->childNodes as $node)
+    {
+        if($node->nodeName == 'a')
+        {
+            //assert ($node != null);
+            echo $node->getAttribute("href") . "<br>"; // bug? empty
+            echo $node->nodeValue . "<br>";
+        }
+    }
+    $i++;
+}
+die;
+$as = $doc->getElementsByTagName("a");
+foreach ($as as $finance) {
+//    $child = $finance->childNodes;
+    assert ($finance != null);
+    echo $finance->getAttribute("href") . "<br>";
+}
+die;
+assert ($res != null);
+$strId = $res->getAttribute("id"); // bug? empty
+print_r($strId);die;
+
+
 $html = file_get_contents('http://m.zynews.cn/zz/2018-10/15/content_11547998.htm');
+// echo $html;die;
+//建立Dom对象，分析HTML文件；
+$doc = new DOMDocument;
+$doc->validateOnParse = true;
+@$doc->loadHTML($html);
+$doc->preserveWhiteSpace = false;
+$res = $doc->getElementById("text");
+assert ($res != null);
+$strId = $res->getAttribute("id"); // bug? empty
+print_r($strId);die;
+echo $res->nodeValue; die;
+
 $doc = new DOMDocument();
 @$doc->loadHTML($html);
 $xpath = new DOMXpath($doc);
