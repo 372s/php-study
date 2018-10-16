@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../bootstrap/autoload.php';
+require __DIR__ . '/../../bootstrap/autoload.php';
 
 $filename = "example.xlsx";
 header('Content-disposition: attachment; filename="'.XLSXWriter::sanitize_filename($filename).'"');
