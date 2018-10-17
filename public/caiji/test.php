@@ -8,7 +8,48 @@
 
 header("Content-type: text/html; charset=utf-8");
 require_once 'curl.php';
-//
+
+
+
+
+header("Content-Type:text/html;charset=utf-8");
+// 新浪列表
+$res = file_get_contents('https://interface.sina.cn/wap_api/layout_col.d.json?showcid=12635&col=12658&level=1%2C2%2C3');
+// echo $res;die;
+// $arr = json_decode($res['result']['data']['list'], true);
+// 新浪详情
+$content = file_get_contents('https://eladies.sina.cn/feel/answer/2018-10-14/detail-ihkvrhps4532630.d.html?&cid=12635');
+// echo $content;die;
+//(<p class="art_p">.*?<\/p>)\s\S*?
+$num = preg_match_all("/(<img class=\"sharePic hide\"[\s\S]*?>)([\s\S]*?)(<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>)([\s\S]*?)<p class=\"art_p\">.*?<a onmouseover[\s\S]*?>/", trim($content), $data);
+// echo $num;die;
+
+$img = preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $data[1][0]);
+echo "<div>" . $data[2][0] . $img . $data[4][0] . "</div>";die;
+print_r($data);die;
+$content = $data[0][0];
+// print_r($content);die;
+// 匹配图片
+preg_match_all("/<img class=\"sharePic hide\"[\s\S]*?>/", $content, $img);
+// print_r($img[0][0]);die;
+// 匹配figure
+$content = preg_replace("/<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>/", '', $content);
+print_r($content);die;
+
+// 搜狐
+$souhu = file_get_contents('https://v2.sohu.com/integration-api/mix/region/98');
+print_r(json_decode($souhu, true)['data']);
+die;
+
+$ress = file_get_contents('https://interface.sina.cn/wap_api/layout_col.d.json?showcid=34978&col=34978&level=1%2C2&show_num=30&page=2&act=more&jsoncallback=callbackFunction&_=1539500212952&callback=Zepto1539500207743');
+// echo $ress;die;
+preg_match_all('/.*?\((.*?)\)$/', trim($ress), $data);
+$ress = $data[1][0];
+// print_r($ress);die;
+print_r(json_decode($ress, true));
+die;
+
+
 // $dom = new DOMDocument('1.0','UTF-8');
 // $dom->loadHTML('<html><body><div><p>p1</p><p>p2</p></div></body></html>');
 // // echo $dom->saveHTML();die;
