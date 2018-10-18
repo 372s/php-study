@@ -22,11 +22,11 @@ function httpsSend($url, $params = array(), $method = 'get')
 
     try {
         $response = curl_exec($ch);
+        curl_close($ch);
 
         if (!$response) {
             $response = json_encode(array());
         }
-        curl_close($ch);
     } catch (Exception $e) {
         $response = json_encode(array());
     }
