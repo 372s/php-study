@@ -10,14 +10,58 @@ require_once 'curl.php';
 require('phpQuery/phpQuery.php');
 
 set_time_limit(0);
-$content = curl_get_content_detail('http://www.yidianzixun.com/article/0KHBxofo?s=');
+//http://www.yidianzixun.com/home/q/news_list_for_channel?channel_id=22658408728&cstart=0&cend=10&infinite=true&refresh=1&__from__=wap&_spt=yz~eaod88%3C%3F2%3E%3A2%3D82%3A%3B%3A&appid=web_yidian&_=1539879352210
+//http://www.yidianzixun.com/home/q/news_list_for_channel?channel_id=best&cstart=0&cend=10&infinite=true&refresh=1&__from__=wap&docids=0KII0UX6%2C0KGdSHmh%2C0KI5XUrI%2C0KI9laum%2C0KGM4vJb&_spt=yz~eaodhoy~%3A%3B%3A&appid=web_yidian&_=1539879112123
+$content = curl_get_content('http://www.yidianzixun.com/home/q/news_list_for_channel?channel_id=best&cstart=0&cend=10&infinite=true&refresh=1&__from__=wap&docids=0KII0UX6%2C0KGdSHmh%2C0KI5XUrI%2C0KI9laum%2C0KGM4vJb&_spt=yz~eaodhoy~%3A%3B%3A&appid=web_yidian&_=1539879112123');
+//echo $content;
+/*preg_match('/<div id=\"js-content\"[\s\S]*?>(.*?)<\/div>/', $content, $matches);*/
+//$content = $matches[1];
+/*$content = preg_replace("/<div id=\"article-img-[\s\S]*?>[\s\S]*?<\/div>/", '<div><img src="http://i1.go2yd.com/image.php?url="></div>', $content);*/
 //echo $content;die;
 //$doc = phpQuery::newDocumentHTML($content);
 //$imgs = pq("img");
 //print_r($imgs);die;
 //$div = pq("div[id='js-content']")->html();
+$res = json_decode($content, true);
+ print_r($res);die;
+$res = $res['result'];
 
-preg_match_all('/<img[\s\S]*?src=\"([\s\S]*?)\"[\s\S]*?>/', $content, $imgs);
+foreach ($res as $value) {
+    $id = 'ydzx_' . $value['docid'];
+    $title = $value['title'];
+    $filter_titles = array('佛教', '聚餐', '钥匙');
+    foreach ($filter_titles as $ft) {
+        if (strpos($title, $ft) !== false) {
+            continue;
+        }
+    }
+
+    $url = 'http://www.yidianzixun.com/article/' . $value['docid'];
+    $content = $this->curl_get_content($url);
+    // 处理图片
+    if (!empty($value['image_urls'])) {
+        foreach ($value['image_urls'] as $k => $img) {
+            $content = preg_replace("/<div id=\"article-img-$k\"[\s\S]*?>[\s\S]*?<\/div>/", '<img src="http://i1.go2yd.com/image.php?url=' . $img . '">', $content);
+        }
+    }
+    if (preg_match('/<div id=\"js-content\"[\s\S]*?>(.*?)<\/div>/', $content, $matches)) {
+        $content = $matches[1];
+        $content = preg_replace('/<script[\s\S]*?<\/script>/i', '', $content);
+        $content = preg_replace('/<video[\s\S]*?<\/video>/i', '', $content);
+        $word = array("价格", "购买", "￥", "QQ群", "股票", "彩票", "王者荣耀", "传真", "互粉", "电话", "足彩", "大乐透", "双色球", "套花呗", "信用卡套现");
+        foreach ($word as $w) {
+            if (strpos($content, $w) !== false) {
+                continue;
+            }
+        }
+        $content = preg_replace('/(<a href=\")([\s\S]*?)(\"[\s\S]*?>)/i', "$1javascript:;$3", $content);
+        if (strlen($content) < 100) continue; //如果内容少于33字就跳过
+        $content = $this->img_url_local($content);
+    } else {
+        continue;
+    }
+}
+preg_match('/<img[\s\S]*?src=\"([\s\S]*?)\"[\s\S]*?>/', $content, $imgs);
 print_r($imgs);die;
 
 
