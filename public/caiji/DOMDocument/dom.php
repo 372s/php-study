@@ -7,6 +7,20 @@
  */
 
 $html = file_get_contents('http://m.zynews.cn/zz/node_9025.htm');
+
+$dom = new DomDocument();
+$dom->loadHTML($html);
+$xpath = new DomXPath($dom);
+// $tag1 = $dom->getElementsByTagName("tag1")->item(0);
+
+$href = $xpath->query('//div[@class="news-list"]/a/@href'); //output 2 -> correct
+
+foreach ($href as $url) {
+    echo $url->value;
+}
+
+
+die;
 //建立Dom对象，分析HTML文件；
 $doc = new DOMDocument;
 @$doc->loadHTML($html);
@@ -14,7 +28,7 @@ $doc->validateOnParse = true;
 $doc->preserveWhiteSpace = false;
 $params = $doc->getElementsByTagName("li");
 echo $doc->saveHTML($doc->getElementsByTagName("li")->item(0));die;
-$i=0;
+
 foreach($params as $param)
 {
     foreach($params->item($i)->childNodes as $node)
@@ -26,7 +40,7 @@ foreach($params as $param)
             echo $node->nodeValue . "<br>";
         }
     }
-    $i++;
+
 }
 die;
 $as = $doc->getElementsByTagName("a");
