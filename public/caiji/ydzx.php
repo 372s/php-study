@@ -23,12 +23,6 @@ foreach ($channels as $channel) {
     ydpindao($channel);
     echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛<br>";
 }
-//$content = curl_get_content2('http://www.yidianzixun.com/#/?id=c2');
-//echo $content;die;
-//$res = json_decode($content, true);
-//print_r($res);die;
-
-
 
 function ydpindao($url) {
     $json = curl_get_content($url);
