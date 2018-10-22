@@ -11,6 +11,17 @@ require_once 'curl.php';
 set_time_limit(0);
 header("Content-type: text/html; charset=utf-8");
 
+$html = get_dahe_content('https://4g.dahe.cn/photo/20181022393943', 15);
+//echo $html;die;
+$dom = new DOMDocument();
+@$dom->loadHTML($html);
+$xpath = new DomXPath($dom);
+//$article = $xpath->query('///section[@class="newInfo"]'); //output 2 -> correct
+$article = $xpath->query('//img'); //output 2 -> correct
+//print_r($article);die;
+echo $article->item(0)->getAttribute('src');die;
+echo $dom->saveHTML($article->item(0));die;
+
 //$json = get_dahe_content('https://4g.dahe.cn/list/7/0/10', 7);
 //$items = json_decode($json, true);
 ////print_r($items['data']);die;
