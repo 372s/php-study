@@ -33,21 +33,20 @@ if (!function_exists('str_random')) {
     }
 }
 
-if (!function_exists('strtogbk'))
-{
+if (!function_exists('strtogbk')) {
     /**
      * utf8转gbk
      * @param string $str
      * @return string
      */
-    function strtogbk($str) {
+    function strtogbk($str)
+    {
         return iconv("UTF-8", "GB2312//IGNORE", $str); // 这里将UTF-8转为GB2312编码
     }
 }
 
 
-if (!function_exists('json_encode_zh'))
-{
+if (!function_exists('json_encode_zh')) {
     /**
      * json_encode中文编码unicode处理
      * @param array $array
@@ -67,8 +66,7 @@ if (!function_exists('json_encode_zh'))
     }
 }
 
-if (!function_exists('decodeUnicode'))
-{
+if (!function_exists('decodeUnicode')) {
     /**
      * 创建匿名函数 和 json_encode()中文不转义处理
      * @param string $str
@@ -86,8 +84,7 @@ if (!function_exists('decodeUnicode'))
 }
 
 
-if (!function_exists('cutStr'))
-{
+if (!function_exists('cutStr')) {
     /**
      * 截取字符串
      * @param string $string
@@ -95,7 +92,8 @@ if (!function_exists('cutStr'))
      * @param string $dot
      * @return string
      */
-    function cutStr($string, $length, $dot = '...') {
+    function cutStr($string, $length, $dot = '...')
+    {
         //记载原始内容
         $oldString = $string;
         $string = str_replace(array('&nbsp;', '&amp;', '&quot;', '&#039;', '&ldquo;', '&rdquo;', '&mdash;', '&lt;', '&gt;', '&middot;', '&hellip;'), array(' ', '&', '"', "'", '“', '”', '—', '<', '>', '·', '…'), $string);
@@ -143,9 +141,9 @@ if (!function_exists('cutStr'))
     }
 }
 
-if (!function_exists('getStrLen'))
-{
-    function getStrLen($str) {
+if (!function_exists('getStrLen')) {
+    function getStrLen($str)
+    {
         $str = str_replace(
             array('&nbsp;', '&amp;', '&quot;', '&#039;', '&ldquo;', '&rdquo;', '&mdash;', '&lt;', '&gt;', '&middot;', '&hellip;'),
             array(' ', '&', '"', "'", '“', '”', '—', '<', '>', '·', '…'),
@@ -156,14 +154,14 @@ if (!function_exists('getStrLen'))
     }
 }
 
-if (!function_exists('getFirstImg'))
-{
+if (!function_exists('getFirstImg')) {
     /**
      * 获取内容的第一个图片
      * @param string $sHtml
      * @return string
      */
-    function getFirstImg($sHtml) {
+    function getFirstImg($sHtml)
+    {
         preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $sHtml, $aMatches);
         if (!empty($aMatches[1][0])) {
             $aUrl = parse_url($aMatches[1][0]);
@@ -181,20 +179,19 @@ if (!function_exists('getFirstImg'))
 }
 
 
-if (!function_exists('sha256'))
-{
+if (!function_exists('sha256')) {
     /**
      * @param string $str
      * @param string $salt
      * @return string
      */
-    function sha256($str,$salt='pwoerqwelkasdpfouaidsvqweprouqwe') {
+    function sha256($str,$salt='pwoerqwelkasdpfouaidsvqweprouqwe')
+    {
         return hash('sha256',$str . $salt);
     }
 }
 
-if (!function_exists('user_agent_is_mobile'))
-{
+if (!function_exists('user_agent_is_mobile')) {
     /**
      * 判断访问来源是否为移动设备
      * return true or false
@@ -203,7 +200,8 @@ if (!function_exists('user_agent_is_mobile'))
      * android返回：mozilla/5.0 (linux; android 4.1.1; nexus 7 build/jro03d) applewebkit/535.19 (khtml, like gecko) chrome/18.0.1025.166 safari/535.19
      * WPhone 返回：mozilla/5.0 (compatible; msie 9.0; windows phone os 7.5; trident/5.0; iemobile/9.0; nokia; lumia 800)
      */
-    function user_agent_is_mobile() {
+    function user_agent_is_mobile()
+    {
         $agent = strtolower ($_SERVER['HTTP_USER_AGENT']);
         if (preg_match('/iphone|android|ipad|windows phone/', $agent)) {
             return true;
