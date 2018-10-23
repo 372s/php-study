@@ -113,14 +113,14 @@ class Page
 			"nextPage" => "<li><a href=\"%s\">下一页</a></li></ul>",
 			"dot"     => "<li>...</li>",
 			"number"  => "%2d",
-			"total"  => "<span class=\"flip_total\">共 $iPageMax_output 页 $this->_iCount 条</span>",
+			"total"  => "<span class=\"flip_total\">共 $iPageMax_output 页 $this->_totalNumber 条</span>",
 		);
 		
 		$aTpl += $aTplDefault;
 
         // 补全url
         if (substr($aTpl["href"], 0, 1) == '?') {
-            $aTpl["href"] = request_path() . $aTpl["href"];
+            $aTpl["href"] = 'http://...' . $aTpl["href"];
         }
 
 		if (!empty($aTpl["outerWhenNull"]) && empty($this->_maxPage)) {
