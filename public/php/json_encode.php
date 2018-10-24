@@ -1,10 +1,8 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'test');
 $arr = array('id'=>123,'name'=>'我们都是中国人');
 $value = json_encode_zh($arr);
 var_dump($value);
-var_dump($mysqli->query("insert into `bbb` (`name`) values('".$value."')"));
 
 function json_encode_zh($array)
 {

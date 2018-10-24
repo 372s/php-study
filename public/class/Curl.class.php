@@ -15,11 +15,6 @@ class Curl
         $output = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
-        // if ($output === false) {
-        //     $output = array('error' => 'ERROR: ' . $error);
-        // } else {
-        //     $output = json_decode($output, true);
-        // }
         return $output;
     }
 
@@ -37,11 +32,6 @@ class Curl
         $output = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
-        if ($output === false) {
-            $output = array('error' => 'ERROR: ' . $error);
-        } else {
-            $output = json_decode($output, true);
-        }
         return $output;
     }
 
@@ -62,21 +52,18 @@ class Curl
         $output = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
-        if ($output === false) {
-            $output = array('error' => 'ERROR: ' . $error);
-        } else {
-            $output = json_decode($output, true);
-        }
+
         return $output;
     }
 
     public function curl_request($api, $method = 'GET', $params = array(), $headers = [])
     {
+        $params = http_build_query($params);
         $curl = curl_init();
         switch (strtoupper($method)) {
             case 'GET':
                 if (!empty($params)) {
-                    $api .= (strpos($api, '?') ? '&' : '?') . http_build_query($params);
+                    $api .= (strpos($api, '?') ? '&' : '?') . $params;
                 }
                 curl_setopt($curl, CURLOPT_HTTPGET, true);
                 break;
@@ -96,18 +83,13 @@ class Curl
         curl_setopt($curl, CURLOPT_URL, $api);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         $response = curl_exec($curl);
         $error = curl_error($curl);
         curl_close($curl);
-        // var_dump($response);
-        if ($response === false) {
-            $response = array('error' => 'ERROR: ' . $error);
-        } else {
-            $response = json_decode($response, true);
-        }
-        
+
         return $response;
     }
 }

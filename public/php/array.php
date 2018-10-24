@@ -15,27 +15,14 @@ $a=&test();//这条语句会输出　$b的值　为3
 $a=5;
 $a=test();//这条语句会输出　$b的值　为6
 die;
-class nowamagic
-  {
-    public static $nm = 0;
-    function nmMethod()
-    {
-      self::$nm ++ ;
-      echo self::$nm . '<br />';
-    }
-  }
-  $nmInstance = new nowamagic();
-  $nmInstance -> nmMethod();
-  $nmInstance = new nowamagic();
-  $nmInstance -> nmMethod();
-  die;
+
 // 例子1：如果$a引用两次$b都是1；加上引用第二次$b为101
-function test(&$a) {
+function test2(&$a) {
     $a = $a + 100;
 }
 $b = 1;
 echo $b;
-test($b);
+test2($b);
 echo $b;
 
 // 例子3

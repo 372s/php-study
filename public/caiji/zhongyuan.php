@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wangqiang
- * Date: 2018/10/16
- * Time: 10:45
- */
-require __DIR__ . '/../../bootstrap/autoload.php';
 
 set_time_limit(0);
 function curl_get($url) {
@@ -17,12 +10,6 @@ function curl_get($url) {
     $output = curl_exec($curl);
     $error = curl_error($curl);
     curl_close($curl);
-    // if ($output === false) {
-    //     $output = array('error' => 'ERROR: ' . $error);
-    // }
-    // else {
-    //     $output = trim($output, "\xEF\xBB\xBF");
-    // }
     $output = trim($output, "\xEF\xBB\xBF");
     return $output;
 }

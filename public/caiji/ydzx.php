@@ -1,5 +1,5 @@
 <?php
-require_once 'curl.php';
+require_once 'ydzx_curl.php';
 
 set_time_limit(0);
 header("Content-type: text/html; charset=utf-8");
@@ -18,10 +18,7 @@ $channels = array(
     'http://www.yidianzixun.com/home/q/news_list_for_channel?channel_id=12668662360&cstart=0&cend=10&infinite=true&refresh=1&__from__=wap&_spt=yz~eaod%3B8%3C%3C2%3C%3C89%3C%3A%3A%3B%3A&appid=web_yidian&_=1540052847247', // 时尚
 );
 foreach ($channels as $channel) {
-    echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓<br>";
-    echo $channel . "<br>";
     ydpindao($channel);
-    echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛<br>";
 }
 
 function ydpindao($url) {
@@ -71,4 +68,6 @@ function ydpindao($url) {
 //        echo $content . "<br>";
     }
 }
+
+
 

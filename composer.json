@@ -31,8 +31,8 @@
         "codeguy/upload": "dev-master",
         "aileshe/upload": "*",
         "league/csv": "^8.2",
-        "rmccue/requests": "^1.7",
         "mk-j/PHP_XLSXWriter": "dev-master",
-        "rap2hpoutre/fast-excel": "^0.10.1"
+        "rmccue/requests": "^1.7",
+        "rap2hpoutre/fast-excel": "^0.9.0"
     }
 }
