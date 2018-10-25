@@ -74,25 +74,18 @@ function replaceImageStyle($str) {
 /**
  * 非捕获元字符 '?:','?=','?!' 来忽略对相关匹配的保存
  * 其中?:是非捕获元之一，还有两个非捕获元是?=和?!，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串
- * @param $str
- * @return bool
+ * @param string $str
+ * @return array
  */
-function noCaptureSymbol() {
-    $str1 ="你好<我>(爱)[北京]{天安门}";
-    preg_match("/(?:<)(.*)(?:>)/i", $str1, $result1);
-    preg_match_all("/(?:<)(.*)(?:>)/i", $str1, $result2);
-    print_r($result1);
-    /*
-    Array
-    (
-        [0] => <我>
-        [1] => 我
-    )
-     */
-    print_r($result2);
-    /*
-    Array
-    (
+function noCaptureSymbol($str) {
+    $str = "你好<我>(爱)[北京]{天安门}";
+    preg_match("/(?:<)(.*)(?:>)/i", $str, $result1);
+    return $result1;
+    /* Array ( [0] => <我> [1] => 我 ) */
+
+    // preg_match_all("/(?:<)(.*)(?:>)/i", $str, $result2);
+    // print_r($result2);
+    /* Array (
         [0] => Array
             (
                 [0] => <我>
@@ -102,15 +95,5 @@ function noCaptureSymbol() {
             (
                 [0] => 我
             )
-
-    )
-     */
-}
-
-
-function filter_me($html) {
-    /*preg_match('/^(<\/*[a-z]*[\s\S]*?>)*?我/i', $html,$matches);*/
-    preg_match('/^(<[\s\S]*?>)*?我/i', $html, $matches);
-    /*preg_match('/^(<\/*[a-z]*[\s\S]*?>)*我/i', $html, $matches);*/
-    return $matches;
+    ) */
 }

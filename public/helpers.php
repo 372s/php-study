@@ -1,7 +1,8 @@
 <?php
 
-$func = glob(PUBLIC_PATH . '/support/*.php');
+define('FUNC_PATH', dirname(__DIR__) . '/functions/');
 
-foreach ($func as $f) {
-    require_once $f;
-}
+require_once FUNC_PATH . 'curl.func.php';
+require_once FUNC_PATH . 'preg.func.php';
+require_once FUNC_PATH . 'str.func.php';
+require_once FUNC_PATH . 'time.func.php';

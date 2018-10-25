@@ -34,5 +34,14 @@
         "mk-j/PHP_XLSXWriter": "dev-master",
         "rmccue/requests": "^1.7",
         "rap2hpoutre/fast-excel": "^0.9.0"
+    },
+    "autoload": {
+        "files": [
+            "public/helpers.php"
+        ],
+        "psr-4": {
+            "app\\": "App/"
+        }
     }
+
 }
