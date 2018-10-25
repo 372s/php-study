@@ -2,7 +2,6 @@
 
 /**
  * 分页
- * @author wangqiang
  */
 class Page
 {
