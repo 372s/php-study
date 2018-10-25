@@ -14,9 +14,9 @@
             "type": "vcs",
             "url": "git@github.com:wpollen/sort-array.git"
         },
-        "wpollen/phpquery": {
+        "wpollen/PHPQuery": {
             "type": "vcs",
-            "url": "git@github.com:wpollen/phpquery.git"
+            "url": "git@github.com:wpollen/PHPQuery.git"
         },
         "codeguy/upload": {
             "type": "vcs",
@@ -27,7 +27,7 @@
         "wpollen/curl": "dev-master",
         "wpollen/captcha": "dev-master",
         "wpollen/sort": "dev-master",
-        "wpollen/phpquery": "dev-master",
+        "wpollen/PHPQuery": "dev-master",
         "codeguy/upload": "dev-master",
         "aileshe/upload": "*",
         "league/csv": "^8.2",
