@@ -16,7 +16,7 @@
         },
         "wpollen/PHPQuery": {
             "type": "vcs",
-            "url": "git@github.com:wpollen/PHPQuery.git"
+            "url": "git@github.com:wpollen/php-query.git"
         },
         "codeguy/upload": {
             "type": "vcs",
