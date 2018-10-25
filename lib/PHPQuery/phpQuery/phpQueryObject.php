@@ -2282,7 +2282,8 @@ class phpQueryObject
 	 * @return unknown_type
 	 */
 	public static function extend($class, $file = null) {
-		return $this->plugin($class, $file);
+		$pqo = new self();
+		return $pqo->plugin($class, $file);
 	}
 	/**
 	 *
