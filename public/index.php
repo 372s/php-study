@@ -6,20 +6,10 @@ define('ROOT_PATH', dirname(__DIR__) . '/');
 
 define('PUBLIC_PATH', ROOT_PATH. '/public/');
 
-require_once 'helpers.php';
+require_once PUBLIC_PATH . 'helpers.php';
+require_once PUBLIC_PATH . 'classes.php';
 
+// var_dump(spl_autoload_functions());
 
-class A 
-{
-    public function b() {
-        echo 'b';
-    }
-
-    public static function abc() {
-        // $this->b();
-        // $a = new self();
-        return (new self())->b();
-    }
-}
-A::abc();
+print_r(spl_classes());
 

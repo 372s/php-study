@@ -6,12 +6,9 @@
  * @package phpQuery
  * @method phpQueryObject clone() clone()
  * @method phpQueryObject empty() empty()
- * @method phpQueryObject next() next($selector = null)
- * @method phpQueryObject prev() prev($selector = null)
  * @property Int $length
  */
-class phpQueryObject
-	implements Iterator, Countable, ArrayAccess {
+class phpQueryObject implements Iterator, Countable, ArrayAccess {
 	public $documentID = null;
 	/**
 	 * DOMDocument class.
@@ -2984,6 +2981,7 @@ class phpQueryObject
 	 * Proper functionality is choosed automagicaly.
 	 *
 	 * @see phpQueryObject::_next()
+     * @param string $cssSelector
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery
 	 */
 	public function next($cssSelector = null){
