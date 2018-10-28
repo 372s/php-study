@@ -1,5 +1,5 @@
 <?php
-require('phpQuery/phpQuery.php');
+require(dirname(__DIR__) . 'phpQuery.php');
 
 // INITIALIZE IT
 // phpQuery::newDocumentHTML($markup);

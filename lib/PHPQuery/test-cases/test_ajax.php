@@ -5,7 +5,7 @@ set_include_path(
 	.'zend-framework/'
 );
 
-require_once('../phpQuery/phpQuery.php');
+require_once(dirname(__DIR__) . 'phpQuery.php');
 phpQuery::$debug = true;
 phpQuery::$ajaxAllowedHosts[] = 'wikipedia.org';
 phpQuery::$ajaxAllowedHosts[] = 'google.com';

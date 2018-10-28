@@ -1,6 +1,6 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <?php
-require_once('../phpQuery/phpQuery.php');
+require_once(dirname(__DIR__) . 'phpQuery.php');
 //phpQuery::$debug = 2;
 phpQuery::plugin('Scripts');
 
