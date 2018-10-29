@@ -9,7 +9,10 @@
 require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 
 set_time_limit(0);
-// header("Content-type: text/html; charset=utf-8");
+header("Content-type: text/html; charset=utf-8");
+
+// $html = file_get_contents('http://edu.zynews.cn/e/wap/show.php?classid=10&id=26865');
+// echo $html;die;
 
 $urls = array(
     'http://jk.zynews.cn/e/wap/',// 健康
