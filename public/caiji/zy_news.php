@@ -14,7 +14,7 @@ set_time_limit(0);
 $urls = array(
     'http://jk.zynews.cn/e/wap/',// 健康
     'http://lvyou.zynews.cn/e/wap/',// 旅游
-    'http://edu.zynews.cn/e/wap/',// 教育
+    // 'http://edu.zynews.cn/e/wap/',// 教育
     'http://house.zynews.cn/e/wap/',// 房产
 );
 
@@ -46,7 +46,12 @@ foreach ($urls as $url) {
         // }
         $doc = phpQuery::newDocumentHTML($content);
         $title = $doc->find('header[class="articleHeader"]')->children('h1')->contents();
-        echo $title . "<br>";
+
+        if (json_encode($title) !== null) {
+
+            echo $title . "<br>";
+        }
+        // $title = mb_convert_encoding($title, "GB2312", 'UTF-8');
 
         // echo mb_detect_encoding($title). "<br>";
 
