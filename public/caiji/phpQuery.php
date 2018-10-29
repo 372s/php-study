@@ -1274,8 +1274,6 @@ class CallbackParam
  * @package phpQuery
  * @method phpQueryObject clone() clone()
  * @method phpQueryObject empty() empty()
- * @method phpQueryObject next() next($selector = null)
- * @method phpQueryObject prev() prev($selector = null)
  * @property Int $length
  */
 class phpQueryObject implements Iterator, Countable, ArrayAccess
@@ -1862,16 +1860,16 @@ class phpQueryObject implements Iterator, Countable, ArrayAccess
             // pass thou callbacks
             $args = func_get_args();
             $args = array_slice($args, 1);
-        }
-        foreach ($args as $callback) {
-            if (is_array($return)) {
-                foreach ($return as $k => $v) {
-                    $return[$k] = phpQuery::callbackRun($callback, array($v));
+            foreach ($args as $callback) {
+                if (is_array($return)) {
+                    foreach ($return as $k => $v) {
+                        $return[$k] = phpQuery::callbackRun($callback, array($v));
+                    }
+                } else {
+                    $return = phpQuery::callbackRun($callback, array($return));
                 }
-            } else {
-                $return = phpQuery::callbackRun($callback, array($return));
-            }
 
+            }
         }
         return $return;
     }
