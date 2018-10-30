@@ -10,23 +10,13 @@ require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 
 set_time_limit(0);
 header("Content-type: text/html; charset=GBK2312");
-// $html = curl_get('http://edu.zynews.cn/e/wap/show.php?classid=10&id=26865', true);
-// echo $html;die;
-//
-// function curl_get($url, $gzip=false){
-//     $curl = curl_init($url);
-//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-//     curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);
-//
-//     if($gzip) {
-//         // 关键在这里
-//         curl_setopt($curl, CURLOPT_ENCODING, "gzip");
-//     }
-//     $content = curl_exec($curl);
-//     curl_close($curl);
-//     return $content;
-//
-// }
+
+// 教育频道 乱码问题
+$doc = phpQuery::newDocumentFile('http://edu.zynews.cn/e/wap/');
+$t = $doc->html();
+$t = mb_convert_encoding($t,'ISO-8859-1','utf-8');
+$t = mb_convert_encoding($t,'utf-8','GBK');
+echo $t;die;
 
 $urls = array(
     // 'http://jk.zynews.cn/e/wap/',// 健康
