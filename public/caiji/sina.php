@@ -22,33 +22,27 @@ foreach ($arr['result']['data']['list'] as $art) {
     $content = preg_replace('/<script[\s\S]*?>[\s\S]*?<\/script>/', '', $content);
 
     $content = preg_replace('/<a onmouseover[\s\S]*?<\/a>/', '', $content);
-    echo $content;die;
-    preg_match("/<img.*?>/", $res, $imgs);
-    print_r($imgs);die;
-    if (preg_match("/<div id=\"artibody\" class=\"article\" data-sudaclick=\"blk_content\">([\s\S]*?)<div id=\"left_hzh_ad\">/", $res, $matches)) {
-        print_r($matches);
-    }
 }
 
 
 // 备份
-function sina($res) {
-    $pertten = "/(<img class=\"sharePic hide\"[\s\S]*?>)([\s\S]*?)(<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>)([\s\S]*?)<p class=\"art_p\">.*?<a onmouseover[\s\S]*?>/";
-    if (preg_match_all($pertten, $res, $c)) {
-
-        /*$img = preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $c[1][0]);*/
-        // $content = "<div>".$c[2][0].$img.$c[4][0]."</div>";
-        $content = "<div>" . $c[2][0] . $c[1][0] . $c[4][0] . "</div>";
-        $content = preg_replace("/<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>/", '', $content);
-        $content = str_replace("src=\"//", "src=\"http://", $content);
-        // $content = $this->img_location($content);
-        $content = $this->img_replace($content);
-
-        // echo $title . "<br>";
-        // echo $content . "<br>";
-        // die;
-        //插入数据库
-        // $this->addNews("手机新浪", $url, "情感", $title, $content, 1, $id);
-
-    }
-}
+// function sina($res) {
+/*    $pertten = "/(<img class=\"sharePic hide\"[\s\S]*?>)([\s\S]*?)(<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>)([\s\S]*?)<p class=\"art_p\">.*?<a onmouseover[\s\S]*?>/";*/
+//     if (preg_match_all($pertten, $res, $c)) {
+//
+/*        /*$img = preg_replace("/(<img[\s\S]*?src=\")([\s\S]*?)(\"[\s\S]*?>)/", '${1}http:${2}${3}', $c[1][0]);*/
+//         // $content = "<div>".$c[2][0].$img.$c[4][0]."</div>";
+//         $content = "<div>" . $c[2][0] . $c[1][0] . $c[4][0] . "</div>";
+/*        $content = preg_replace("/<figure class=\"art_img_mini j_p_gallery\"[\s\S]*?>[\s\S]*?<\/figure>/", '', $content);*/
+//         $content = str_replace("src=\"//", "src=\"http://", $content);
+//         // $content = $this->img_location($content);
+//         $content = $this->img_replace($content);
+//
+//         // echo $title . "<br>";
+//         // echo $content . "<br>";
+//         // die;
+//         //插入数据库
+//         // $this->addNews("手机新浪", $url, "情感", $title, $content, 1, $id);
+//
+//     }
+// }
