@@ -27,6 +27,8 @@
     "gregwar/captcha": "^1.1",
 
     "rmccue/requests": "^1.7",
+    
+    "jaeger/querylist": "^4.0",
 }
 ```
 ### 国内镜像源
