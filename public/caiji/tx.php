@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
-// require_once dirname(__DIR__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__) . '/helpers.php';
 
 header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
@@ -67,16 +67,22 @@ foreach ($arrjson as $url) {
         foreach ($res as $r) {
             // 图片
             if ($r['type'] == 2 && !empty($arr_img['IMG_'.$i]['all']['img']['imgurl641']['imgurl'])) {
-                $content .= '<img src="' . $arr_img['IMG_'.$i]['all']['img']['imgurl641']['imgurl'] . '">';
+                $imgsrc = $arr_img['IMG_'.$i]['all']['img']['imgurl641']['imgurl'];
+
+                $lj = dirname(__DIR__) . '/uploads/'  . date('ymd') . '/';
+                $xinarc = create_img($imgsrc, $lj);
+                $xinarc = str_replace(dirname(__DIR__), "http://php-study.test", $xinarc);
+                $content .= '<img src="' . $xinarc . '">';
                 $i++;
             }
             if ($r['type'] == 1) {
                 $content .= '<p>'.$r['value'].'</p>';
             }
         }
-        // echo $id . "<br>" ;
+        echo $id . "<br>" ;
         echo $title . "<br>" ;
-        // echo $content . "<br>" ;
+        echo $content . "<br>" ;
         // die;
     }
+    // break;
 }
