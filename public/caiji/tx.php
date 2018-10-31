@@ -31,15 +31,11 @@ $arrjson = array(
     'https://pacaio.match.qq.com/xw/site?uid=0_135d373857b4a&ext=edu&num=20&expIds=&page=0', //教育
     'https://pacaio.match.qq.com/irs/rcd?cid=56&ext=cul&token=c786875b8e04da17b24ea5e332745e0f&num=20&expIds=20181030013486%7C20181030A1U7M0&page=0', // 文化
     'https://pacaio.match.qq.com/irs/rcd?cid=56&ext=health&token=c786875b8e04da17b24ea5e332745e0f&num=20&expIds=20181030A14GU1%7C20181024A0UB44&page=0', // 健康
+    'https://pacaio.match.qq.com/xw/site?uid=0_6d3466ab3f225&ext=tech&num=20&expIds=&page=0', // 科技
 );
 
 
 foreach ($arrjson as $url) {
-    get_content($url);
-}
-
-function get_content($url) {
-    // $file = file_get_contents('https://pacaio.match.qq.com/irs/rcd?cid=56&ext=health&token=c786875b8e04da17b24ea5e332745e0f&num=20&expIds=20181030A14GU1%7C20181024A0UB44&page=0');
     $file = file_get_contents($url);
 
     $arr = json_decode($file, true);
@@ -78,8 +74,8 @@ function get_content($url) {
                 $content .= '<p>'.$r['value'].'</p>';
             }
         }
-        echo $id . "<br>" ;
-        // echo $title . "<br>" ;
+        // echo $id . "<br>" ;
+        echo $title . "<br>" ;
         // echo $content . "<br>" ;
         // die;
     }
