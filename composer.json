@@ -30,7 +30,8 @@
         "mk-j/PHP_XLSXWriter": "dev-master",
         "rmccue/requests": "^1.7",
         "rap2hpoutre/fast-excel": "^0.9.0",
-        "php-curl-class/php-curl-class": "@dev"
+        "php-curl-class/php-curl-class": "@dev",
+        "noahbuscher/macaw": "dev-master"
     },
     "autoload": {
         "files": [

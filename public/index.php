@@ -13,9 +13,9 @@ require_once PUBLIC_PATH . 'classes.php';
 
 // var_dump(spl_autoload_functions());
 
-print_r(spl_classes());
-
-echo date('ymd');die;
-$url = 'http://m.medlive.cn/cms/news/150446';
-$res = parse_url($url, PHP_URL_PATH);
-print_r($res);
+// print_r(spl_classes());
+$a = '公司股份的';
+echo mb_strlen ($a);die;
+$str1 = 'hello1';
+$str2 = 'hello1';
+echo strcasecmp ($str1, $str2);
