@@ -29,14 +29,23 @@
     "rmccue/requests": "^1.7",
     
     "jaeger/querylist": "^4.0",
+    
+    "webmozart/assert": "*"
 }
 ```
-### 国内镜像源
+### 国内镜像源 和 github源
 ```
-"packagist": {
-    "type": "composer",
-    "url": "https://packagist.phpcomposer.com"
+"repositories": {
+    "packagist": {
+        "type": "composer",
+        "url": "https://packagist.phpcomposer.com"
+    },
+    "paragonie/random_compat": {
+        "type": "vcs",
+        "url": "https://github.com/paragonie/random_compat.git"
+    }
 }
+
 ```
 
 ### tinylara [github地址](https://github.com/TinyLara/TinyLara)
@@ -57,3 +66,4 @@ composer require symfony/finder
 3. phpoffice/phpspreadsheet
 4. league/csv
 ```
+
