@@ -12,7 +12,7 @@ function setHttp($url) {
 function img_url_local($content)
 {
     $doc = new DOMDocument('1.0', 'utf-8');
-    $doc->loadHTML($content);
+    @$doc->loadHTML($content);
     $xpath = new DOMXPath($doc);
     $result = $xpath->query("//img");
     foreach ($result as $value) {

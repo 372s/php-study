@@ -13,9 +13,10 @@ require_once PUBLIC_PATH . 'classes.php';
 
 // var_dump(spl_autoload_functions());
 
-// print_r(spl_classes());
+print_r(spl_classes());
 $a = '公司股份的';
-echo mb_strlen ($a);die;
+$str = '30q7m7jhoau87uobtoajfa7l075';
+echo mb_strlen ($str);die;
 $str1 = 'hello1';
 $str2 = 'hello1';
 echo strcasecmp ($str1, $str2);
