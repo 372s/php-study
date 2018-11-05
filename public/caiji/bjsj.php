@@ -88,7 +88,7 @@ foreach ($arr as $item) {
                 // }
                 $html .= '<div><img src ="' . $cn['value'] . '"></div>';
             } else {
-                if (! has_keyword($cn['value'], array('北京时间', '北京时间出品', '扫小编微信', '传送门>>', '夜总汇'))) {
+                if (! has_keyword($cn['value'], array('北京时间综合', '北京时间出品', '扫小编微信', '传送门>>', '夜总汇'))) {
                     $html .= $cn['value'];
                 }
             }
