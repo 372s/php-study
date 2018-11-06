@@ -11,11 +11,9 @@ class Page
     protected $_maxPage;
     protected $_pageSlice;
 
-    public function __construct($totalNumber, $perPage = NULL, $currentPage = NULL) {
+    public function __construct($totalNumber, $perPage = 0, $currentPage = 0) {
 
-        $maxPage = ceil($totalNumber < 1 ? 1 : $totalNumber / $perPage);
-
-		if ($currentPage == NULL) {
+		if ($currentPage == 0) {
             if (empty($_GET['page'])) {
                 $currentPage = 1;
             } else {
@@ -23,15 +21,20 @@ class Page
             }
         }
 
+        if ($perPage == 0) {
+            $perPage = $this->_perPage;
+        } else if ($perPage < 1) {
+            $perPage = 1;
+        }
+
+        $maxPage = ceil($totalNumber < 1
+            ? 1
+            : $totalNumber / $perPage
+        );
+
         if ($currentPage > $maxPage) {
             $currentPage = $maxPage;
         }
-
-		if ($perPage === NULL) {
-			$perPage = $this->_perPage;
-		} else if ($perPage < 1) {
-			$perPage = 1;
-		}
 		
 		$this->_totalNumber     = $totalNumber;
 		$this->_perPage         = $perPage;

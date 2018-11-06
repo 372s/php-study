@@ -36,4 +36,3 @@ foreach ($urls as $url) {
         echo $content;die;
     }
 }
-
