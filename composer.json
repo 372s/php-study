@@ -34,12 +34,8 @@
         "noahbuscher/macaw": "dev-master"
     },
     "autoload": {
-        "files": [
-            "public/helpers.php"
-        ],
-        "psr-4": {
-            "app\\": "App/"
-        }
+        "files": [],
+        "psr-4": {}
     }
 
 }
