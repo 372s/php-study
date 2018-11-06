@@ -6,13 +6,13 @@
  * @param string $name
  * @param string $ext
  * @return mixed
+ * @throws \RuntimeException
  */
 function load($name, $ext = '.php') {
     $name = strtr($name, '.', '/');
     $file = LIB_PATH. $name . $ext;
     if (! file_exists($file)) {
-        echo 'Error: CLASS ' . $name . ' NOT FOUND';
-        // exit();
+        throw new \RuntimeException('Error: CLASS ' . $name . ' NOT FOUND');
     } else {
         require_once $file;
     }
@@ -23,12 +23,14 @@ function load($name, $ext = '.php') {
  * @param string $name
  * @param string $ext
  * @return mixed
+ * @throws \RuntimeException
  */
 function import($name, $ext = '.class.php') {
     $name = strtr($name, '.', '/');
     $file = LIB_PATH. $name . $ext;
     if (! file_exists($file)) {
-        echo 'Error: CLASS ' . $name . ' NOT FOUND';
+        throw new \RuntimeException('Error: CLASS ' . $name . ' NOT FOUND');
+        // echo 'Error: CLASS ' . $name . ' NOT FOUND';
         // exit();
     } else {
         require_once $file;
