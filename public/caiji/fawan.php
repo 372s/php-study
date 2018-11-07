@@ -3,17 +3,21 @@ require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 require_once dirname(__FILE__) . '/helpers.php';
 
 $url = 'http://res.fawan.com/fawan/fawanJSON.json?_=20181154';
-
 $res = file_get_contents($url);
 $res = json_decode($res, true);
 // print_r($res);die;
 foreach ($res as $item) {
     $url = $item['link'];
+    // echo $url;die;
+    $id = substr($url, strrpos($url, '/')+1);
+    $id = rtrim($id, '.html');
+    echo $id . "<br>";
     $doc = phpQuery::newDocumentFile($url);
     // echo $doc;die;
     $title = $doc->find('h2')->text();
     $yeshu = $doc->find('#yeshu')->text();
     if ($yeshu) {
+        continue;
         // continue;
         // echo $yeshu;die;
         // $yeshu = $yeshu->text();
