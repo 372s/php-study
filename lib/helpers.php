@@ -30,8 +30,6 @@ function import($name, $ext = '.class.php') {
     $file = LIB_PATH. $name . $ext;
     if (! file_exists($file)) {
         throw new \RuntimeException('Error: CLASS ' . $name . ' NOT FOUND');
-        // echo 'Error: CLASS ' . $name . ' NOT FOUND';
-        // exit();
     } else {
         require_once $file;
     }
@@ -44,4 +42,17 @@ function class_loader() {
     spl_autoload_register(function ($class) {
         require_once CLASS_PATH. $class . CLASS_EXT;
     });
+}
+
+/**
+ * 处理目录 后面 / DIRECTORY_SEPARATOR
+ * @param string $path
+ * @return string
+ */
+function parse_directory($path)
+{
+    if (substr($path, -1) != '/') {
+        $path .= '/';
+    }
+    return $path;
 }
