@@ -67,7 +67,7 @@ class Container
         array_unshift($parameters, $this);
 
         // echo $abstract;
-        // print_r($this->binds[$abstract]);
+        print_r($this->binds[$abstract]);
         print_r($parameters);
         return call_user_func_array($this->binds[$abstract], $parameters);
     }
