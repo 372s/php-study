@@ -1,9 +1,9 @@
 <?php
 /**
  * 去除标签及标签内的字符串
- * @param $text 字符串
- * @param tags 标签
- * @param $invert 反转 false：保留单签标签，其余标签及标签内字符串删除；true：删除当前标记及标签内字符串
+ * @param string $text 字符串
+ * @param string tags 标签
+ * @param bool $invert 反转 false：保留单签标签，其余标签及标签内字符串删除；true：删除当前标记及标签内字符串
  * @return string
  */
 function strip_tags_content($text, $tags = '', $invert = FALSE) { 
