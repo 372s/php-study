@@ -1,1 +1,54 @@
-<p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/ebbff918e6d49ffd454833036b6339db.jpg"></p><p><span style="color: rgb(192, 0, 0);">白天属于工作，夜晚属于生活。日落之后，让我们去看看不一样的世界：</span></p><p>Hello小伙伴们，今天又是周一啦！</p><p>周末有没有出去耍？</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/31a8adad05722f786dee296f5f2741602.jpg"></p><p>【今日话题】</p><p>【男子遭刺后夺刀反杀获刑6年 法院:夺刀反刺系报复】</p><p>案发是在2017年4月6日，在富锦市交警大队事故中队的走廊里，黄海龙和冯思铖为各自亲友的交通事故协商，双方因赔偿问题发生口角，冯思铖掏出随身携带的尖刀将黄海龙腹部刺伤，黄海龙抢下尖刀后将冯思铖刺伤，致其当场死亡。</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/8f4aa8a3c6097180a5cf5c548aa582862.png"></p><p>监控录像显示，从冯思铖掏刀捅向黄海龙，到黄海龙夺刀反刺冯思铖，最后被人拉开，整个过程约16秒。关于双方争吵的原因，与冯思铖同行的于海在笔录中讲述，是因为对方管事主要5000元，冯说3000元，对方不同意，冯说“能不能给我点面子”，对方回他，“你是个啥，给你面子。”</p><p>黄海龙在笔录中叙述称，双方争执时，于海将他们拉开站在两人中间，此时冯思铖拿了一把黑色的刀出来说：“我攮死你。”然后冯拿着刀冲到他面前，用刀扎了他肚子一下。多名证人证言显示，冯思铖案发前的状态是，“身上有酒味，走路有点晃。”</p><p>鉴定报告中，黄海龙腹部损伤构成轻伤二级，冯思铖被刺戳左侧上胸部肩关节前下方，造成急性大量失血死亡。</p><p>案发后，黄海龙赔偿冯思铖各种损失40万元，富锦市公安局赔偿冯思铖80万元。获赔后，冯思铖家属出具一份刑事谅解书。《刑事谅解书》中写明：我们认为，本起事件发生，冯思铖有不可推卸的责任。我们认为黄海龙具备防卫情节，应当按照正当防卫来对黄海龙确定刑事责任。恳请人民法院对黄海龙给予最轻的处罚，判决黄海龙无罪或者缓刑我们也没有异议。</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/814d15dfe6b878fad853a14471910e7c2.png"></p><p>此外，黄海龙发现冯思铖受伤后，由于本人受伤，遂让身边的人拨打120，并拨打110报警，也体现了被告人不希望冯思铖受伤致死的救助心态，请求判定黄海龙无罪。案卷显示，案发后被告人主动向公安机关投案并如实供述犯罪事实。</p><p>黄海龙的辩护律师认为黄海龙有防卫意图，他在毫无预料和准备的情况下，被冯思铖捅了一刀，情急之下在死者肩膀部位由上往下划了一下。公诉人则认为，黄海龙夺刀后，现场多人拉架，力量对比，冯思铖已不具备侵害能力。</p><p>“我是用手握着刀刃，才夺下的刀，当时周围的人还没有拉住他，冯思铖还想动手，我害怕再次受到伤害，反击的过程不过两三秒的时间，怎么可能会想到报复。”二审开庭后，看守所里，提起庭上的公诉意见，黄海龙和律师说着越发激动起来。</p><p>2018年8月27日，“昆山反杀案”在网络上引发大量讨论，让具有同样背景的“黄海龙反杀案”再次成为网络关注焦点。2018年11月初，距离二审开庭已经4个多月，妻子宋晓莉认为，丈夫黄海龙的案件与昆山反杀案极为相似，她坚信丈夫属于正当防卫，也相信法律，等待判决。</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/6e2acde170bb5e524f46cdbea3d1b5792.jpg"></p><p><span style="color: rgb(192, 0, 0);">这件事汇友们怎么看？正当防卫的界限究竟在哪里？怎样才算正当防卫？</span></p><p><span style="color: rgb(192, 0, 0);">欢迎大家在下面评论区留言讨论。</span></p><p>【今日看点】</p><p>【河南一小区规定不用暖气也交“蹭暖费”】</p><p>随着取暖季的临近，又到了一年一度收暖气费的时候。不过，有一些住户觉得只要楼上楼下都开暖气，自己家也不会冷到哪里去。因此每年都选择“蹭暖”，省下这笔取暖钱。</p><p>但近日，河南省新乡县陆通龙园小区有居民向媒体反映，小区物业出了规定，如果你已经入住、但不准备交取暖费，就得要缴供暖总费用30%的“蹭暖费”。这条规定在小区里引起较大争议。那么，这条规定是否有其法律依据？当地主管部门是否允许这种收费？</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/e556b079c11a6a4061b2d5a90fdc51a02.gif"></p><p>小区的新规引起业主们的争议。</p><p>业主赵女士对中国之声记者表示：我觉得不合理，应该也不合法吧，那不开暖气，我就是不想交这个钱，觉得没必要。</p><p>小区业主郎女士说，开不开暖气，是大家的权利，你不能强行干涉，你说我蹭暖了，我承认，如果旁边的开了，家里也确实暖和点，但这是邻居间的问题，你不能强行收费。”</p><p>物业工作人员说，这样做也是无奈之举。曾经有正常缴费的住户找到物业，以邻居不开通暖气，造成自家温度流失为由表达自己的不满。头一年本身就是入住率比较少，第一年就没有收费，等于说大家免费用了。第二年交的还可以，但有一部分人没有交。随着这两年“蹭暖”的人就比较多了，就导致今年的暖气费一直收不上。</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/51778e35fb22cb077f8339e69b156a5d2.jpg"></p><p>小编认为，蹭暖器现象确实不应该，但小区物业规定也需要再全面考虑一下，蹭暖费收上来归谁所有？是物业还是平摊给其他交暖气费的住户？</p><p>北京还没开始供暖，小编已经冻得瑟瑟发抖，毕竟超凶冷空已经来了！</p><p>大半个中国气温将刷新低！</p><p>受冷空气影响，卫星云图上帕米尔高原、天山西段已被刷白，有大量积雪出现，塔什库尔干县下了少有的11月大雪；除新疆外西藏青海甘肃宁夏也有很多地方下雪，北方气温大幅下降。</p><p>取暖除了要靠一身正气，小编觉得还需要一个移动被窝：</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/4c452031c2926616d26752ac320adb1c2.jpg"></p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/e88642089528f90765a8426bf83848442.jpg"></p><p>天冷了，不如吃个热狗！<br/></p><p>还记得IG夺冠那天嘛，王老板现身决赛现场，还被拍到在寒冷的现场啃热狗！</p><p>于是今天，老王成为新的快乐源泉，吃热狗的形象已经成了新的表情包！</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/88c41be04fc2ece7ae970756e7c654f72.jpg"></p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/e653da6b0d3be8d4e70fc1f4424c76062.jpg"></p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/6b52b2bebca82ceaf950cb73521eb0822.jpg"></p><p>【云南文山出养狗新规:7点至22点城区禁止遛狗】<br/></p><p>现如今，人犬矛盾日益突出。为进一步规范和加强犬只管理，优化居住环境，维护公共安全和治安秩序，10月29日，云南省文山州文山市政府依据相关法律法规发布了《关于加强文山市区犬类管理的通告》（下称《通告》）。</p><p>《通告》共7条，自发布之日起实施。其中称，在文山市区养犬的，携犬出户时，犬只必须使用束犬链，犬链长度不得超过1米，并由成年人牵引。7:00至22:00禁止溜犬。</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/c188f410ddc08a3dd448176d1e35c8202.gif"></p><p>《通告》同时称，养犬不得干扰他人正常生活，不得放任、驱使犬只恐吓、攻击他人，对正在伤人的犬只，任何人可就地捕捉，并按有关规定处置；犬吠影响他人休息的，养犬人应当采取措施予以制止。有过伤人记录的犬只不得在市区内饲养。</p><p>同时，凡阻碍有关主管部门依法管理犬只的，依据《中华人民共和国治安管理处罚法》相关规定给予处罚；涉嫌犯罪的，移送司法机关，追究刑事责任。</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/8c59bd0c55c9d0f462ce35d8052b17f12.jpg"></p><p>Emmm，汇友们如何评价这一新规？你支持还是反对？</p><p>狗主人心里的小秘密：哪怕自己养的狗狗没那么好看，也时常会觉得它天下第一可爱……</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/fd7f4c74c4ce599d01f113af7a290d282.jpg"></p><p>【快递小哥100多个包裹价值3万放路边5分钟被偷光】</p><p>双十一即将来临，又到了快递员最为忙碌的时间，有时候快递包裹一多，快递员就容易出差错。广西南宁快递员小银就因为一时疏忽大意，丢了一百多个包裹，总价值近3万元。</p><p>快递小哥小银回忆：“10月31日上午9点55分，我从唐山路那边拐出来，拐到对面等车，后来我看一下后轮胎，那后轮胎是没气了，我就把货卸下来一包减轻重量，我以为还能承载一包半，我就一直开一直开，车根本支撑不了，开到下面洞口那里又卸下来一包半，然后我就开车，到前面那里去充气。”</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/7978ac91624c63f11038bb4ebca7cb1c2.jpg"></p><p>在将电动车推到附近维修店后，维修师傅告诉小银，轮胎已经完全损坏，需要更换轮胎，大约需要十几分钟。此时，小银担心自己的包裹被人拿走，于是他马上就赶回到暂时放包裹的地方。</p><p>快递小哥小银表示：“我立马下来了，看到我的货都已经不在了，大概就五六分钟。没想到会丢的这么快。”</p><p>包裹具体价值还没有统计出来，但预估也要3万元左右，因为丢失包裹的数额比较大，小银马上去到了衡阳派出所报警，警方立即调取了事发路段的监控画面。经查询，警方很快找到了拿走小银包裹的人。</p><p>快递小哥小银说：“我们在下面那个桥底那里，是看到一个中年男人。他是骑着一个脚踏三轮车，我看到他把两袋包裹都搬上车了。”</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/609345775230ddb3d01eb6f66964e8872.jpg"></p><p>五分钟就搬完上百个包裹，这位大哥，你是不是经常健身…</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/7af9eb9d5bf9d9465628abcac577166e2.png"></p><p>话说双十一马上就要到了，汇友们有没有剁手？</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/605c2492cad38323700f85b40cc130162.jpg"></p><p>Jolin购物太不理性了，小编我就是手机没电了就不买了…</p><p>【脑洞大开】</p><p>图中7只袜子随便地摆放着，请你仔细地观察一下，放在最下面的是几号袜子呢?</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/3c68b5839e10e24227c22b8b040692502.jpg"></p><p>上期答案：</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/9ec5087f59a4fad7fe81d93c30bf93ef2.png"></p><p>【上墙Plus】</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/21a253864de1147299a1bea97c3c3585.png"></p><p>也不能完全悲观，整个社会的世界观都是在碰撞中重塑~</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/17e8b647acd11c909ba40a2d185e96ae.png"></p><p>所以说控制情绪很重要！</p><p><img src ="http://zhongyuan.jpnet.com.cn/uploads/181105/62e8b81e8a9ffc36156d176249596052.png"></p><p>不打架也不会撞上吧…</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="../js/jquery/jquery-1.8.3.min.js"></script>
+    <style>
+        .piclick_loading_text {
+            font-weight: bold;
+            font-style: italic;
+            line-height: 1.2em;
+            color: #3c3c3c;
+            display: block;
+        }
+        .piclick_point {
+            display: block;
+            background: url(http://test18.sciemr.com/bulbgrey.png) no-repeat;
+            width: 40px;
+            height: 40px;
+            background-size: 100% 100%;
+            text-align: center;
+            font-size: 14px;
+            line-height: 30px;
+            color: red;
+            position: absolute;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="img_container"
+     style="padding-top: 10px;text-align: center;height: 80px;position: relative;width: 295px;margin: 0 auto;">
+    <img src=""/>
+</div>
+<script type="text/javascript" src="http://test18.sciemr.com/common/piclick.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var piclick = new Piclick('img_container',{
+            loadingImg: 'http://test18.sciemr.com/loading.gif',
+            basePath:'http://test18.sciemr.com/',
+            appid:'kingyee001',
+            onSuccess:function(data){
+                console.log(data);
+            },
+            onError:function(type,msg) {
+                console.error(msg);
+            }
+        });
+        piclick.loadImage();
+    });
+</script>
+</body>
+</html>
