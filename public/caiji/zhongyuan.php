@@ -20,7 +20,6 @@ $doc = new DOMDocument;
 @$doc->loadHTML($html);
 $doc->validateOnParse = true;
 $doc->preserveWhiteSpace = false;
-
 $xpath = new DOMXpath($doc);
 $res = $xpath->query('//h3/a/@href');
 foreach ($res as $re) {
