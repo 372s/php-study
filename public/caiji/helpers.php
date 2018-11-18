@@ -3,7 +3,7 @@
 
 function setHttp($url) {
     if (strpos($url, 'http') === false) {
-        $url = 'http:'.$url;
+        $url = 'http://'.$url;
     }
     return $url;
 }
