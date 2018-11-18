@@ -3,13 +3,26 @@
 
 function setHttp($url) {
     if (strpos($url, 'http') === false) {
-        $url = 'http://'.$url;
+        $url = 'http:'.$url;
     }
     return $url;
 }
 
+function has_keyword($str, $words) {
+    if (is_string($words)) {
+        if (mb_stripos($str, $words) !== false ) {
+            return $words;
+        }
+    } else {
+        foreach ($words as $w) {
+            if (mb_stripos($str, $w) !== false ) {
+                return $w;
+            }
+        }
+    }
+}
 
-function img_url_local($content)
+function img_url_local($content, $flag = '')
 {
     $doc = new DOMDocument('1.0', 'utf-8');
     @$doc->loadHTML($content);
@@ -17,8 +30,17 @@ function img_url_local($content)
     $result = $xpath->query("//img");
     foreach ($result as $value) {
         $imgsrc = $value->getAttribute('src');
+        if ($flag == 'yidian') {
+            if (strpos($imgsrc, 'http') === false) {
+                $himgsrc = 'http:'.$imgsrc;
+            } else{
+                $himgsrc = $imgsrc;
+            }
+        } else {
+            $himgsrc = $imgsrc;
+        }
         $lj = dirname(__DIR__) . '/uploads/'  . date('ymd') . '/';
-        $xinarc = create_img($imgsrc, $lj);
+        $xinarc = create_img($himgsrc, $lj);
         $xinarc = str_replace(dirname(__DIR__), "http://php-study.test", $xinarc);
         $content = str_replace($imgsrc, $xinarc, $content);
     }
