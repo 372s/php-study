@@ -48,6 +48,10 @@ foreach ($res['result'] as $value) {
 
 
     $content = img_url_local($content, 'yidian');
+
+    $arr = create_img_array($content);
     // echo $content . "<br>";
+    print_r($arr);
+    echo "<br>";
     // die;
 }

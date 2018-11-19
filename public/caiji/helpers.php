@@ -1,5 +1,7 @@
 <?php
 
+header("Content-type: text/html; charset=utf-8");
+set_time_limit(0);
 
 function setHttp($url) {
     if (strpos($url, 'http') === false) {
@@ -22,6 +24,35 @@ function has_keyword($str, $words) {
     }
 }
 
+
+function create_img_array ($content) {
+    $arrimg = array();
+
+    $doc = new DOMDocument();
+    @$doc->loadHTML($content);
+    $xpath = new DOMXPath($doc);
+    $result = $xpath->query("//img");
+
+    // print_r($result);
+    if (!empty($result)) {
+        $img_num = 0;
+        foreach ($result as $value) {
+            $img_num ++;
+            if ($img_num >= 3) {
+                break;
+            }
+            $imgsrc = $value->getAttribute('src');
+            // echo $imgsrc;
+            if ($imgsrc) {
+                array_push($arrimg, $imgsrc);
+            }
+        }
+
+        // echo $img_num;
+    }
+
+    return $arrimg;
+}
 function img_url_local($content, $flag = '')
 {
     $doc = new DOMDocument('1.0', 'utf-8');
