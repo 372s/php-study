@@ -7,9 +7,81 @@
  */
 
 require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
+require_once dirname(__FILE__) . '/helpers.php';
 
 header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
+
+$str = '<font>👋🇨🇳 于昨天正式开幕👏👏 来看下开幕式的精彩片段吧👇⚽️劲爆的黑科技体验馆＋官方商店＋巴萨精英足球学院＋更多更多...海南之旅安排上！ 🔴🔵</font>';
+// echo mb_strlen(strip_tags($str));die;
+$urls = array(
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=1o&cre=tianyi&mod=wnews&merge=3&statics=1&length=20', //xinwen article
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=2L&cre=tianyi&mod=wspt&merge=3&statics=1', // tiyu aribody
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=1Q&cre=tianyi&mod=went&merge=3&statics=1&length=20', // yule artibody
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=1z&cre=tianyi&mod=wtech&merge=3&statics=1', // keji artibody
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=I&cre=tianyi&mod=wedu&merge=3&statics=1&length=20', // jiaoyu artibody
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=l&cre=tianyi&mod=wxz&merge=3&statics=1&length=20', // 星座 artibody
+    'https://cre.dp.sina.cn/api/v3/get?cateid=2i&cre=tianyi&mod=wladies&merge=3&statics=1', // nv xing
+    'https://cre.dp.sina.cn/api/v3/get?cateid=2m&cre=tianyi&mod=whealth&merge=3&statics=1&length=20', // jiankang
+    // 'https://interface.sina.cn/wap_api/layout_col.d.json?showcid=12635&col=12658&level=1%2C2%2C3', // qinggan
+    // 'https://interface.sina.cn/wap_api/layout_col.d.json?showcid=74401&col=72340%2C205144&level=1%2C2%2C3&show_num=30', // nba
+
+);
+
+foreach ($urls as $url) {
+    $data = file_get_contents($url);
+    $arr = json_decode($data, true);
+
+    // print_r($arr);die;
+    foreach ($arr['data'] as $k => $row) {
+        if (!empty($row['contentTag']) && $row['contentTag'] == '专题') {
+            continue;
+        }
+        if (!empty($row['video_url'])) {
+            continue;
+        }
+        if (empty($row['f_docid'])) {
+            continue;
+        }
+
+        if ($ss = strstr($row['f_docid'], ':')) {
+            $id = 'sina'. $ss;
+        } else {
+            $id = 'sina'. $row['f_docid'];
+        }
+
+        echo $k . "<br>";
+        echo $id . "<br>";
+        $title = $row['title'];
+        echo $title . "<br>";
+        $url = $row['url'];
+        echo $url . "<br>";
+        $doc = phpQuery::newDocumentFileHTML($url);
+        // echo $doc . "<br>";
+        $content = $doc->find("div[id='artibody']");
+        // $content->find('div[id="article-bottom"]')->remove();
+        // $content->find('div[class="blk-zcapp clearfix"]')->remove();
+        // $content->find('div[class="blk-wxfollow clearfix"]')->remove();
+        // $content->find('div[id="wrap_bottom_omment"]')->remove();
+        // $content->find('div[id="tab_related"]')->remove();
+        // $content->find('div[class="astro-center"]')->remove();
+        // $content->find('div[class="content-page"]')->remove();
+
+        $content->find("p:contains('点击')")->remove();
+        $content = $content->html();
+
+        $content = filter_section($content, array('原标题', '原题为', '声明'));
+        $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+        $content = img_url_local($content);
+        // if (mb_strlen(strip_tags($content)) < 100) {
+        //     continue;
+        // }
+        echo $content . "<br>";
+
+    }
+    die;
+}
+
 $url = "https://interface.sina.cn/wap_api/layout_col.d.json?showcid=12635&col=12658&level=1%2C2%2C3";
 $data = file_get_contents($url);
 $arr = json_decode($data, true);
