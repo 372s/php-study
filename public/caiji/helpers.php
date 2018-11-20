@@ -212,3 +212,32 @@ function filter_section($content, $contains = array()) {
 function filter_tags () {
 
 }
+
+function get_images($content) {
+    $arrimg = array();
+    $litpic = '';
+    $doc = new DOMDocument('1.1', 'utf8');
+    $doc->loadHTML($content);
+    $xpath = new DOMXPath($doc);
+    $result = $xpath->query("//img");
+
+    // print_r($result);die;
+    if (!empty($result)) {
+        $img_num = 0;
+        foreach ($result as $value) {
+            if ($img_num >= 3) {
+                break;
+            }
+            $imgsrc = $value->getAttribute('src');
+            if ($imgsrc) {
+                $arrimg[]['url'] = $imgsrc;
+                if ($img_num == 0) {
+                    $litpic = $imgsrc;
+                }
+            }
+            $img_num ++;
+        }
+        echo $img_num;
+    }
+    return $arrimg;
+}
