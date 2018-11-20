@@ -60,13 +60,11 @@ $data = array('content' => array(
     )
 ));
 
-$data = json_encode($data);
+$data = json_encode($data, JSON_UNESCAPED_UNICODE);
 
-// $data = http_build_query($data);
+// $header = array('Content-type: application/json');
+$header = array('Content-type: application/x-www-form-urlencoded');
 
-$header = array('Content-type: application/json');
-// $url = 'http://tt.lkeji.com/admin.php?s=/Rebot/addContents';
-// $url = 'http://h.jpnet.com.cn/admin.php?s=/Rebot/addContents';
 $url = 'http://php-study.test/test.php';
 
 $res = curl_post($url, $data, $header);
@@ -78,8 +76,8 @@ function curl_post($url, $data = array(), $headers = array()) {
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-    // curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+    // curl_setopt($curl, CURLOPT_HEADER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
