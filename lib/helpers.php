@@ -9,8 +9,8 @@
  */
 function import($name, $ext = '.class.php') {
     $name = strtr($name, '.', '/');
-    $file = LIB_PATH. $name . $ext;
-    echo $file;
+    $file = trim(LIB_PATH, '/') . '/' . trim($name, '/') . $ext;
+    // echo $file;
     if (! file_exists($file)) {
         throw new \RuntimeException('Error: CLASS ' . $name . ' NOT FOUND');
     } else {
