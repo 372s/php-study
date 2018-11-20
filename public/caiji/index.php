@@ -160,26 +160,17 @@ $data = array('content' => array(
     )
 ));
 
-// $a = '[{"content": "1111"}]';
-//
-// $a = json_decode($a, true);
-//
-// print_r($a);die;
-
 $data = json_encode($data);
 
 // $data = http_build_query($data);
 
-// print_r(json_decode($data, true));die;
 $header = array('Content-type: application/json');
-$url = 'http://tt.lkeji.com/admin.php?s=/Rebot/addContents';
+// $url = 'http://tt.lkeji.com/admin.php?s=/Rebot/addContents';
 // $url = 'http://h.jpnet.com.cn/admin.php?s=/Rebot/addContents';
-// $url = 'http://php-study.test/test.php';
+$url = 'http://php-study.test/test.php';
 
 $res = curl_post($url, $data, $header);
-print_r($res);die;
-
-echo json_encode($res['content']);
+print_r($res);
 
 function curl_post($url, $data = array(), $headers = array()) {
     $curl = curl_init();
