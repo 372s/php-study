@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * 类导入
  * @param string $name
@@ -8,9 +7,10 @@
  * @return mixed
  * @throws \RuntimeException
  */
-function load($name, $ext = '.php') {
+function import($name, $ext = '.class.php') {
     $name = strtr($name, '.', '/');
     $file = LIB_PATH. $name . $ext;
+    echo $file;
     if (! file_exists($file)) {
         throw new \RuntimeException('Error: CLASS ' . $name . ' NOT FOUND');
     } else {
@@ -25,14 +25,8 @@ function load($name, $ext = '.php') {
  * @return mixed
  * @throws \RuntimeException
  */
-function import($name, $ext = '.class.php') {
-    $name = strtr($name, '.', '/');
-    $file = LIB_PATH. $name . $ext;
-    if (! file_exists($file)) {
-        throw new \RuntimeException('Error: CLASS ' . $name . ' NOT FOUND');
-    } else {
-        require_once $file;
-    }
+function load($name, $ext = '.php') {
+    return import($name, $ext);
 }
 
 /**

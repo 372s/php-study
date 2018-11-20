@@ -7,8 +7,8 @@ define('LIB_PATH',    ROOT_PATH. '/lib/');
 define('CLASS_PATH',  ROOT_PATH. '/lib/Class/');
 define('CLASS_EXT',   '.class.php');
 
-if (file_exists(ROOT_PATH . 'vendor/autoload.php')) {
-    require_once ROOT_PATH . 'vendor/autoload.php';
-}
+// if (file_exists(ROOT_PATH . 'vendor/autoload.php')) {
+//     require_once ROOT_PATH . 'vendor/autoload.php';
+// }
 
 require_once LIB_PATH . 'helpers.php';

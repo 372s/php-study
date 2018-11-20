@@ -44,6 +44,7 @@ foreach ($res['result'] as $value) {
     $content->find("p:contains('不得转载')")->remove();
     $content->find("p:contains('责任编辑')")->remove();
     $content->find('a')->attr('href', 'javascript:(void);');
+    // $content->removeData('');
     $content = $content->html();
 
 
