@@ -8,6 +8,8 @@ $str1 = 'hello1';
 $str2 = 'hello1';
 echo strcasecmp ($str1, $str2) . "<br>";
 
+
+echo date('Y-m-d', '1542738806');die;
 // class_loader();
 import('Class.Page');
 $page = new Page(10);
