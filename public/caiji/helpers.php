@@ -1,7 +1,7 @@
 <?php
 
-header("Content-type: text/html; charset=utf-8");
-set_time_limit(0);
+// header("Content-type: text/html; charset=utf-8");
+// set_time_limit(0);
 
 function setHttp($url) {
     if (strpos($url, 'http') === false) {

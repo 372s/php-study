@@ -2,9 +2,16 @@
 require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 require_once dirname(__FILE__) . '/helpers.php';
 
-header("Content-type: text/html; charset=utf-8");
+// header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
+// echo file_get_contents('http://new.qq.com/omn/20181122/20181122A1RYY5.html');die;
 
+// $html = phpQuery::newDocumentFileHTML('http://kuaibao.qq.com/s/20181121A1MUFM00');
+// $content = $html->find('div[class="content-box"]')->html();
+$html = phpQuery::newDocumentFileHTML('https://new.qq.com/omn/20181122/20181122A1ZWCV00', 'UTF8');
+// echo $html;die;
+$content = $html->find('div[class="content-article"]')->html();
+echo $content;die;
 /* 重定向天天快报 */
 // // $html = file_get_contents('http://kuaibao.qq.com/s/20181029A18LRT00'); // 柑橘黄龙病
 // $html = file_get_contents('http://kuaibao.qq.com/s/20181030A1CIOT00'); // 王熙凤
