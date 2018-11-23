@@ -1,7 +1,8 @@
 <?php
 
+require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 // header("Content-type: text/html; charset=utf-8");
-// set_time_limit(0);
+set_time_limit(0);
 
 function setHttp($url) {
     if (strpos($url, 'http') === false) {
@@ -77,7 +78,7 @@ function img_url_local($content, $flag = '')
                 $himgsrc = $imgsrc . '?imageView2/2/w/750/q/80/format/jpeg';
             }
         }
-        echo $himgsrc . "<br>";
+        // echo $himgsrc . "<br>";
 
         $lj = dirname(__DIR__) . '/uploads/'  . date('ymd') . '/';
         $xinarc = create_img($himgsrc, $lj);

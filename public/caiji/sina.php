@@ -1,12 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: wq455
- * Date: 2018/10/28
- * Time: 23:48
+ * 新浪
  */
-
-require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 require_once dirname(__FILE__) . '/helpers.php';
 
 header("Content-type: text/html; charset=utf-8");
@@ -14,8 +9,10 @@ set_time_limit(0);
 
 $urls = array(
     // 'https://cre.dp.sina.cn/api/v3/get?cateid=1o&cre=tianyi&mod=wnews&merge=3&statics=1&length=20', //xinwen article
-    // 'https://cre.dp.sina.cn/api/v3/get?cateid=2L&cre=tianyi&mod=wspt&merge=3&statics=1', // tiyu aribody
+    // 'https://cre.dp.sina.cn/api/v3/get?cateid=2L&cre=tianyi&mod=wspt&merge=3&statics=1', // tiyu id=aribody
+    'https://cre.dp.sina.cn/api/v3/get?callback=jQuery21409115093452749052_1542955267854&cateid=y&cre=tianyi&mod=wfin&merge=3&statics=1&impress_id=%2C&action=0&up=0&down=0',// caijing
     // 'https://cre.dp.sina.cn/api/v3/get?cateid=1Q&cre=tianyi&mod=went&merge=3&statics=1&length=20', // yule artibody
+    'http://cre.dp.sina.cn/api/v3/get?cateid=m&mod=wauto&cre=tianyi&merge=3&statics=1', // qiche
     // 'https://cre.dp.sina.cn/api/v3/get?cateid=1z&cre=tianyi&mod=wtech&merge=3&statics=1', // keji artibody
     // 'https://cre.dp.sina.cn/api/v3/get?cateid=I&cre=tianyi&mod=wedu&merge=3&statics=1&length=20', // jiaoyu artibody
     // 'https://cre.dp.sina.cn/api/v3/get?cateid=l&cre=tianyi&mod=wxz&merge=3&statics=1&length=20', // 星座 artibody
@@ -23,7 +20,6 @@ $urls = array(
     'https://cre.dp.sina.cn/api/v3/get?cateid=2m&cre=tianyi&mod=whealth&merge=3&statics=1&length=20', // jiankang artibody
     // 'https://interface.sina.cn/wap_api/layout_col.d.json?showcid=12635&col=12658&level=1%2C2%2C3', // qinggan  区别
     // 'https://interface.sina.cn/wap_api/layout_col.d.json?showcid=74401&col=72340%2C205144&level=1%2C2%2C3&show_num=30', // nba
-
 );
 
 foreach ($urls as $url) {

@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
+
 require_once dirname(__FILE__) . '/helpers.php';
 
 header("Content-type: text/html; charset=GB2312");
