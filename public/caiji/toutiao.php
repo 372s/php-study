@@ -23,7 +23,10 @@ $content = preg_replace('/article/', 'p', $content);
 $content = preg_replace('/h(1|2|3){1}>/', 'p>', $content);
 
 $content = format_tags($content);
-// $content = img_url_local($content);
+
+// $res = check_img($content);
+// var_dump($res);die;
+$content = img_url_local($content);
 echo $content;die;
 
 // 处理图片

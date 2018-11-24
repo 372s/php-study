@@ -177,7 +177,7 @@ function filter_section($content, $contains = array()) {
     $content = strtr($content, array('div' => 'p'));
 
     // 过滤方法
-    $content = phpQuery::newDocumentHTML($content);
+    $content = \phpQuery::newDocumentHTML($content);
     $content->find('script')->remove();
     $content->find('video')->remove();
 
@@ -281,7 +281,7 @@ function simpleImg($content) {
  */
 function check_img($content) {
     // 检查是否有图片
-    $content = phpQuery::newDocumentHTML($content);
+    $content = \phpQuery::newDocumentHTML($content);
     // $content = $content->find('img')->remove();
     $res = $content->find('img');
     $data = $res->elements;
@@ -333,7 +333,7 @@ function format_tags($content) {
         "原文链接", "作者", "author",
         "搜狐知道", "新浪女性",
     );
-    $content = phpQuery::newDocumentHTML($content);
+    $content = \phpQuery::newDocumentHTML($content);
     foreach ($patterns as $p) {
         $content->find('p:contains("' . $p . '")')->remove();
     }
