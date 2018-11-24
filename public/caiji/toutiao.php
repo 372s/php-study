@@ -4,8 +4,6 @@
  */
 require_once dirname(__FILE__) . '/helpers.php';
 
-
-// echo $content . "<br>";
 class test {
     public function fun($matches) {
         // 通常: $matches[0]是完成的匹配
