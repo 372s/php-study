@@ -178,38 +178,20 @@ function filter_section($content, $contains = array()) {
 
     // 过滤方法
     $content = \phpQuery::newDocumentHTML($content);
+
+    $content->find('p[id="article-bottom"]')->remove();
     $content->find('script')->remove();
     $content->find('video')->remove();
 
-    $content->find('p[id="article-bottom"]')->remove();
-
     $patterns = array(
-        "转载",
-        "不得转载",
-        "编辑",
-        "责任编辑",
-        "公众号",
-        "一点号",
-        "微信号",
-        "蓝字",
-        "头条号",
-        "电话",
-        "关注我们",
-        "原文链接",
-        "本文",
-        "原文链接",
-        "微信平台",
-        "来源",
-        "作者",
+        "转载", "不得转载",
+        "编辑", "责任编辑",
+        "公众号", "一点号", "微信号", "蓝字", "头条号", "微信平台",
+        "原文链接", "本文", "来源", "作者", "本文来源",
         "搜狐知道",
-        "关注我",
-        "加威信",
-        "加微心",
-        "本文来源",
-        "新浪女性",
-        "心理公开课",
-        'qq',
-        'QQ',
+        "关注我", "加威信", "加微心", "关注我们",
+        "新浪女性", "心理公开课",
+        "电话", 'qq', 'QQ',
     );
     $patterns = array_merge($patterns, $contains);
     foreach ($patterns as $pa) {
