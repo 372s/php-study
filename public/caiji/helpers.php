@@ -1,9 +1,15 @@
 <?php
-
 require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
+
 // header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
 
+
+/**
+ * 处理URL
+ * @param string $url
+ * @return string
+ */
 function setHttp($url) {
     if (strpos($url, 'http') === false) {
         $url = 'http://'.$url;
@@ -11,6 +17,12 @@ function setHttp($url) {
     return $url;
 }
 
+/**
+ * 检查关键字
+ * @param string $str
+ * @param array $words
+ * @return bool
+ */
 function has_keyword($str, $words) {
     if (is_string($words)) {
         if (mb_stripos($str, $words) !== false ) {
@@ -25,10 +37,13 @@ function has_keyword($str, $words) {
     }
 }
 
-
-function create_img_array ($content) {
+/**
+ * 获取文章中三张以内图片
+ * @param string $content
+ * @return array
+ */
+function img_array ($content) {
     $arrimg = array();
-
     $doc = new DOMDocument();
     @$doc->loadHTML($content);
     $xpath = new DOMXPath($doc);
@@ -38,7 +53,6 @@ function create_img_array ($content) {
     if (!empty($result)) {
         $img_num = 0;
         foreach ($result as $value) {
-            $img_num ++;
             if ($img_num >= 3) {
                 break;
             }
@@ -47,13 +61,19 @@ function create_img_array ($content) {
             if ($imgsrc) {
                 array_push($arrimg, $imgsrc);
             }
+            $img_num ++;
         }
-
-        // echo $img_num;
     }
 
     return $arrimg;
 }
+
+/**
+ * 生成的图片存为本地
+ * @param string $content
+ * @param string $flag
+ * @return string
+ */
 function img_url_local($content, $flag = '')
 {
     $doc = new DOMDocument('1.0', 'utf-8');
@@ -88,6 +108,13 @@ function img_url_local($content, $flag = '')
     return $content;
 }
 
+
+/**
+ * 生成图片
+ * @param string $img_src
+ * @param array $img_path
+ * @return string
+ */
 function create_img($img_src, $img_path)
 {
 
@@ -139,29 +166,22 @@ function create_img($img_src, $img_path)
 
 }
 
-// 过滤段落
+/**
+ * 过滤段落
+ * @param string $content
+ * @param array $contains 要过滤的文字
+ * @return string
+ */
 function filter_section($content, $contains = array()) {
 
     $content = strtr($content, array('div' => 'p'));
-    // $content->find('div[id="article-bottom"]')->remove();
-    // $content->find('div[class="blk-zcapp clearfix"]')->remove();
-    // $content->find('div[class="blk-wxfollow clearfix"]')->remove();
-    // $content->find('div[id="wrap_bottom_omment"]')->remove();
-    // $content->find('div[id="tab_related"]')->remove();
-    // $content->find('div[class="astro-center"]')->remove();
-    // $content->find('div[class="content-page"]')->remove();
+
     // 过滤方法
     $content = phpQuery::newDocumentHTML($content);
     $content->find('script')->remove();
     $content->find('video')->remove();
 
     $content->find('p[id="article-bottom"]')->remove();
-    $content->find('p[class="blk-zcapp clearfix"]')->remove();
-    $content->find('p[class="blk-wxfollow clearfix"]')->remove();
-    $content->find('p[id="wrap_bottom_omment"]')->remove();
-    $content->find('p[id="tab_related"]')->remove();
-    $content->find('p[class="astro-center"]')->remove();
-    $content->find('p[class="content-page"]')->remove();
 
     $patterns = array(
         "转载",
@@ -194,10 +214,8 @@ function filter_section($content, $contains = array()) {
     $patterns = array_merge($patterns, $contains);
     foreach ($patterns as $pa) {
         $content->find("p:contains('".$pa."')")->remove();
-        $content->find("div:contains('".$pa."')")->remove();
     }
-    $content->find('a')->attr('href', 'javascript:(void);')
-        ->attr('target', '_self');
+    $content->find('a')->attr('href', 'javascript:(void);')->removeAttr('target'); //attr('target', '_self');
     $content = $content->html();
 
     // $replaces = array(
@@ -210,10 +228,12 @@ function filter_section($content, $contains = array()) {
     return trim($content);
 }
 
-function filter_tags () {
 
-}
-
+/**
+ * 获取文章中三张以内图片
+ * @param string $content
+ * @return array
+ */
 function get_images($content) {
     $arrimg = array();
     $litpic = '';
@@ -241,4 +261,82 @@ function get_images($content) {
         echo $img_num;
     }
     return $arrimg;
+}
+
+
+/**
+ * 简化图片属性
+ * @param string $content
+ * @return string
+ */
+function simpleImg($content) {
+    return preg_replace('/<img[\s\S]*?src/', '<img src', $content);
+}
+
+/**
+ * 检查是否有图片
+ * phpQuery
+ * @param string $content
+ * @return string
+ */
+function check_img($content) {
+    // 检查是否有图片
+    $content = phpQuery::newDocumentHTML($content);
+    // $content = $content->find('img')->remove();
+    $res = $content->find('img');
+    $data = $res->elements;
+    // foreach ($data as $row) {
+    //     echo pq($row)->attr('src');
+    // }
+    // print_r($res->elements);die;
+    return empty($data) ? false : true;
+}
+
+
+/**
+ * 格式化标签
+ * phpQuery
+ * @param string $content
+ * @return string
+ */
+function format_tags($content) {
+
+    $content = str_replace("        ", " ", $content);
+    $content = str_replace("<strong>", "", $content);
+    $content = str_replace("</strong>", "", $content);
+
+    $content = str_replace(array("\r", "\n"), '', $content);
+    $content = stripslashes($content);
+    $content = preg_replace('/<div[\s\S]*?style=\"display:none\"[\s\S]*?<\/div>/', '', $content);
+    $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+
+    $content = preg_replace('/href="[\s\S]*?"/', 'href="javascript:(void);"', $content);
+    $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
+
+    // $content = preg_replace('/h(1|2|3){1}>/', 'p>', $content);
+    // $content = str_replace("h1", "p", $content);
+    $content = str_replace('div', 'p', $content);
+    $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
+    $content = preg_replace('/<p>[\s]*?<\/p>/', '', $content);
+    $content = preg_replace('/<p>[\s]*?<br>[\s]*?<\/p>/', '', $content);
+    $content = preg_replace('/(<p>)\s*?<p>/', '$1', $content);
+    $content = preg_replace('/(<\/p>)\s*?<\/p>/', '$1', $content);
+
+    $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
+
+    $patterns = array(
+        "转载", '不得转载',
+        "编辑", '责任编辑',
+        "来源", "本文来源",
+        "公众号", "一点号", "微信号", "头条号", "微信平台", "蓝字",
+        "加威信", "加微心", "电话", "关注我们", "关注我",
+        "原文链接", "作者", "author",
+        "搜狐知道", "新浪女性",
+    );
+    $content = phpQuery::newDocumentHTML($content);
+    foreach ($patterns as $p) {
+        $content->find('p:contains("' . $p . '")')->remove();
+    }
+    $content = trim($content->html());
+    return $content;
 }
