@@ -283,20 +283,22 @@ function check_img($content) {
  */
 function format_tags($content) {
 
-    $content = str_replace("        ", " ", $content);
-    $content = str_replace("<strong>", "", $content);
-    $content = str_replace("</strong>", "", $content);
 
-    $content = str_replace(array("\r", "\n"), '', $content);
+
+    $content = str_replace(array("\r", "\n", "\t"), '', $content);
     $content = stripslashes($content);
+
+    $content = str_replace("        ", " ", $content);
+    $content = str_replace(array("<strong>", "</strong>"), "", $content);
+
     $content = preg_replace('/<div[\s\S]*?style=\"display:none\"[\s\S]*?<\/div>/', '', $content);
     $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
 
     $content = preg_replace('/href="[\s\S]*?"/', 'href="javascript:(void);"', $content);
     $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
 
-    // $content = preg_replace('/h(1|2|3){1}>/', 'p>', $content);
-    // $content = str_replace("h1", "p", $content);
+    $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
+
     $content = str_replace('div', 'p', $content);
     $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
     $content = preg_replace('/<p>[\s]*?<\/p>/', '', $content);
