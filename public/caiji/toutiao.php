@@ -9,7 +9,7 @@ class test {
         // 通常: $matches[0]是完成的匹配
         // $matches[1]是第一个捕获子组的匹配
         // 以此类推
-        var_dump($matches);
+        // var_dump($matches);
 
         if (strpos($matches[0], '深圳商报') !== false) {
             return '';
@@ -38,7 +38,8 @@ $content = "<article><p>深圳有了首个“无工业”街道</p>    <h4 style
 <p>2016年底，南澳办事处在践行“绿水青山就是金山银山”的发展理念中，根据大鹏新区党工委提出的打造“南澳滨海风情小镇”的发展目标，提出清理淘汰落后产业，到2018年底实现全市首个“无工业”特色小镇的目标。</p>
 <p>围绕相关部署和规划，南澳进行摸底，辖区共有15家工业企业均属于低端落后企业，被列为清理淘汰对象。为此，办事处制定了《淘汰落后技术装备及相关工业企业工作方案》，成立了由党工委、办事处主要领导担任组长的工作领导小组，在摸清企业生产的情况下，按照先易后难、分类分批的原则逐步淘汰。截至2018年10月底，关停取缔企业3家，动员搬迁企业10家，帮助两家企业完成转型升级，提前两个月实现“无工业”特色小镇目标。(记者 张妍)</p></article>";
 $content = str_replace(array("<article>", "</article>"), "", $content);
-$content = preg_replace('/(<\/?)h\d{1}([\s\S]*?>)/i', '$1p$2', $content);
+/*$content = preg_replace('/(<\/?)h\d{1}([\s\S]*?>)/i', '$1p$2', $content);*/
+$content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
 echo $content;die;
 // $test = new test();
 // echo $test->filter($content);die;

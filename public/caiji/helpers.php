@@ -252,7 +252,7 @@ function get_images($content) {
  * @return string
  */
 function simpleImg($content) {
-    return preg_replace('/<img[\s\S]*?src/', '<img src', $content);
+    return preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
 }
 
 /**
@@ -314,7 +314,7 @@ function format_tags($content) {
         "来源", "本文来源",
         "公众号", "一点号", "微信号", "头条号", "微信平台", "蓝字",
         "加威信", "加微心", "电话", "关注我们", "关注我",
-        "原文链接", "作者", "author",
+        "原文链接", "作者", "author", "原标题",
         "搜狐知道", "新浪女性",
     );
     $content = \phpQuery::newDocumentHTML($content);
