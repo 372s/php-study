@@ -5,28 +5,30 @@
 require_once dirname(__FILE__) . '/helpers.php';
 
 class test {
-    public function fun($matches) {
-        // 通常: $matches[0]是完成的匹配
-        // $matches[1]是第一个捕获子组的匹配
-        // 以此类推
-        // var_dump($matches);
 
-        if (strpos($matches[0], '深圳商报') !== false) {
-            return '';
-        }
-        else if (strpos($matches[0], '大鹏新区南澳风景优美') !== false) {
-            return '';
-        }
-        else {
-            return $matches[0];
-        }
-    }
+    public function filter($content, $appends = array()) {
+        $pattern = "|<p[\s\S]*?<\/p>|";
+        $content = preg_replace_callback($pattern, function($matches) use($appends) {
+            // 通常: $matches[0]是完成的匹配
+            // $matches[1]是第一个捕获子组的匹配
+            // 以此类推
 
-    public function filter($content) {
-        return preg_replace_callback(
-            "|<p[\s\S]*?<\/p>|",
-            array($this, 'fun'),
-            $content);
+            $patterns = [
+                '/不得转载/', '/责任编辑[:：]?/',  '/作者[:：]?/',
+                '/本文来源[:：]?/', '/原文链接[:：]?/', '/原标题[:：]?/',
+                // '/公众号/', '/一点号/', '/微信号/', '/头条号/', '/微信平台/', '/蓝字/',
+                '/加威信/', '/加微心/', '/关注我们/', '/关注我/',
+                // '/小字/'
+            ];
+            foreach ($patterns as $pattern) {
+                if (preg_match($pattern, $matches[0])) {
+                    return '';
+                }
+            }
+            return trim($matches[0]);
+
+        }, $content);
+        return trim($content);
     }
 }
 
@@ -37,12 +39,18 @@ $content = "<article><p>深圳有了首个“无工业”街道</p>    <h4 style
 <p>据了解，2016年，新区编制完成《大鹏新区全域旅游发展规划》和《大鹏新区旅游业“十三五”发展规划》，两个规划对大鹏半岛地域环境和生态、历史、文化资源进行了详细梳理，确定了“生态永续”目标和“一体两翼”整体布局。“一体两翼”中的“一体”，将以南澳为龙头，依托南澳高度集聚的杨梅坑、东西涌、鹿嘴、地质公园、柚柑湾、浪骑游艇会、七星湾游艇会、海上运动中心等资源，打造以世界级主题公园、国际化会议度假中心、大众型户外运动为特色的顶级核心景区。东西“两翼”的东翼为大鹏所城-较场尾-龙岐山-罗香园，西翼为南澳-下沙。</p>
 <p>2016年底，南澳办事处在践行“绿水青山就是金山银山”的发展理念中，根据大鹏新区党工委提出的打造“南澳滨海风情小镇”的发展目标，提出清理淘汰落后产业，到2018年底实现全市首个“无工业”特色小镇的目标。</p>
 <p>围绕相关部署和规划，南澳进行摸底，辖区共有15家工业企业均属于低端落后企业，被列为清理淘汰对象。为此，办事处制定了《淘汰落后技术装备及相关工业企业工作方案》，成立了由党工委、办事处主要领导担任组长的工作领导小组，在摸清企业生产的情况下，按照先易后难、分类分批的原则逐步淘汰。截至2018年10月底，关停取缔企业3家，动员搬迁企业10家，帮助两家企业完成转型升级，提前两个月实现“无工业”特色小镇目标。(记者 张妍)</p></article>";
+
+//===================================
+$doc = phpQuery::newDocumentHTML($content);
+// $content = $content->html();
+echo $doc;die;
+
+//===================================
 $content = str_replace(array("<article>", "</article>"), "", $content);
-/*$content = preg_replace('/(<\/?)h\d{1}([\s\S]*?>)/i', '$1p$2', $content);*/
 $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
-echo $content;die;
-// $test = new test();
-// echo $test->filter($content);die;
+// echo $content;die;
+$test = new test();
+echo $test->filter($content);die;
 
 
 

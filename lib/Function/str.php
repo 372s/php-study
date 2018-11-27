@@ -237,15 +237,9 @@ if (!function_exists('has_keyword'))
      * @return string
      */
     function has_keyword($str, $words) {
-        if (is_string($words)) {
-            if (mb_stripos($str, $words) !== false ) {
-                return $words;
-            }
-        } else {
-            foreach ($words as $w) {
-                if (mb_stripos($str, $w) !== false ) {
-                    return $w;
-                }
+        foreach ((array) $words as $w) {
+            if (mb_stripos($str, $w) !== false ) {
+                return $w;
             }
         }
     }

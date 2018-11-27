@@ -17,25 +17,6 @@ function setHttp($url) {
     return $url;
 }
 
-/**
- * 检查关键字
- * @param string $str
- * @param array $words
- * @return bool
- */
-function has_keyword($str, $words) {
-    if (is_string($words)) {
-        if (mb_stripos($str, $words) !== false ) {
-            return $words;
-        }
-    } else {
-        foreach ($words as $w) {
-            if (mb_stripos($str, $w) !== false ) {
-                return $w;
-            }
-        }
-    }
-}
 
 /**
  * 获取文章中三张以内图片
@@ -95,7 +76,7 @@ function img_url_local($content, $flag = '')
 
         if ($flag == 'qu') {
             if (strpos($imgsrc, '?') === false) {
-                $himgsrc = $imgsrc . '?imageView2/2/w/750/q/80/format/jpeg';
+                $himgsrc = $himgsrc . '?imageView2/2/w/750/q/80/format/jpeg';
             }
         }
         // echo $himgsrc . "<br>";
@@ -166,50 +147,6 @@ function create_img($img_src, $img_path)
 
 }
 
-/**
- * 过滤段落
- * @param string $content
- * @param array $contains 要过滤的文字
- * @return string
- */
-function filter_section($content, $contains = array()) {
-
-    $content = strtr($content, array('div' => 'p'));
-
-    // 过滤方法
-    $content = \phpQuery::newDocumentHTML($content);
-
-    $content->find('p[id="article-bottom"]')->remove();
-    $content->find('script')->remove();
-    $content->find('video')->remove();
-
-    $patterns = array(
-        "转载", "不得转载",
-        "编辑", "责任编辑",
-        "公众号", "一点号", "微信号", "蓝字", "头条号", "微信平台",
-        "原文链接", "本文", "来源", "作者", "本文来源",
-        "搜狐知道",
-        "关注我", "加威信", "加微心", "关注我们",
-        "新浪女性", "心理公开课",
-        "电话", 'qq', 'QQ',
-    );
-    $patterns = array_merge($patterns, $contains);
-    foreach ($patterns as $pa) {
-        $content->find("p:contains('".$pa."')")->remove();
-    }
-    $content->find('a')->attr('href', 'javascript:(void);')->removeAttr('target'); //attr('target', '_self');
-    $content = $content->html();
-
-    // $replaces = array(
-    //     'strong'
-    // );
-    // $replaces = array_merge($replaces, $replace_white);
-    // $content = str_replace($replaces, 'span', $content);
-    // $content = str_replace('<strong>', '', $content);
-    // $content = str_replace('</strong>', '', $content);
-    return trim($content);
-}
-
 
 /**
  * 获取文章中三张以内图片
@@ -251,7 +188,7 @@ function get_images($content) {
  * @param string $content
  * @return string
  */
-function simpleImg($content) {
+function simplify_img($content) {
     return preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
 }
 
@@ -259,54 +196,40 @@ function simpleImg($content) {
  * 检查是否有图片
  * phpQuery
  * @param string $content
+ * @param boolean $phpquery
  * @return string
  */
-function check_img($content) {
+function check_img($content, $phpquery = false) {
     // 检查是否有图片
-    $content = \phpQuery::newDocumentHTML($content);
-    // $content = $content->find('img')->remove();
-    $res = $content->find('img');
-    $data = $res->elements;
-    // foreach ($data as $row) {
-    //     echo pq($row)->attr('src');
-    // }
-    // print_r($res->elements);die;
-    return empty($data) ? false : true;
+    if ($phpquery) {
+        $content = \phpQuery::newDocumentHTML($content);
+        return $content->find('img')->count() ? true : false;
+        // $res = $content->find('img');
+        // $data = $res->elements;
+        // return empty($data) ? false : true;
+    } else {
+        return preg_match('/<img[\s\S]*?>/', $content) ? true : false;
+    }
 }
 
 
 /**
- * 格式化标签
- * phpQuery
+ * phpQuery 过滤
  * @param string $content
+ * @param array $appends
  * @return string
  */
-function format_tags($content) {
+function phpquery($content, $appends = array()) {
 
+    $content = strtr($content, array('div' => 'p'));
 
+    // 过滤方法
+    $content = \phpQuery::newDocumentHTML($content);
 
-    $content = str_replace(array("\r", "\n", "\t"), '', $content);
-    $content = stripslashes($content);
-
-    $content = str_replace("        ", " ", $content);
-    $content = str_replace(array("<strong>", "</strong>"), "", $content);
-
-    $content = preg_replace('/<div[\s\S]*?style=\"display:none\"[\s\S]*?<\/div>/', '', $content);
-    $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
-
-    $content = preg_replace('/href="[\s\S]*?"/', 'href="javascript:(void);"', $content);
-    $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
-
-    $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
-
-    $content = str_replace('div', 'p', $content);
-    $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
-    $content = preg_replace('/<p>[\s]*?<\/p>/', '', $content);
-    $content = preg_replace('/<p>[\s]*?<br>[\s]*?<\/p>/', '', $content);
-    $content = preg_replace('/(<p>)\s*?<p>/', '$1', $content);
-    $content = preg_replace('/(<\/p>)\s*?<\/p>/', '$1', $content);
-
-    $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
+    $content->find('p[id="article-bottom"]')->remove();
+    $content->find('script')->remove();
+    $content->find('video')->remove();
+    $content->find('a')->attr('href', 'javascript:(void);')->removeAttr('target'); //attr('target', '_self');
 
     $patterns = array(
         "转载", '不得转载',
@@ -317,10 +240,89 @@ function format_tags($content) {
         "原文链接", "作者", "author", "原标题",
         "搜狐知道", "新浪女性",
     );
-    $content = \phpQuery::newDocumentHTML($content);
-    foreach ($patterns as $p) {
-        $content->find('p:contains("' . $p . '")')->remove();
+    $patterns = array_merge($patterns, $appends);
+    foreach ($patterns as $pa) {
+        $content->find("p:contains('".$pa."')")->remove();
     }
-    $content = trim($content->html());
-    return $content;
+
+    $content = $content->html();
+    return trim($content);
+}
+
+
+/**
+ * 查找关键字过滤
+ * phpQuery
+ * @param string $content
+ * @param array $appends 追加
+ * @return string
+ */
+function finder($content, $appends = array()) {
+    $pattern = '/<p[\s\S]*?>([\s\S]*?)<\/p>/';
+    return preg_replace_callback($pattern, function ($matches) use($appends) {
+        // 通常: $matches[0]是完成的匹配
+        // $matches[1]是第一个捕获子组的匹配
+        // 以此类推
+        $patterns = [
+            '/不得转载/', '/责任编辑[:：]?/',  '/作者[:：]?/',
+            '/本文来源[:：]?/', '/原文链接[:：]?/', '/原标题[:：]?/',
+            // '/公众号/', '/一点号/', '/微信号/', '/头条号/', '/微信平台/', '/蓝字/',
+            '/加威信/', '/加微心/', '/关注我们/', '/关注我/',
+        ];
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $matches[1])) {
+                return '';
+            }
+            else if (! trim($matches[1])) {
+                return '';
+            }
+        }
+        return '<p>' .trim($matches[1]) . '</p>';
+    }, $content);
+}
+
+
+/**
+ * 格式化标签
+ * phpQuery
+ * @param string $content
+ * @return string
+ */
+function format($content) {
+    $content = str_replace(array("\r", "\n", "\t"), '', $content);
+    $content = preg_replace('/\s{6,}/', '', $content);
+    $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+    $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
+    $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
+
+    $content = str_replace('div', 'p', $content);
+    $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
+    $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
+    $content = preg_replace('/<p>[\s]*<\/p>/', '', $content);
+    $content = preg_replace('/<p>[\s]*<br>[\s]*<\/p>/', '', $content);
+    $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
+    $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
+
+    $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
+    // $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
+    $content = preg_replace('/<a[\s\S]*?>([\s\S]*?)<\/a>/', '$1', $content);
+    $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
+
+    $content = str_replace(array('<strong>', '</strong>'), '', $content);
+
+    return trim($content);
+}
+
+/**
+ * 检查关键字
+ * @param string $str
+ * @param array|string $words
+ * @return bool
+ */
+function has_keyword($str, $words) {
+    foreach ((array) $words as $w) {
+        if (mb_stripos($str, $w) !== false ) {
+            return $w;
+        }
+    }
 }
