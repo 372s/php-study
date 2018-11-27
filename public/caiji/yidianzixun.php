@@ -5,6 +5,8 @@
 require_once dirname(__FILE__) . '/helpers.php';
 require_once 'ydzx_curl.php';
 
+header("Content-type: text/html; charset=utf-8");
+
 $content = curl_get_content('http://www.yidianzixun.com/home/q/news_list_for_channel?channel_id=best&cstart=0&cend=10&infinite=true&refresh=1&__from__=wap&docids=0KJCWV23%2C0KIh4jyU%2C0KIXYQGS%2CV_01wylP3P%2C0KJGp5WD&_spt=yz~eaodhoy~%3A%3B%3A&appid=web_yidian&_=1540052655146');
 $res = json_decode($content, true);
 // print_r($res);die;
@@ -37,8 +39,14 @@ foreach ($res['result'] as $value) {
     // $content->removeData('');
     $content = $content->html();
     //
-    // $content = format($content);
-    // $content = img_url_local($content);
 
-    echo $content . "<br>";die;
+    $content = format($content);
+
+    $content = preg_replace('/<section[\s\S]*?<\/section>/', '', $content);
+    $content = finder($content);
+    $content = img_url_local($content);
+
+    echo $content . "<br>";
+    ob_flush();
+    flush();
 }
