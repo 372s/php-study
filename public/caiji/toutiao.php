@@ -39,13 +39,21 @@ $content = "<article><p>深圳有了首个“无工业”街道</p>    <h4 style
 <p>据了解，2016年，新区编制完成《大鹏新区全域旅游发展规划》和《大鹏新区旅游业“十三五”发展规划》，两个规划对大鹏半岛地域环境和生态、历史、文化资源进行了详细梳理，确定了“生态永续”目标和“一体两翼”整体布局。“一体两翼”中的“一体”，将以南澳为龙头，依托南澳高度集聚的杨梅坑、东西涌、鹿嘴、地质公园、柚柑湾、浪骑游艇会、七星湾游艇会、海上运动中心等资源，打造以世界级主题公园、国际化会议度假中心、大众型户外运动为特色的顶级核心景区。东西“两翼”的东翼为大鹏所城-较场尾-龙岐山-罗香园，西翼为南澳-下沙。</p>
 <p>2016年底，南澳办事处在践行“绿水青山就是金山银山”的发展理念中，根据大鹏新区党工委提出的打造“南澳滨海风情小镇”的发展目标，提出清理淘汰落后产业，到2018年底实现全市首个“无工业”特色小镇的目标。</p>
 <p>围绕相关部署和规划，南澳进行摸底，辖区共有15家工业企业均属于低端落后企业，被列为清理淘汰对象。为此，办事处制定了《淘汰落后技术装备及相关工业企业工作方案》，成立了由党工委、办事处主要领导担任组长的工作领导小组，在摸清企业生产的情况下，按照先易后难、分类分批的原则逐步淘汰。截至2018年10月底，关停取缔企业3家，动员搬迁企业10家，帮助两家企业完成转型升级，提前两个月实现“无工业”特色小镇目标。(记者 张妍)</p></article>";
+$content .= "<article>\n      <p style=\"text-align: center;\">图片来源：视觉中国</p>\r\n<p style=\"text-align: left;\">今年5月，中建投信托前总经理刘屹因个人原因辞职，此后一直暂由副总经理谭硕代为履职。谭硕，现年46岁，25年金融从业经历，博士研究生学历，自2014年12月起担任中建投信托副总经理；曾任职于四川省涪陵市人民政府办公室（中国建设银行下派挂职锻炼）、中国建设银行四川省分行、四川美益投资有限公司。</p>\r\n<p>据中建投信托官网介绍，中建投信托前身是浙江省国际信托投资公司（以下简称浙江国投），始创于1979年，总部位于杭州，是国内最早经营信托投资业务的公司之一。2007年4月，中国建银投资有限责任公司（以下简称中国建投）收购浙江国投的全部股权；同年11月，更名为中投信托有限责任公司。2013年6月，公司正式更名为中建投信托有限责任公司。</p>\r\n<p>中建投信托注册资本金为50亿元，中国建投与建投控股有限责任公司分别持有中建投信托90.05%与9.95%股权。截至2017年末，中建投信托管理的信托资产规模总计为1702.46亿元，其中房地产业务占比最高，占信托资产规模的44.39%；分布在基础产业、实业、金融机构领域的信托资产较为均衡，占比均在12.5%上下。2017年末，中建投信托固有资产余额为88.44亿元。</p>\n      <img alt_src=\"http://static.nbd.com.cn/images/nbd_v4/ydrss640.jpg\"/>\n      <div style=\"display:none\">\n\n  <!--51la-->\n<!--  <script language=\"javascript\" type=\"text/javascript\" src=\"//js.users.51.la/19198657.js\"></script>\n  <noscript><a href=\"//www.51.la/?19198657\" target=\"_blank\"><img alt=\"我要啦免费统计\" src=\"//img.users.51.la/19198657.asp\" style=\"border:none\" /></a></noscript>\n-->\n\n  <!-- youmeng statistics -->\n<!--\n  <script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1260046885'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/z_stat.php%3Fid%3D1260046885' type='text/javascript'%3E%3C/script%3E\"));</script>\n  <script> $(\"#cnzz_stat_icon_1260046885\").hide(); </script>\n-->\n\n  <!--baidu-->\n  <script type=\"text/javascript\">var _bdhmProtocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cscript src='\" + _bdhmProtocol + \"hm.baidu.com/h.js%3Fde6470f7123b10c2a7885a20733e9cb1' type='text/javascript'%3E%3C/script%3E\"));</script>\n\n  <!--google-->\n<!--\n  <script>\n    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n  ga('create', 'UA-100046212-1', 'auto');\n  ga('send', 'pageview');\n  </script>\n-->\n\n</div>\n\n    </article>\n    ";
 
-//===================================
+
+preg_match_all('/<([a-z]*).*?<\/\1>/is', $content, $matches);
+print_r($matches);die;
+$content = strip_tags($content, '<br><div><img><p><span><blockquote><sup><sub>');
+echo $content;die;
+
+
+//===================================//
 $doc = phpQuery::newDocumentHTML($content);
 // $content = $content->html();
 echo $doc;die;
 
-//===================================
+//===================================//
 $content = str_replace(array("<article>", "</article>"), "", $content);
 $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
 // echo $content;die;

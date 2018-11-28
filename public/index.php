@@ -7,45 +7,8 @@ $spl_class = spl_classes();
 // $str1 = 'hello1';
 // $str2 = 'hello1';
 // echo strcasecmp ($str1, $str2) . "<br>";
-//
-//
+
 // echo date('Y-m-d', '1542738806');die;
-
-
-
-$data = file_get_contents('./25558-2018-11-14.tag_(2)');
-
-preg_match_all('/msg= \'([\s\S]*?)\'./', $data, $matches);
-
-print_r($matches);die;
-
-
-
-
-
-
-
-
-
-$fp = fopen("25558-2018-11-14.tag_(2)", "r") or die("can't read stdin");
-while (!feof($fp)) {
-    $line = fgets($fp);
-    $line = preg_replace_callback(
-        '/msg= \'([\s\S]*?)\'./',
-        function ($matches) {
-            return $matches[1] . "\n";
-        },
-        $line
-    );
-    echo $line;
-}
-fclose($fp);
-
-
-
-
-
-
 
 // 将文本中的年份增加一年.
 $text = "April fools day is 04/01/2002\n";

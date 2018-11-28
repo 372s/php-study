@@ -294,6 +294,7 @@ function format($content) {
     $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
     $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
     $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
+    $content = preg_replace('/<embed[\s\S]*?<\/embed>/', '', $content); // 插件标签
 
     $content = str_replace('div', 'p', $content);
     $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
@@ -308,7 +309,8 @@ function format($content) {
     $content = preg_replace('/<a[\s\S]*?>([\s\S]*?)<\/a>/', '$1', $content);
     $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
 
-    $content = str_replace(array('<strong>', '</strong>'), '', $content);
+    $content = str_replace('        ', ' ', $content);
+    $content = str_replace(array('<strong>', '</strong>', '<html>','<body>','</html>','</body>'), '', $content);
 
     return trim($content);
 }

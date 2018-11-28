@@ -7,29 +7,31 @@
 $a = '{"apiUser":"postmaster@medlive-daily.sendcloud.org","apiUserId":66328,"id":"1542124800707_25558_11214_5831.sc-10_9_4_48-inbound","labelId":0,"messageId":"1542124800707_25558_11214_5831.sc-10_9_4_48-inbound","netease":false,"rcptToList":["ss72@163.com"],"status":18,"taskId":"","timestamp":1542124800717,"userHeaders":{},"userId":25558}';
 // print_r(json_decode($a, true));die;
 
+$st = time();
 set_time_limit(0);
-$fp = fopen("25558-2018-11-14.tag_(2)", "r");
+$fp = fopen(__DIR__."/uploads/25558-2018-11-14.tag", "r");
 $i = 0;
-echo filesize("25558-2018-11-14.tag_(2)");die;
-while (!feof($fp) && $i < 100) {
+// echo filesize("25558-2018-11-14.tag_(2)");die;
+while (!feof($fp) && $i < 10000) {
     $i ++;
     $line = fgets($fp);
-    // $line = preg_replace_callback(
-    //     '/msg([\s\S]*?)process1/',
-    //     function ($matches) {
-    //         return $matches[1] . "\n";
-    //     },
-    //     $line
-    // );
 
-    $line = preg_replace('/process1[\s\S]*?msg=/', '', $line);
-    $line = str_replace('\'.', '\'', $line);
-    $line = str_replace(', publish or delete', '', $line);
-    $line = str_replace('\'{', '{', $line);
-    $line = str_replace('}\'', '}', $line);
+    if (preg_match('/[\s\S]*?process1[\s\S]*?msg=([\s\S]*)/', $line, $matches)) {
+        // print_r($matches);
+        echo $matches[1] . "<br>";
+    }
+
+    // $line = preg_replace('/process1[\s\S]*?msg=/', '', $line);
+    // $line = str_replace('\'.', '\'', $line);
+    // $line = str_replace(', publish or delete', '', $line);
+    // $line = str_replace('\'{', '{', $line);
+    // $line = str_replace('}\'', '}', $line);
     // $line = trim($line, '\'');
     // echo $line;die;
-    print_r(json_decode($line, true));
-    // echo $line . "<br>";die;
+    // print_r(json_decode($line, true));
+    // echo $line . "<br>";
+    ob_flush();
+    flush();
 }
 fclose($fp);
+echo time()-$st;
