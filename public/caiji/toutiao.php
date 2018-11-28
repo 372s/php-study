@@ -32,34 +32,59 @@ class test {
     }
 }
 
-$content = "<article><p>深圳有了首个“无工业”街道</p>    <h4 style=\"color: red;\">     <span class=\"time  br\">         12:28:44        </span>     <span class=\"origin\">深圳商报</span>       <span class=\"font\">小字</span>     </h4>    <p>   </p>
+$content = "<div>
+<table>
+    <tr>
+        <td>微信号</td>
+    </tr>
+</table>
+<div style=\"display:none;\">不用显示</div>
+<p>深圳有了首个“无工业”街道</p>    <h4 style=\"color: red;\">     <span class=\"time  br\">         12:28:44        </span>     <span class=\"origin\">深圳商报</span>       <span class=\"font\">小字</span>     </h4>    <p>   </p>
 <p><img src=\"http://tt.lkeji.com/uploads/181124/db4ac828f611845bc86e65a1561e4d8a2.jpg\"></p>
 <p>大鹏新区南澳风景优美。 南澳办事处 供图</p>
-<p>记者11月23日从深圳大鹏新区南澳办事处获悉，随着西涌社区高雅酒店用品有限公司停产搬离，该办事处提前两个月实现目标，正式成为全市首个“无工业”街道。</p>
+<p>走在花园路的街道上，新一代的年轻人 <a href=\"\">很难想象</a> 当初这里曾经有着城中村的模样。</p>
+<p>记者11月23日从深圳<a href=\"\">大鹏新区</a>南澳办事处获悉，随着西涌社区高雅酒店用品有限公司停产搬离，该办事处提前两个月实现目标，正式成为全市首个“无工业”街道。</p>
 <p>据了解，2016年，新区编制完成《大鹏新区全域旅游发展规划》和《大鹏新区旅游业“十三五”发展规划》，两个规划对大鹏半岛地域环境和生态、历史、文化资源进行了详细梳理，确定了“生态永续”目标和“一体两翼”整体布局。“一体两翼”中的“一体”，将以南澳为龙头，依托南澳高度集聚的杨梅坑、东西涌、鹿嘴、地质公园、柚柑湾、浪骑游艇会、七星湾游艇会、海上运动中心等资源，打造以世界级主题公园、国际化会议度假中心、大众型户外运动为特色的顶级核心景区。东西“两翼”的东翼为大鹏所城-较场尾-龙岐山-罗香园，西翼为南澳-下沙。</p>
 <p>2016年底，南澳办事处在践行“绿水青山就是金山银山”的发展理念中，根据大鹏新区党工委提出的打造“南澳滨海风情小镇”的发展目标，提出清理淘汰落后产业，到2018年底实现全市首个“无工业”特色小镇的目标。</p>
-<p>围绕相关部署和规划，南澳进行摸底，辖区共有15家工业企业均属于低端落后企业，被列为清理淘汰对象。为此，办事处制定了《淘汰落后技术装备及相关工业企业工作方案》，成立了由党工委、办事处主要领导担任组长的工作领导小组，在摸清企业生产的情况下，按照先易后难、分类分批的原则逐步淘汰。截至2018年10月底，关停取缔企业3家，动员搬迁企业10家，帮助两家企业完成转型升级，提前两个月实现“无工业”特色小镇目标。(记者 张妍)</p></article>";
-$content .= "<article>\n      <p style=\"text-align: center;\">图片来源：视觉中国</p>\r\n<p style=\"text-align: left;\">今年5月，中建投信托前总经理刘屹因个人原因辞职，此后一直暂由副总经理谭硕代为履职。谭硕，现年46岁，25年金融从业经历，博士研究生学历，自2014年12月起担任中建投信托副总经理；曾任职于四川省涪陵市人民政府办公室（中国建设银行下派挂职锻炼）、中国建设银行四川省分行、四川美益投资有限公司。</p>\r\n<p>据中建投信托官网介绍，中建投信托前身是浙江省国际信托投资公司（以下简称浙江国投），始创于1979年，总部位于杭州，是国内最早经营信托投资业务的公司之一。2007年4月，中国建银投资有限责任公司（以下简称中国建投）收购浙江国投的全部股权；同年11月，更名为中投信托有限责任公司。2013年6月，公司正式更名为中建投信托有限责任公司。</p>\r\n<p>中建投信托注册资本金为50亿元，中国建投与建投控股有限责任公司分别持有中建投信托90.05%与9.95%股权。截至2017年末，中建投信托管理的信托资产规模总计为1702.46亿元，其中房地产业务占比最高，占信托资产规模的44.39%；分布在基础产业、实业、金融机构领域的信托资产较为均衡，占比均在12.5%上下。2017年末，中建投信托固有资产余额为88.44亿元。</p>\n      <img alt_src=\"http://static.nbd.com.cn/images/nbd_v4/ydrss640.jpg\"/>\n      <div style=\"display:none\">\n\n  <!--51la-->\n<!--  <script language=\"javascript\" type=\"text/javascript\" src=\"//js.users.51.la/19198657.js\"></script>\n  <noscript><a href=\"//www.51.la/?19198657\" target=\"_blank\"><img alt=\"我要啦免费统计\" src=\"//img.users.51.la/19198657.asp\" style=\"border:none\" /></a></noscript>\n-->\n\n  <!-- youmeng statistics -->\n<!--\n  <script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1260046885'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/z_stat.php%3Fid%3D1260046885' type='text/javascript'%3E%3C/script%3E\"));</script>\n  <script> $(\"#cnzz_stat_icon_1260046885\").hide(); </script>\n-->\n\n  <!--baidu-->\n  <script type=\"text/javascript\">var _bdhmProtocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cscript src='\" + _bdhmProtocol + \"hm.baidu.com/h.js%3Fde6470f7123b10c2a7885a20733e9cb1' type='text/javascript'%3E%3C/script%3E\"));</script>\n\n  <!--google-->\n<!--\n  <script>\n    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n  ga('create', 'UA-100046212-1', 'auto');\n  ga('send', 'pageview');\n  </script>\n-->\n\n</div>\n\n    </article>\n    ";
+<p>围绕相关部署和规划，南澳进行摸底，辖区共有15家工业企业均属于低端落后企业，被列为清理淘汰对象。为此，办事处制定了《淘汰落后技术装备及相关工业企业工作方案》，成立了由党工委、办事处主要领导担任组长的工作领导小组，在摸清企业生产的情况下，按照先易后难、分类分批的原则逐步淘汰。截至2018年10月底，关停取缔企业3家，动员搬迁企业10家，帮助两家企业完成转型升级，提前两个月实现“无工业”特色小镇目标。(记者 张妍)</p></div>";
+$content .= "<div>\n      <p style=\"text-align: center;\">图片来源：视觉中国</p>\r\n<p style=\"text-align: left;\">今年5月，中建投信托前总经理刘屹因个人原因辞职，此后一直暂由副总经理谭硕代为履职。谭硕，现年46岁，25年金融从业经历，博士研究生学历，自2014年12月起担任中建投信托副总经理；曾任职于四川省涪陵市人民政府办公室（中国建设银行下派挂职锻炼）、中国建设银行四川省分行、四川美益投资有限公司。</p>\r\n<p>据中建投信托官网介绍，中建投信托前身是浙江省国际信托投资公司（以下简称浙江国投），始创于1979年，总部位于杭州，是国内最早经营信托投资业务的公司之一。2007年4月，中国建银投资有限责任公司（以下简称中国建投）收购浙江国投的全部股权；同年11月，更名为中投信托有限责任公司。2013年6月，公司正式更名为中建投信托有限责任公司。</p>\r\n<p>中建投信托注册资本金为50亿元，中国建投与建投控股有限责任公司分别持有中建投信托90.05%与9.95%股权。截至2017年末，中建投信托管理的信托资产规模总计为1702.46亿元，其中房地产业务占比最高，占信托资产规模的44.39%；分布在基础产业、实业、金融机构领域的信托资产较为均衡，占比均在12.5%上下。2017年末，中建投信托固有资产余额为88.44亿元。</p>\n      <img alt_src=\"http://static.nbd.com.cn/images/nbd_v4/ydrss640.jpg\"/>\n      <div style=\"display:none\">\n\n  <!--51la-->\n<!--  <script language=\"javascript\" type=\"text/javascript\" src=\"//js.users.51.la/19198657.js\"></script>\n  <noscript><a href=\"//www.51.la/?19198657\" target=\"_blank\"><img alt=\"我要啦免费统计\" src=\"//img.users.51.la/19198657.asp\" style=\"border:none\" /></a></noscript>\n-->\n\n  <!-- youmeng statistics -->\n<!--\n  <script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1260046885'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/z_stat.php%3Fid%3D1260046885' type='text/javascript'%3E%3C/script%3E\"));</script>\n  <script> $(\"#cnzz_stat_icon_1260046885\").hide(); </script>\n-->\n\n  <!--baidu-->\n  <script type=\"text/javascript\">var _bdhmProtocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cscript src='\" + _bdhmProtocol + \"hm.baidu.com/h.js%3Fde6470f7123b10c2a7885a20733e9cb1' type='text/javascript'%3E%3C/script%3E\"));</script>\n\n  <!--google-->\n<!--\n  <script>\n    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){\n      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');\n  ga('create', 'UA-100046212-1', 'auto');\n  ga('send', 'pageview');\n  </script>\n-->\n\n</div>\n\n    </div>\n    ";
+$content .= "<div><p class=\"ql-align-justify\">人的性格因素是丰富的，感情色彩也是丰富的，每个人都积累了不少情感感受，内心逐步成熟和稳定，那么在感情方面你最近会有什么好事发生呢？来看下面的爱情测试，凭第一直觉选一个选项，相信会对你有启发的。</p><p class=\"ql-align-justify\">A、报喜鸟</p><div class=\"pgc-img\"><img src=\"http://p1.pstatp.com/large/pgc-image/a95b30082daf4ffea4001b9277f5885e\" img_width=\"600\" img_height=\"457\" alt=\"选择一个小鸟刺绣，测测感情方面你会遇到什么好事\" inline=\"0\"><p class=\"pgc-img-caption\"></p></div><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">B、报喜鸟</p><div class=\"pgc-img\"><img src=\"http://p99.pstatp.com/large/pgc-image/81f005986f4a4b37b052dc7336588a6a\" img_width=\"600\" img_height=\"555\" alt=\"选择一个小鸟刺绣，测测感情方面你会遇到什么好事\" inline=\"0\"><p class=\"pgc-img-caption\"></p></div><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">C、报喜鸟</p><div class=\"pgc-img\"><img src=\"http://p9.pstatp.com/large/pgc-image/d244fb1515384de18fba802a93917d0a\" img_width=\"600\" img_height=\"568\" alt=\"选择一个小鸟刺绣，测测感情方面你会遇到什么好事\" inline=\"0\"><p class=\"pgc-img-caption\"></p></div><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">D、报喜鸟</p><div class=\"pgc-img\"><img src=\"http://p99.pstatp.com/large/pgc-image/d85f31b96f3640298e734c37a0ba3d66\" img_width=\"600\" img_height=\"633\" alt=\"选择一个小鸟刺绣，测测感情方面你会遇到什么好事\" inline=\"0\"><p class=\"pgc-img-caption\"></p></div><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\"><br></p><hr><p class=\"ql-align-justify\"><br></p><p class=\"ql-align-justify\">A、以前拒绝你的人突然回头。你较之前比整个人有了较多的提高，内心成熟稳定了许多，去掉了浮夸，不骄不躁，回归了生活的宁静和自然，更加有魅力了，之前表白过的感情其实已经放下，更加清晰自己应该与生么样的人在一起，不妨再重新审视之前的这个人，是否还能唤起当时的热情，给不给机会就看你自己拿捏了。</p><p class=\"ql-align-justify\">B、喜欢的人突然献殷勤。你对待感情的态度是真诚的，你的内心是善良温柔的，由于不确定对方对自己的感觉，或者是担心表白后反而使彼此的距离越来越远，而一直只是默默的关注着喜欢的人，最近你的真诚守候会得到回报，你要做好准备，对方与你的活动有意识的增多了，你可以大胆的了解对方，喜欢很有可能上升到爱情的层面上来。</p><p class=\"ql-align-justify\">C、你会遇到年纪比你长一点人跟你告白。爱情无国界更没有年龄之分，完全在于彼此的感觉，你可能也想找一个比自己成熟，懂得包容和呵护自己的人，而且能够在自己迷茫的时候鼓励和引导自己前行，值得依靠也是情感的寄托，最近对你有好感的魅力异性很有可能对你表达爱意，希望与你有更深入的了解，你可以把握这次机会。</p><p class=\"ql-align-justify\">D、你会遇到让自己心动的人。在情感方面你一直都是矜持的，也或者自我保护意识很强，不会轻易喜欢上一个人，只想等到那个完全适合的人出现，最近你的缘分就会降临，你很有可能为某个人而心动，打破了自己常规的举动，情不自禁的被吸引，不要犹豫，这是来之不易的感觉，积极采取行动，不要错失良机。</p></div>";
 
 
-preg_match_all('/<([a-z]*).*?<\/\1>/is', $content, $matches);
-print_r($matches);die;
-$content = strip_tags($content, '<br><div><img><p><span><blockquote><sup><sub>');
+$content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+$content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
+$content = preg_replace('/<(div)[^<>]*?display:\s*none[^<>]*?>[\s\S]*?<\/\1>/i', '', $content);
+$content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
+$content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(\/?>)/', '$1 $2$3', $content);
+$content = preg_replace('/<a[^<>]*?>([\s\S]*?)<\/a>/is', '$1', $content);
+$content = preg_replace('/\s??(style|class|id)="[^"]*?"/', '', $content);
+$content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);
+$content = img_url_local($content);
+
+$content = preg_replace_callback(
+    '/<p[\s\S]*?>([\s\S]*?)<\/p>/i',
+    function ($matches) {
+        $patterns = [
+            '/不得转载/', '/责任编辑[:：]?/',  '/作者[:：]?/',
+            '/本文来源[:：]?/', '/原文链接[:：]?/', '/原标题[:：]?/',
+            '/公众号/', '/一点号/', '/微信号/', '/头条号/', '/微信平台/', '/蓝字/',
+            '/加威信/', '/加微心/', '/关注我们/', '/关注我/', '/欢迎关注/',
+        ];
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $matches[1])) {
+                return '';
+            }
+            else if (! trim($matches[1])) {
+                return '';
+            }
+        }
+        return "<p>$matches[1]</p>";
+    },
+    $content);
 echo $content;die;
 
-
-//===================================//
-$doc = phpQuery::newDocumentHTML($content);
-// $content = $content->html();
-echo $doc;die;
-
-//===================================//
-$content = str_replace(array("<article>", "</article>"), "", $content);
-$content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
-// echo $content;die;
-$test = new test();
-echo $test->filter($content);die;
-
+$content = strip_tags($content, '<br><div><img><p><span><blockquote><sup><sub>');
+echo $content;die;
 
 
 // https://www.toutiao.com/a6627260380848587268/

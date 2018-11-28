@@ -79,6 +79,11 @@ function img_url_local($content, $flag = '')
                 $himgsrc = $himgsrc . '?imageView2/2/w/750/q/80/format/jpeg';
             }
         }
+        if ($flag == 'wangyi') {
+            if (strpos($imgsrc, '?') === false) {
+                $himgsrc = $himgsrc . '?imageView&thumbnail=720y540&quality=85&type=jpg&interlace=1&enlarge=1';
+            }
+        }
         // echo $himgsrc . "<br>";
 
         $lj = dirname(__DIR__) . '/uploads/'  . date('ymd') . '/';
@@ -220,31 +225,20 @@ function check_img($content, $phpquery = false) {
  * @return string
  */
 function phpquery($content, $appends = array()) {
-
-    $content = strtr($content, array('div' => 'p'));
-
     // 过滤方法
     $content = \phpQuery::newDocumentHTML($content);
-
-    $content->find('p[id="article-bottom"]')->remove();
-    $content->find('script')->remove();
-    $content->find('video')->remove();
-    $content->find('a')->attr('href', 'javascript:(void);')->removeAttr('target'); //attr('target', '_self');
-
     $patterns = array(
-        "转载", '不得转载',
-        "编辑", '责任编辑',
-        "来源", "本文来源",
+        "转载：", '不得转载','责任编辑：',
+        "来源：", "本文来源：",
         "公众号", "一点号", "微信号", "头条号", "微信平台", "蓝字",
-        "加威信", "加微心", "电话", "关注我们", "关注我",
-        "原文链接", "作者", "author", "原标题",
+        "加威信", "加微心", "关注我们", "关注我",
+        "原文链接", "作者：", "原标题：", '资料图：',
         "搜狐知道", "新浪女性",
     );
     $patterns = array_merge($patterns, $appends);
     foreach ($patterns as $pa) {
         $content->find("p:contains('".$pa."')")->remove();
     }
-
     $content = $content->html();
     return trim($content);
 }
@@ -290,27 +284,30 @@ function finder($content, $appends = array()) {
  */
 function format($content) {
     $content = str_replace(array("\r", "\n", "\t"), '', $content);
-    $content = preg_replace('/\s{6,}/', '', $content);
     $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+    $content = str_replace(array('<strong>', '</strong>', '<html>','<body>','</html>','</body>'), '', $content);
     $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
     $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
     $content = preg_replace('/<embed[\s\S]*?<\/embed>/', '', $content); // 插件标签
 
-    $content = str_replace('div', 'p', $content);
-    $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
-    $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
-    $content = preg_replace('/<p>[\s]*<\/p>/', '', $content);
-    $content = preg_replace('/<p>[\s]*<br>[\s]*<\/p>/', '', $content);
-    $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
-    $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
+    $content = preg_replace('/<(div)[^<>]*?display:\s*none[^<>]*?>[\s\S]*?<\/\1>/i', '', $content);
+    $content = preg_replace('/\s??(style|class|id)="[^"]*?"/', '', $content);
+    $content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);
+
+
+
+    // $content = str_replace('div', 'p', $content);
+    // $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
+    // $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
+    // $content = preg_replace('/<p>[\s]*<\/p>/', '', $content);
+    // $content = preg_replace('/<p>[\s]*<br>[\s]*<\/p>/', '', $content);
+    // $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
+    // $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
 
     $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
     // $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
-    $content = preg_replace('/<a[\s\S]*?>([\s\S]*?)<\/a>/', '$1', $content);
-    $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(>)/', '$1 $2$3', $content);
-
-    $content = str_replace('        ', ' ', $content);
-    $content = str_replace(array('<strong>', '</strong>', '<html>','<body>','</html>','</body>'), '', $content);
+    $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(\/?>)/', '$1 $2$3', $content);
+    $content = preg_replace('/<a[^<>]*?>([\s\S]*?)<\/a>/is', '$1', $content);
 
     return trim($content);
 }

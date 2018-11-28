@@ -15,13 +15,13 @@ class Filter
         $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
         $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
 
-        $content = str_replace('div', 'p', $content);
-        $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
-        $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
-        $content = preg_replace('/<p>[\s]*<\/p>/', '', $content);
-        $content = preg_replace('/<p>[\s]*<br>[\s]*<\/p>/', '', $content);
-        $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
-        $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
+        // $content = str_replace('div', 'p', $content);
+        // $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
+        // $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
+        // $content = preg_replace('/<p>[\s]*<\/p>/', '', $content);
+        // $content = preg_replace('/<p>[\s]*<br>[\s]*<\/p>/', '', $content);
+        // $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
+        // $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
 
         $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
         // $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);

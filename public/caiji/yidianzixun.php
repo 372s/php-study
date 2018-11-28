@@ -46,7 +46,7 @@ foreach ($res['result'] as $value) {
     $content = finder($content);
     $content = img_url_local($content);
 
-    echo $content . "<br>";
+    echo $content . "<br>";die;
     ob_flush();
     flush();
 }

@@ -10,8 +10,6 @@ require_once dirname(__FILE__) . '/helpers.php';
 header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
 
-// echo file_get_contents('http://news.sina.com.cn/c/2018-11-27/doc-ihmutuec4144780.shtml?cre=tianyi&mod=wnews&loc=1&r=25&doct=0&rfunc=100&tj=none&tr=25');die;
-// class="article"
 $arr = array(
     'https://cre.dp.sina.cn/api/v3/get?cateid=1o&cre=tianyi&mod=wnews&merge=3&statics=1&length=20', //xinwen
     'https://cre.dp.sina.cn/api/v3/get?cateid=2L&cre=tianyi&mod=wspt&merge=3&statics=1', // tiyu
@@ -32,6 +30,7 @@ foreach ($arr as $u) {
     // print_r($data);die;
 
     foreach ($data['data'] as $row ) {
+        // print_r($row);
         if (!empty($row['docid'])) {
             $id = 'sina:'. $row['docid'];
         } else if (!empty($row['f_docid'])) {
@@ -48,33 +47,45 @@ foreach ($arr as $u) {
             continue;
         }
         echo $id . "<br>";
+
+        $title = $row['title'];
+
         $url = $row['url'];
         echo $url . "<br>";
-        $doc = file_get_contents($url);
 
-        // $doc = phpQuery::newDocumentFileHTML($url);
-        // $content = $doc->find("div[class='article']")->html();
-        // echo $row['url'] . "<br>";
-        // echo $content;die;
+        $doc = \phpQuery::newDocumentFileHTML($url);
+        $content = $doc->find("div[class='article']");
 
-        // preg_match('#class=\"article\"[\s\S]*?id=("|\')article-bottom("|\')#', $doc, $matches);
-        // print_r($matches);die;
-        // $content = $matches[0];
-        // $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
-        // $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
-        // echo $content;die;
+        if (! trim($content->html())) {
+            $content = $doc->find('div[id="artibody"]');
+        }
 
-        if (preg_match('/class=\"article\"[\s\S]*?id=("|\')article-bottom("|\')/i', $doc, $matches)) {
-            $content = $matches[0];
-            $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
-            $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
-            $content = preg_replace('/\s{6,}/', '', $content);
-            echo '<div ' . $content . '>';
-            echo  "<br>";die;
-        } else {
-            echo '======== continue ========='."<br>";
+        $content->find('.wap_special')->remove();
+        $content->find('.content-page')->remove();
+        $content->find('.astro-center')->remove();
+        $content->find('.show_statement')->remove();
+        $content = $content->html();
+        $content = format($content);
+        $content = phpquery($content, array('特别声明：', '独家声明：', '敬请关注', '声明：', '来源：'));
+        if (mb_strlen(strip_tags($content)) < 100) {
             continue;
         }
+        echo $content . "<br>";
+        die;
+
+        // $doc = file_get_contents($url);
+        // if (preg_match('/class="article"[\s\S]*?id=("|\')article-bottom("|\')/i', $doc, $matches)) {
+        //     $content = $matches[0];
+        //     $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
+        //     $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+        //     $content = preg_replace('/\s{6,}/', '', $content);
+        //     echo '<div ' . $content . '>';
+        //     echo  "<br>";die;
+        // } else {
+        //     echo '======== continue ========='."<br>";
+        //     continue;
+        // }
         // echo $content;die;
     }
+    // die;
 }
