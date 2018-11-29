@@ -4,6 +4,10 @@ require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 // header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
 
+function microsecond() {
+    list($s1, $s2) = explode(' ', microtime());
+    return (float) sprintf('%.0f', (floatval($s1) + floatval($s2)) * 1000);
+}
 
 /**
  * 处理URL

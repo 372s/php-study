@@ -4,10 +4,6 @@
  */
 require_once dirname(__FILE__) . '/helpers.php';
 
-function mil_time() {
-    list($s1, $s2) = explode(' ', microtime());
-    return (float) sprintf('%.0f', (floatval($s1) + floatval($s2)) * 1000);
-}
 
 header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
@@ -42,10 +38,10 @@ foreach ($urls as $url) {
 
 
         $content = format($content);
-        $s = mil_time();
+        $s = microsecond();
         // $content = finder($content);
         $content = finder1($content);
-        echo 'time: ' . (mil_time()-$s) . "<br>";
+        echo 'time: ' . (microsecond()-$s) . "<br>";
         echo $content . "<br>";die;
 
     }
