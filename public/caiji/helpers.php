@@ -251,21 +251,52 @@ function phpquery($content, $appends = array()) {
  * @return string
  */
 function finder($content, $appends = array()) {
-    $pattern = '/<p[\s\S]*?>([\s\S]*?)<\/p>/';
-    return preg_replace_callback($pattern, function ($matches) use($appends) {
+    $patterns = array(
+        '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
+        '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
+        '加威信', '加微心', '关注我们', '关注我',
+    );
+    $patterns = array_merge($patterns, $appends);
+    $pattern = implode('|', $patterns);
+
+    return preg_replace_callback('/<p[\s\S]*?>([\s\S]*?)<\/p>/', function ($matches) use($pattern) {
         // 通常: $matches[0]是完成的匹配
         // $matches[1]是第一个捕获子组的匹配
         // 以此类推
-        $patterns = array(
-            '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
-            '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
-            '加威信', '加微心', '关注我们', '关注我',
-        );
+
+        if (preg_match('/'.$pattern.'/', $matches[1])) {
+            return '';
+        } else if (! trim($matches[1])) {
+            return '';
+        }
+        return '<p>' .trim($matches[1]) . '</p>';
+    }, $content);
+}
+// TODO 测试显示 finder效率高于finder1；待大数据测试
+function finder1($content, $appends = array()) {
+    $patterns = array(
+        '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
+        '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
+        '加威信', '加微心', '关注我们', '关注我',
+    );
+    $patterns = array_merge($patterns, $appends);
+
+    return preg_replace_callback('/<p[\s\S]*?>([\s\S]*?)<\/p>/', function ($matches) use($patterns) {
+        // 通常: $matches[0]是完成的匹配
+        // $matches[1]是第一个捕获子组的匹配
+        // 以此类推
+
+        // foreach ($patterns as $pattern) {
+        //     if ($pattern != '' && mb_stripos($matches[1], $pattern) !== false) {
+        //         return '';
+        //     } else if (! trim($matches[1])) {
+        //         return '';
+        //     }
+        // }
         foreach ($patterns as $pattern) {
             if (preg_match('/'.$pattern.'/', $matches[1])) {
                 return '';
-            }
-            else if (! trim($matches[1])) {
+            } else if (! trim($matches[1])) {
                 return '';
             }
         }
@@ -289,10 +320,7 @@ function format($content) {
     $content = str_replace(array('<strong>', '</strong>', '<html>','<body>','</html>','</body>'), '', $content);
     $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
 
-    /**
-     * 特殊标签
-     * video embed
-     */
+    //  特殊标签 video embed /
     $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
     $content = preg_replace('/<embed[\s\S]*?<\/embed>/', '', $content); // 插件标签
     $content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);
@@ -308,7 +336,8 @@ function format($content) {
     $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
     // $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
     $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(\/?>)/', '$1 $2$3', $content);
-    /*$content = preg_replace('/<a[^<>]*?>([\s\S]*?)<\/a>/is', '$1', $content);*/
+    // $content = preg_replace('/href="[^"]*?"/', 'href="javascript:void(0);"', $content);
+    $content = preg_replace('/<a[^>]*?href=[^>]*?>([\s\S]*?)<\/a>/', '$1', $content);
 
     return trim($content);
 }

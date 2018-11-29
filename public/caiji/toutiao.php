@@ -55,17 +55,15 @@ $content .= "<p>夕阳西下，是我最想念的时候，对着你在的那个�
 $content = format($content);
 $content = img_url_local($content);
 
+$patterns = array(
+    '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
+    '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
+    '加威信', '加微心', '关注我们', '关注我',
+);
 $appends = array('深圳', '大鹏新区', '很难想象','资料图','图片来源：');
-$content = preg_replace_callback(
-    '/<p[\s\S]*?>([\s\S]*?)<\/p>/i',
-    function ($matches) use ($appends) {
-        $patterns = array(
-            '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
-            '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
-            '加威信', '加微心', '关注我们', '关注我',
-        );
+$patterns = array_merge($patterns, $appends);
 
-        $patterns = array_merge($patterns, $appends);
+$content = preg_replace_callback('/<p[\s\S]*?>([\s\S]*?)<\/p>/i', function ($matches) use ($patterns) {
         foreach ($patterns as $pattern) {
             if (preg_match('/'.$pattern.'/', $matches[1])) {
                 return '';
@@ -75,8 +73,7 @@ $content = preg_replace_callback(
             }
         }
         return "<p>$matches[1]</p>";
-    },
-    $content);
+    }, $content);
 echo $content;die;
 
 $content = strip_tags($content, '<br><div><img><p><span><blockquote><sup><sub>');
