@@ -5,7 +5,7 @@
  * @param $str
  * @return bool
  */
-function checkPsd($str) {
+function preg_pwd($str) {
     $pattern = '/^[a-z_0-9]+$/i';
     if (preg_match($pattern, $str)) {
         return true;
@@ -20,7 +20,7 @@ function checkPsd($str) {
  * @param $str
  * @return bool
  */
-function checkEmail($str) {
+function preg_email($str) {
     $pattern = '/^(\w)+([-.]\w+)*@(\w)+(\.\w{2,4}){1,3}$/';
     if (preg_match($pattern, $str)) {
         return true;
@@ -34,7 +34,7 @@ function checkEmail($str) {
  * @param $str
  * @return bool
  */
-function checkURL($str) {
+function preg_url($str) {
     $pattern = '/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(:\d+)?(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?/';
     if (preg_match($pattern, $str)) {
         return true;
@@ -48,7 +48,7 @@ function checkURL($str) {
  * @param string $str
  * @return bool
  */
-function check_zh($str) {
+function preg_zh($str) {
     return preg_match('/[\x{4e00}-\x{9fa5}]+/u', $str);
 }
 

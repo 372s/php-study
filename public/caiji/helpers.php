@@ -50,6 +50,40 @@ function img_array ($content) {
 }
 
 /**
+ * 获取文章中三张以内图片
+ * @param string $content
+ * @return array
+ */
+function get_images($content) {
+    $arrimg = array();
+    $litpic = '';
+    $doc = new DOMDocument('1.1', 'utf8');
+    $doc->loadHTML($content);
+    $xpath = new DOMXPath($doc);
+    $result = $xpath->query("//img");
+
+    // print_r($result);die;
+    if (!empty($result)) {
+        $img_num = 0;
+        foreach ($result as $value) {
+            if ($img_num >= 3) {
+                break;
+            }
+            $imgsrc = $value->getAttribute('src');
+            if ($imgsrc) {
+                $arrimg[]['url'] = $imgsrc;
+                if ($img_num == 0) {
+                    $litpic = $imgsrc;
+                }
+            }
+            $img_num ++;
+        }
+        echo $img_num;
+    }
+    return $arrimg;
+}
+
+/**
  * 生成的图片存为本地
  * @param string $content
  * @param string $flag
@@ -153,39 +187,7 @@ function create_img($img_src, $img_path)
 }
 
 
-/**
- * 获取文章中三张以内图片
- * @param string $content
- * @return array
- */
-function get_images($content) {
-    $arrimg = array();
-    $litpic = '';
-    $doc = new DOMDocument('1.1', 'utf8');
-    $doc->loadHTML($content);
-    $xpath = new DOMXPath($doc);
-    $result = $xpath->query("//img");
 
-    // print_r($result);die;
-    if (!empty($result)) {
-        $img_num = 0;
-        foreach ($result as $value) {
-            if ($img_num >= 3) {
-                break;
-            }
-            $imgsrc = $value->getAttribute('src');
-            if ($imgsrc) {
-                $arrimg[]['url'] = $imgsrc;
-                if ($img_num == 0) {
-                    $litpic = $imgsrc;
-                }
-            }
-            $img_num ++;
-        }
-        echo $img_num;
-    }
-    return $arrimg;
-}
 
 
 /**
@@ -228,12 +230,9 @@ function phpquery($content, $appends = array()) {
     // 过滤方法
     $content = \phpQuery::newDocumentHTML($content);
     $patterns = array(
-        "转载：", '不得转载','责任编辑：',
-        "来源：", "本文来源：",
-        "公众号", "一点号", "微信号", "头条号", "微信平台", "蓝字",
-        "加威信", "加微心", "关注我们", "关注我",
-        "原文链接", "作者：", "原标题：", '资料图：',
-        "搜狐知道", "新浪女性",
+        '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
+        '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
+        '加威信', '加微心', '关注我们', '关注我',
     );
     $patterns = array_merge($patterns, $appends);
     foreach ($patterns as $pa) {
@@ -257,14 +256,13 @@ function finder($content, $appends = array()) {
         // 通常: $matches[0]是完成的匹配
         // $matches[1]是第一个捕获子组的匹配
         // 以此类推
-        $patterns = [
-            '/不得转载/', '/责任编辑[:：]?/',  '/作者[:：]?/',
-            '/本文来源[:：]?/', '/原文链接[:：]?/', '/原标题[:：]?/',
-            '/公众号/', '/一点号/', '/微信号/', '/头条号/', '/微信平台/', '/蓝字/',
-            '/加威信/', '/加微心/', '/关注我们/', '/关注我/', '/欢迎关注/',
-        ];
+        $patterns = array(
+            '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
+            '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
+            '加威信', '加微心', '关注我们', '关注我',
+        );
         foreach ($patterns as $pattern) {
-            if (preg_match($pattern, $matches[1])) {
+            if (preg_match('/'.$pattern.'/', $matches[1])) {
                 return '';
             }
             else if (! trim($matches[1])) {
@@ -285,16 +283,19 @@ function finder($content, $appends = array()) {
 function format($content) {
     $content = str_replace(array("\r", "\n", "\t"), '', $content);
     $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
+    $content = preg_replace('/<(div)[^<>]*?display:\s*none[^<>]*?>[\s\S]*?<\/\1>/i', '', $content);
+    $content = preg_replace('/\s??(style|class|id)=("|\')[^"\']*?\2/', '', $content);
+
     $content = str_replace(array('<strong>', '</strong>', '<html>','<body>','</html>','</body>'), '', $content);
     $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
+
+    /**
+     * 特殊标签
+     * video embed
+     */
     $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
     $content = preg_replace('/<embed[\s\S]*?<\/embed>/', '', $content); // 插件标签
-
-    $content = preg_replace('/<(div)[^<>]*?display:\s*none[^<>]*?>[\s\S]*?<\/\1>/i', '', $content);
-    $content = preg_replace('/\s??(style|class|id)="[^"]*?"/', '', $content);
     $content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);
-
-
 
     // $content = str_replace('div', 'p', $content);
     // $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
@@ -307,7 +308,7 @@ function format($content) {
     $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
     // $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
     $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(\/?>)/', '$1 $2$3', $content);
-    $content = preg_replace('/<a[^<>]*?>([\s\S]*?)<\/a>/is', '$1', $content);
+    /*$content = preg_replace('/<a[^<>]*?>([\s\S]*?)<\/a>/is', '$1', $content);*/
 
     return trim($content);
 }
