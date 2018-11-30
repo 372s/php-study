@@ -2,7 +2,7 @@
 /**
  * 新浪
  */
-require_once dirname(__FILE__) . '/helpers.php';
+require_once __DIR__ . '/helpers.php';
 
 
 header("Content-type: text/html; charset=utf-8");

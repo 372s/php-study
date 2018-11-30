@@ -321,14 +321,14 @@ function format($content) {
     $content = preg_replace('/<(div)[^<>]*?display:\s*none[^<>]*?>[\s\S]*?<\/\1>/i', '', $content);
     $content = preg_replace('/\s??(style|class|id)=("|\')[^"\']*?\2/', '', $content);
 
-    $content = str_replace(array('<strong>', '</strong>', '<html>','<body>','</html>','</body>'), '', $content);
+    $content = str_replace(array('<html>','</html>','<body>','</body>'), '', $content);
     $content = preg_replace('/<script[\s\S]*?<\/script>/', '', $content);
 
     //  特殊标签 video embed /
     $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
     $content = preg_replace('/<embed[\s\S]*?<\/embed>/', '', $content); // 插件标签
-    $content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);
 
+    /*$content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);*/
     // $content = str_replace('div', 'p', $content);
     // $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
     // $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
@@ -337,11 +337,11 @@ function format($content) {
     // $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
     // $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
 
-    $content = preg_replace('/<(h\d{1})[\s\S]*?>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
-    // $content = preg_replace('/(<\/?)h\d{1}[\s\S]*?(>)/i', '$1p$2', $content);
-    $content = preg_replace('/(<img)[\s\S]*?(src="[\s\S]*?")[\s\S]*?(\/?>)/', '$1 $2$3', $content);
+    // $content = preg_replace('/<(h\d{1})[^>]*>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
+    $content = preg_replace('/(<\/?)h\d{1}[^>]*?(>)/i', '$1p$2', $content);
+    $content = preg_replace('/(<img)[^<>]*?(src="[^<>"\']*?")[^<>]*?(>)/is', '$1 $2$3', $content);
+    $content = preg_replace('/<a[^>]*?href=[^>]*?>([^<>]*)<\/a>/is', '$1', $content);
     // $content = preg_replace('/href="[^"]*?"/', 'href="javascript:void(0);"', $content);
-    $content = preg_replace('/<a[^>]*?href=[^>]*?>([\s\S]*?)<\/a>/', '$1', $content);
 
     return trim($content);
 }
@@ -357,5 +357,23 @@ function has_keyword($str, $words) {
         if (mb_stripos($str, $w) !== false ) {
             return $w;
         }
+    }
+}
+
+function preg_str($content, $words) {
+    $pattern = implode('|', (array)$words);
+    return preg_match('/'.$pattern.'/', $content);
+}
+
+/**
+ * 检查字符串长度 是否大于100
+ * @param string $content
+ * @return bool
+ */
+function strlt100($content) {
+    if (mb_strlen(strip_tags($content)) < 100) {
+        return true;
+    } else {
+        return false;
     }
 }

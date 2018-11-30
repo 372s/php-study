@@ -10,3 +10,11 @@ $arr = array(
 );
 
 print_r(array_map('key', $arr));die;
+
+
+$a = [1,2];
+$b = [3,4, 'a'=>5, 6];
+$c = $a+$b;
+$d = array_merge($a, $b);
+print_r($c);
+print_r($d);die;

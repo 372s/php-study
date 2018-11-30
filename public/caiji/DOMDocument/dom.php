@@ -8,12 +8,7 @@
 
 $html = file_get_contents('http://m.zynews.cn/zz/node_9025.htm');
 
-$dom = new DomDocument();
-$dom->loadHTML($html);
-$xpath = new DomXPath($dom);
-// $tag1 = $dom->getElementsByTagName("tag1")->item(0);
 
-$href = $xpath->query('//div[@class="news-list"]/a/@href'); //output 2 -> correct
 
 foreach ($href as $url) {
     echo $url->value;
