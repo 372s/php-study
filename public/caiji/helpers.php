@@ -316,7 +316,7 @@ function finder1($content, $appends = array()) {
  * @return string
  */
 function format($content) {
-    $content = str_replace(array("\r", "\n", "\t"), '', $content);
+    // $content = str_replace(array("\r", "\n", "\t"), '', $content);
     $content = preg_replace('/<!--[\s\S]*?-->/', '', $content);
     $content = preg_replace('/<(div)[^<>]*?display:\s*none[^<>]*?>[\s\S]*?<\/\1>/i', '', $content);
     $content = preg_replace('/\s??(style|class|id)=("|\')[^"\']*?\2/', '', $content);
@@ -328,18 +328,14 @@ function format($content) {
     $content = preg_replace('/<video[\s\S]*?<\/video>/', '', $content);
     $content = preg_replace('/<embed[\s\S]*?<\/embed>/', '', $content); // 插件标签
 
-    /*$content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);*/
-    // $content = str_replace('div', 'p', $content);
-    // $content = preg_replace('/<p[\s\S]*?style=\"display:none\"[\s\S]*?<\/p>/', '', $content);
-    // $content = preg_replace('/(<p)[\s\S]*?(>)/', '$1$2', $content);
-    // $content = preg_replace('/<p>[\s]*<\/p>/', '', $content);
-    // $content = preg_replace('/<p>[\s]*<br>[\s]*<\/p>/', '', $content);
-    // $content = preg_replace('/(<p>\s*)*<p>/', '<p>', $content);
-    // $content = preg_replace('/(<\/p>\s*)*<\/p>/', '</p>', $content);
+    $content = preg_replace('/<p[^>]*?>(\s|<br>)*<\/p>/', '', $content);
+    $content = preg_replace('/<(div|span)[^>]*?>\s*<\/\1>/is', '', $content);
 
     // $content = preg_replace('/<(h\d{1})[^>]*>([\s\S]*?)<\/\1>/i', '<p>$2</p>', $content);
     $content = preg_replace('/(<\/?)h\d{1}[^>]*?(>)/i', '$1p$2', $content);
     $content = preg_replace('/(<img)[^<>]*?(src="[^<>"\']*?")[^<>]*?(>)/is', '$1 $2$3', $content);
+    /*$content = preg_replace('/<a[^>]*?href=[^>]*?>/is', '', $content);*/
+    // $content = preg_replace('/<\/a>/is', '', $content);
     $content = preg_replace('/<a[^>]*?href=[^>]*?>([^<>]*)<\/a>/is', '$1', $content);
     // $content = preg_replace('/href="[^"]*?"/', 'href="javascript:void(0);"', $content);
 
