@@ -1,176 +1,144 @@
 <?php
 require_once dirname(__FILE__) . '/helpers.php';
 
-$content = "<section>
-    <header>
-        <h1 style=\"display:none\">慢走和跑步都没它养生，远离腰痛、胃病，受用无穷</h1>
-        <address style=\"display:none\"><a>三湘第一湖</a></address>
-        <time class=\"op-published\" style=\"display:none\" datetime=\"2018-11-29T13:29:33Z\">Nov 29, 01:29 PM </time>
-        <time class=\"op-modified\" style=\"display:none\" datetime=\"2018-11-29T13:29:33Z\">Nov 29, 01:29 PM </time>
-    </header>
+header("Content-type: text/html; charset=utf-8");
+function curl_get_content($url, $referer) {
+    $curl = curl_init();
+    $setopt = array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_REFERER => $referer,
+        // CURLOPT_HTTPHEADER => array(
+        //     "Accept: */*",
+        //     "Accept-Encoding: gzip, deflate, br",
+        //     "Accept-Language: zh-CN,en-US;q=0.7,en;q=0.3",
+        //     "Cache-Control: max-age=0",
+        //     "Connection: keep-alive",
+        //     "cookie: BAIDUID=8667E5CD725AF880B79D96213972AF64:FG=1; BIDUPSID=8667E5CD725AF880B79D96213972AF64; PSTM=1542769852; H_PS_PSSID=1421_21106_27509; delPer=0; PSINO=1; BDRCVFR[gltLrB7qNCt]=mk3SLVN4HKm",
+        //     "DNT: 1",
+        //     "Host: f10.baidu.com",
+        //     "Referer: https://mbd.baidu.com/newspage/data/landingshare?context=%7B%22nid%22%3A%22news_9844321684069543017%22%2C%22sourceFrom%22%3A%22bjh%22%7D&type=news",
+        //     "TE：Trailers",
+        //     "User-Agent: Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36",
+        // ),
+    );
+    curl_setopt_array($curl, $setopt);
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    if ($response === false) {
+        return false;
+    } else {
+        return $response;
+    }
+}
 
-    <div class=\"page_main\">
-        <section>
-            <div class=\"top_banner\"><span class=\"logo\"/></div>
-            <a class=\"home\" href=\"http://www.ieasyfeed.com\"><span class=\"logo\"/></a>
-        </section>
-        <!--banner-->
-        <section class=\"nav context\" id=\"j_nav1\">
-            <div class=\"nav_container j_navContainer1\">
-                <div class=\"cell\" v-for=\"item in navList\">
-                    <a href=\"/?cateid=16\" class=\"nav_item on\" data-cid=\"16\">健康</a>
-                </div>
-
-                <div class=\"cell\" v-for=\"item in navList\">
-                    <a href=\"/?cateid=1\" class=\"nav_item \" data-cid=\"1\">社会</a>
-                </div>
-
-                <div class=\"cell\" v-for=\"item in navList\">
-                    <a href=\"/?cateid=2\" class=\"nav_item \" data-cid=\"2\">娱乐</a>
-                </div>
-
-                <div class=\"cell\" v-for=\"item in navList\">
-                    <a href=\"/?cateid=3\" class=\"nav_item \" data-cid=\"3\">财经</a>
-                </div>
-
-                <div class=\"cell\" v-for=\"item in navList\">
-                    <a href=\"/?cateid=4\" class=\"nav_item \" data-cid=\"4\">体育</a>
-                </div>
-
-            </div>
-        </section>
-
-        <!--导航栏-->
-        <!--正文区-->
-        <div class=\"art_zone\" id=\"j_context\">
-            <header>
-
-                <div class=\"art_tit_h1\">慢走和跑步都没它养生，远离腰痛、胃病，受用无穷</div>
-                <!--标题-->
-                <div class=\"art_detail\">2018-11-29 05:44:10<span class=\"source\">三湘第一湖</span></div>
-            </header>
-            <div class=\"content\">
-
-                <div class=\"content\"><p class=\"art_p\">不知道从什么时候开始，有很多欧美人突然像发现新大陆一样，发现了东亚人这项神奇的技能：蹲。</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/21121131c6ed628d0491ff7cc3c0babd.gif\"/></figure></div><div class=\"content\"><p class=\"art_p\">你也许会问，“蹲”谁不会呀？ 可是你知道吗，蹲也分好几种。通常，西方人是这样蹲的，抬起脚尖：</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/f93d6d48c4cc9b6e70cee67774c970e4.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">而亚洲人，是这样的，双脚贴地：</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/53d3971d1c49a4276a075028681179e3.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">外国网友纷纷表示“震撼”，也尝试模仿同样的姿势，结果没几秒钟就摔倒在地上。</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/c9140f384302a5ed934152a7f0393047.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">其实，掌握了正确的蹲姿，不仅对身体大有益处，还能够促进血液循环，提高身体平衡能力，促进消化和排便等。</p></div><div class=\"content\"><p class=\"art_p\">蹲一蹲，利全身</p></div><div class=\"content\"><p class=\"art_p\">“蹲”能减少脂肪堆积，对大腿、小腿、腰腹等肌群都有锻炼作用，能增强人体的灵活性和对称性，正确的蹲姿对健康有很多促进作用。</p></div><div class=\"content\"><p class=\"art_p\">减少久坐伤害</p></div><div class=\"content\"><p class=\"art_p\">久坐后做下蹲动作可活动关节、放松肌肉、提高平衡能力，从而减少久坐对身体的伤害。</p></div><div class=\"content\"><p class=\"art_p\">治疗胃病</p></div><div class=\"content\"><p class=\"art_p\">在《南怀瑾的最后100天》一书中介绍了“乞丐蹲”，以帮助治疗胃病。如果能长期坚持，甚至有养生长寿之神奇功用。如果吃得过饱，这可是个最好的帮助快速消化的方式。</p></div><div class=\"content\"><p class=\"art_p\">有益心脏</p></div><div class=\"content\"><p class=\"art_p\">人在下蹲的时候，有利于气血流畅，心肺血流量相对充沛，可缓解动脉硬化、降低血脂，还可减少冠心病和脑中风的发病率；下蹲还能加大胸腔和肺的活动范围，从而改善我们的心肺功能。</p></div><div class=\"content\"><p class=\"art_p\">减肥瘦身</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/a9998a2339fadd6ab7ae6428d184fd31.gif\"/></figure></div><div class=\"content\"><p class=\"art_p\">下蹲运动还可消耗脂肪，因此，它也是一项很好的减肥方式，特别是腰、臀部、腹部、腿部减肥。</p></div><div class=\"content\"><p class=\"art_p\">润滑关节</p></div><div class=\"content\"><p class=\"art_p\">蹲姿通过下肢有规律的折叠，对关节周围组织是一种很好的伸展锻炼，对膝关节和髋关节尤其适用。</p></div><div class=\"content\"><p class=\"art_p\">促进气血运行</p></div><div class=\"content\"><p class=\"art_p\">从中医的角度来看，下肢和足部是人体的精气之根、气血之库。</p></div><div class=\"content\"><p class=\"art_p\">通过锻炼，我们的下肢越有劲，心脏就会越有劲。下肢血液循环好，才能推动肢体远端的血液回流到心脏，使全身气血运行畅通，而不会瘀滞在下肢。下肢血脉通畅，筋脉得到濡养，故有“气行则血行，血行风自灭”之说。</p></div><div class=\"content\"><p class=\"art_p\">预防和改善阳痿</p></div><div class=\"content\"><p class=\"art_p\">预防男性ED，加强运动，特别是下半身的运动很重要。男性经常蹲，能使腰部肌肉力量得到加强，且不容易感到疲劳。</p></div><div class=\"content\"><p class=\"art_p\">男性的骨盆肌肉得到了锻炼，还可增加整个骨盆和男性生殖器官的血液供应量，改善男性性功能。</p></div><div class=\"content\"><p class=\"art_p\">锻炼下肢肌肉</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/10101413a2192e9b97fd417cc2c4d8f1.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">有针对性地做下蹲锻炼，可增强膝关节稳定性和下肢肌肉力量，进而促进速度、爆发力、耐力的提升，同时健美大腿和臀部。</p></div><div class=\"content\"><p class=\"art_p\">蹲姿不同，功效不同</p></div><div class=\"content\"><p class=\"art_p\">虽说只是简单的蹲，但是也有好几种蹲姿。</p></div><div class=\"content\"><p class=\"art_p\">防胃病</p></div><div class=\"content\"><p class=\"art_p\">“乞丐蹲”是南怀瑾大师赞誉有加的一种蹲法，饭后蹲效果尤其好，他曾说：“只要坚持，受用无穷。”</p></div><div class=\"content\"><p class=\"art_p\">“乞丐蹲”简单来说就是，双手抱膝蹲下，屁股尽量后蹲但不着地，腰、背、头尽量在一条直线上，吸气时闭嘴，呼气时略张嘴。</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/8b43d83d4dd572c5fbbca6603d4f4817.jpg\"/></figure></div>
-                <script async=\"\" src=\"//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"/>
-                <ins class=\"adsbygoogle\" style=\"display:block; text-align:center;\" data-ad-layout=\"in-article\" data-ad-format=\"fluid\" data-ad-client=\"ca-pub-3699852977815520\" data-ad-slot=\"6406425246\"/>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <div class=\"content\"><p class=\"art_p\">具体步骤如下：</p></div><div class=\"content\"><p class=\"art_p\">第一步：饭后，找一堵墙，最好找一个舒适的软垫(不可太软)。</p></div><div class=\"content\"><p class=\"art_p\">第二步：站在墙前，屈膝下蹲，背要直，贴靠墙壁或靠在软垫上。女士两脚并拢，屈膝下蹲。男士两脚微微分开（不可两脚并拢），屈膝下蹲，这样不会夹紧裆部，可以放松裆部，男女之别务必注意这个细节。</p></div><div class=\"content\"><p class=\"art_p\">第三步：双手结孔子手印，自然放在膝盖上，放松身心。</p></div><div class=\"content\"><p class=\"art_p\">第四步：头要中正，头顶百会与会阴穴成一条直线，屁股离地，紧压小腿肚上。</p></div><div class=\"content\"><p class=\"art_p\">注意事项</p></div><div class=\"content\"><p class=\"art_p\">每次蹲约15分钟或更长，眼神内敛，收摄心神，专心下蹲，不可胡思乱想，更勿边蹲边与人交谈或玩手机。</p></div><div class=\"content\"><p class=\"art_p\">蹲的过程中，如有打嗝、放屁等肠胃蠕动的现象，正是乞丐蹲的最好功效。浊气下降自然打屁，千万不可忍屁不放。</p></div><div class=\"content\"><p class=\"art_p\">蹲的过程中，有脚麻现象乃属正常。日久功深自然不会，且增加脚力，疏通经脉。</p></div><div class=\"content\"><p class=\"art_p\">饭后蹲15分钟后，再配合缓慢经行，甚合养生之道。此法至简，但功效卓著，贵在坚持，必有奇功。</p></div><div class=\"content\"><p class=\"art_p\">保护膝关节</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/fb646fe4ec08da377afcb9002999c61c.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">用自己的背部、腰骶部依靠椅背，臀部不要低于膝盖，下蹲后保持不动。练习时间可以逐渐延长，以2~4分钟为宜，有保护膝关节的功效。</p></div><div class=\"content\"><p class=\"art_p\">护肾</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/fc531ea769ebaad31a56a69a867a24c8.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">两脚前脚掌着地，脚后跟抬离地面。双膝弯曲，大腿压着小腿，时间控制在30秒~1分钟即可。</p></div><div class=\"content\"><p class=\"art_p\">脚尖蹲时，前脚掌内侧、足大拇趾起支撑作用，而足少阴肾经、足厥阴肝经和足太阴脾经经过此处，刺激足三阴可温补肾阳。但因动作难度较大，半分钟就足够了，避免坚持过久拉伤或抽筋。</p></div> <div class=\"fabox\"><figure class=\"art_img_mini\"><img class=\"art_img_mini_img\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/11e46dae6bfb569a76fdc6243e23b0b0.jpg\"/></figure></div><div class=\"content\"><p class=\"art_p\">练习者迈出左脚，右脚脚尖触地呈脚尖蹲状态，两腿成弓步。将身体重量落到两脚之间，每练习30秒调换一次左右脚。</p></div><div class=\"content\"><p class=\"art_p\">提醒</p></div><div class=\"content\"><p class=\"art_p\">做任何下蹲动作，都要求含胸收腹，保持上身挺直，膝关节要对准脚尖。</p></div><div class=\"content\"><p class=\"art_p\">另外，保持任何一种姿势过久都伤健康，蹲姿也一样。起身的时候一定要慢慢的，以免头晕站不稳。</p></div><div class=\"content\"><p class=\"art_p\">下蹲锻炼时既要讲究循序渐进、又要注意坚持不懈，这样锻炼者才能在繁忙之中拥有一个健康的身体。当然，无论采用哪种锻炼方式，都应考虑频率和强度，以防过度。</p></div><div class=\"content\"><p class=\"art_p\">中老年人、心脑血管疾病患者尤其应有所控制。比如，年轻人一分钟能做30次下蹲，老人做8~10次即可；下蹲时不要强求动作一定到位，量力而行。</p></div>                        <div class=\"content\"><p class=\"art_p_footer\">（特别声明：以上文章内容仅代表作者本人观点，不代表艾简观点或立场。如有关于作品内容、版权或其它问题请于作品发布后的30日内与艾简联系。）</p></div>
+$content = "<div><p><span><span>导语：</span>中国汽车市场有个特殊现象，一些外资品牌从海外市场原汁原味引进的车型，反而容易遭遇“滑铁卢”。主要原因是海外市场的车型，不一定适合中国消费者的口味，而在满足中国汽车用户的需求方面，自主品牌更有优势。</span></p><p><span>我们有句成语叫做“闭门造车”，比喻固步自封，脱离实际只凭主观办事。这句从造车引申而来的成语，用于当下的汽车市场非常贴切。随着汽车市场竞争的加剧，消费者的口味也愈加“刁钻”，不考虑市场和用户需求，无法满足消费升级，汽车作为一种大件商品自然也无法获得消费者青睐。虽然不少车企在新品上市时会宣称坚持用户导向的造车理念，但真正做到了并且做得好的并不多。作为SUV的领导品牌，哈弗旗下的F系旗舰车型哈弗F7做到了。</span></p><div><div><div><img src=\"https://f12.baidu.com/it/u=235744853,3465274524&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=409&amp;s=44A02BF14D1214DA484D69870300E0C2&amp;access=215967316\"></div></div></div><p><span>驾乘舒适度高，车舱环境健康环保</span></p><p><span>从买车的需求看，很多购买SUV的消费者都是为了全家出行，家庭成员乘坐舒适是购车的一项重要刚需，而且中国家庭人口多，后排座椅利用率高。乘坐舒适这个需求看似简单，但要做好并没有这么简单，不仅前后排空间要宽敞，还要求座椅舒适性好并符合人体工程学，行驶中NVH表现好，内饰环保健康。</span></p><div><div><div><img src=\"https://f10.baidu.com/it/u=3716921928,3797460825&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=407&amp;s=1E32FFA00C12B6CC120780920300E0C3&amp;access=215967316\"></div></div></div><p><span>哈弗F7的乘坐空间非常宽裕，其轴距达到2725mm，在同级产品中优势较大，甚至接近部分中型SUV，而且车长和车宽也是同级主流，加上对后排乘坐空间的特别优化，后排乘客的头部和腿部空间已经可以比拟中型SUV，哈弗F7的后排地板中间也接近全平，后排乘坐三个人毫无压力。后排座椅靠背可以调节角度，能调到半躺的姿势。前排座椅为6向电动调节，不同体型的驾驶员都能找到舒适的坐姿。哈弗F7的座椅填充物也相当厚实，进一步提升了舒适度。</span></p><div><div><div><img src=\"https://f12.baidu.com/it/u=2581145636,1177815491&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=428&amp;s=6C9243962E0302CC048DF5920300D093&amp;access=215967316\"></div></div></div><p><span>哈弗F7在NVH方面也进行了特别优化，在法定最高速度120km/h行驶时也不影响车内交流，乘坐静谧性良好。</span></p><div><div><div><img src=\"https://f12.baidu.com/it/u=1612063481,1441745698&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=427&amp;s=2FB06884D3AA3CA67AED15160300C0D1&amp;access=215967316\"></div></div></div><p><span>另外，越来越多年轻消费者关注内饰的环保性，希望能有更健康的车内环境，近年也有不少车型因为内饰异味大、内饰材质环保不达标等原因导致大批用户投诉。哈弗F7充分考虑了消费者的健康需求，内饰采用成本更高的环保材料和专属的香氛系统，车内甲醛是国标的1/5，甲苯、乙苯含量是国标的1/100，配合PM2.5过滤功能和香氛系统，让你在雾霾天出行也不怕。</span></p><p><span>智能互联技术给用车带来更多便利</span></p><p><span>年轻消费者们已经习惯了移动互联网和智能手机带来的便利，也希望车辆能时刻保持互联，并实现导航、收听在线电台、语音控制等功能。哈弗F7在这方面达到了更高的标准，被称为最聪明、最懂你的SUV。</span></p><div><div><div><img src=\"https://f12.baidu.com/it/u=608361098,2949685214&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=360&amp;s=3EA669845FEB0D0D22FDD116030050C1&amp;access=215967316\"></div></div></div><p><span>哈弗F7配备了同级最领先的智能交互系统，具备一定的AI属性。除了常规的车机互联、APP远程控制之外，哈弗F7还能实现人和车一定程度的交流，该系统能识别自然语言而不是一些固定的语音指令，并涵盖“衣食住行用”多个方面，语音识别率高达97%。</span></p><p><span>如果是普通车载系统，想要导航到某个餐厅或者调节空调温度，需要用手在导航系统内输入地址和进行点击，空调也需要调节按钮，不仅步骤繁琐而且影响行车安全。即使支持语音输入，多数只能识别某些特定的指令并需要多次确认。而哈弗F7的智能交互系统，你只需要说“我饿了”，系统会推荐附近的餐厅；说“我冷了”，系统自动把空调调高。给用车提供很多乐趣和便利。</span></p><div><div><div><img src=\"https://f12.baidu.com/it/u=3959580191,3646086993&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=480&amp;s=85C3FB044789034D4AD421990100C082&amp;access=215967316\"></div></div></div><p><span>此外，哈弗F7的智能娱乐系统提供2000万+在线QQ音乐、考拉FM电台节目等海量内容，可以将手机的收听习惯移植到车内，而且4G流量三年免费无限量使用。 </span></p><p><span>越级配置打造越级安全</span></p><p><span>美国心理学家马斯洛的需要层次理论指出，人的需要可分为五个层次，其中安全需要位于第二个层次。安全性能也已经成为购车的一个重要指标，消费者都希望能买到一辆最安全的汽车。哈弗一直将安全性能作为一个品牌特色，哈弗F7也不例外。在被动安全方面，哈弗F7全车高强度钢比例超过65%，热成型钢及超高强度钢比例高达33.4%，为同级车型最高。A柱、B柱等关键部位甚至采用了德国进口钢材。</span></p><div><div><div><img src=\"https://f11.baidu.com/it/u=2471118148,4120583106&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=325&amp;s=0FB5EC0008010AC69681D5030100E0C1&amp;access=215967316\"></div></div></div><p><span>除了常规的ESP系统、胎压监测之外，智能安全配置是哈弗F7的另一个特色。哈弗F7提供了AEB自动刹车系统，并带有行人识别功能，在驾驶员不小心走神没有注意到前车或行人等意外情况下，系统将主动采取制动减轻或避免碰撞，2014年开始欧洲E-NCAP测试要求配备AEB系统是车辆获得五星评价的必备条件，现在该系统已在哈弗F7上配备。多数同级车型的AEB系统只能识别车辆，哈弗F7还能识别行人是个很大亮点，这也是哈弗F7“以人为本”造车理念的一个体现。</span></p><div><div><div><img src=\"https://f11.baidu.com/it/u=2855877088,2751176945&amp;fm=173&amp;app=49&amp;f=JPEG?w=640&amp;h=279&amp;s=38C5A14C5FA8AB62045E15140300C0C8&amp;access=215967316\"></div></div></div><p><span>此外，LCA并线辅助、LDW车道偏离预警等常规功能一应俱全，TSR交通限速标志智能识别、DOW开门预警则是同级独有，这些智能安全配置可以一定程度上可以预防事故发生，提升主动安全性，让车主和乘客更有安全感。</span></p><p><span>小结</span></p><p><span>人体正常体温是36.3-37度，一旦遇到心动的人，就会心跳加速，体温微微上升到37.2度，感觉到贴心和温暖。哈弗F7正是这样一辆能让消费者时刻感觉温暖的车型，全方位满足舒适、安全的用车刚需。从乘坐舒适度、智能互联技术和安全性能来看，哈弗F7的37.2度科技正符合年轻消费者的喜好，再加上高颜值的外观和高规格的动力系统，哈弗F7很有可能成为哈弗旗下又一“神车”。</span></p><p><span></span></p></div>";
 
 
-            </div>
-        </div>
-        <!--正文区-->
-        <!--数据为空样式-->
-        <section class=\"empty_zone j_empty hide\">
-            <div class=\"empty\"/>
-            <p>暂时没有数据哦~</p>
-        </section>
-        <!--数据为空样式-->
-        <!--推荐阅读-->
-        <section class=\"cat_info context\" id=\"j_list\">
-            <h2 class=\"card_tit\">推荐阅读</h2>
-            <div class=\"cell\">
-                <a class=\"m_video_box show hasfixnav\" href=\"/articles/detail?id=7564630926854146\" data-order=\"0\" title=\"6种食物隔夜，最好不要再吃了\">
-                    <h2 class=\"cm_tit m_video_tit_sp\">6种食物隔夜，最好不要再吃了</h2>
-                    <figure class=\"m_video_img_box m_video_img_box_sp\">
-                        <aside class=\"m_video_img_bg\">
-                            <img class=\"m_video_img_bg_img finpic\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/60c79d7ad425785383c58deb7e8153f6.jpg\"/>
-                        </aside>
-                        <img class=\"img_width finpic\" src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/60c79d7ad425785383c58deb7e8153f6.jpg\" alt=\"6种食物隔夜，最好不要再吃了\"/>
-                    </figure>
-                    <div class=\"m_info\">
-                        <span class=\"source\">指尖上的唐县</span>
-                        <span class=\"tag\"/>
-                    </div>
-                </a>
-            </div>
-            <div class=\"cell\">
-                <a href=\"/articles/detail?id=7564629258569729\" data-order=\"1\" class=\"item\">
+// $content = file_get_contents('https://mbd.baidu.com/newspage/data/landingshare?context=%7B%22nid%22%3A%22news_9464061402800236590%22%2C%22sourceFrom%22%3A%22bjh%22%7D&type=news');
+// $content = html_entity_decode($content);
+// echo $content;die;
 
-                    <div class=\"poster\">
-                        <img src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/15a72a46bdb083bba7aead125b2168b1.jpg\" alt=\"图读懂国人头号健康杀手：心血管疾病，预防知识全在这\"/>
-                    </div>
-                    <div class=\"info\">
-                        <h2>图读懂国人头号健康杀手：心血管疾病，预防知识全在这</h2>
-                        <div class=\"m_info\">
-                            <span class=\"source\">邱县电视台</span>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                        </div>
-                    </div>
-                </a>
+//http://php.net/manual/zh/domelement.setattribute.php
+$doc = new \DOMDocument('1.0', 'utf-8');
+@$doc->loadHTML($content);
+$xpath = new \DOMXPath($doc);
+$result = $xpath->evaluate("//img");
+// $result = $xpath->query("//img");
 
-            </div>
-            <div class=\"cell\">
-                <a href=\"/articles/detail?id=7564629024212993\" data-order=\"2\" class=\"item\">
+$arr_src = array();
+$new_src = array();
 
-                    <div class=\"poster\">
-                        <img src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/25734ee7b54bc33321439697caab53c3.jpg\" alt=\"爱吃粉条的河南人，这样的粉条可别吃了\"/>
-                    </div>
-                    <div class=\"info\">
-                        <h2>爱吃粉条的河南人，这样的粉条可别吃了</h2>
-                        <div class=\"m_info\">
-                            <span class=\"source\">方城电视台</span>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                        </div>
-                    </div>
-                </a>
+$len = $result->length;
+// echo $len;die;
+for($i=0; $i<$len; $i++) {
 
-            </div>
-            <div class=\"cell\">
-                <a href=\"/articles/detail?id=7564628765739009\" data-order=\"3\" class=\"item\">
+    $src = $result->item($i);
+    $imgsrc = $src->getAttribute('src');
+    echo $imgsrc;
 
-                    <div class=\"poster\">
-                        <img src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/d555a4adc977c26bd88e046c3f8e0b9d.jpg\" alt=\"口腔溃疡不能小视，这些预防方法需知道\"/>
-                    </div>
-                    <div class=\"info\">
-                        <h2>口腔溃疡不能小视，这些预防方法需知道</h2>
-                        <div class=\"m_info\">
-                            <span class=\"source\">邱县电视台</span>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                        </div>
-                    </div>
-                </a>
+    $arr_src[] = $imgsrc;
+    $host = 'mbd.baidu.com';
+    $result = curl_get_content($imgsrc, $host);
 
-            </div>
-            <div class=\"cell\">
-                <a href=\"/articles/detail?id=7564628743194625\" data-order=\"4\" class=\"item\">
+    $img_path = dirname(__DIR__) . '/uploads/';
+    $filename = $img_path.md5($imgsrc);
+    file_put_contents($filename, $result);
 
-                    <div class=\"poster\">
-                        <img src=\"http://guopan-1253901174.cos.ap-beijing.myqcloud.com/qx/images/99681ca6ab67fd600a6cdc2e8133e4c9.jpg\" alt=\"吃得好不如吃得对！这7个饮食误区，你中招了吗？\"/>
-                    </div>
-                    <div class=\"info\">
-                        <h2>吃得好不如吃得对！这7个饮食误区，你中招了吗？</h2>
-                        <div class=\"m_info\">
-                            <span class=\"source\">邱县电视台</span>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                            <span class=\"tag\"/>
-                        </div>
-                    </div>
-                </a>
+    $xinarc = create_img($filename, $img_path);
 
-            </div>
-        </section>
-        <!--推荐阅读-->
-    </div>
-</section>";
+    $xinarc = str_replace(dirname(__DIR__), "http://php-study.test", $xinarc);
+
+    $src->setAttribute('src', $xinarc);
+    $new_src[] = $xinarc;
+}
+// foreach ($result as $value) {
+//     print_r($value);die;
+//     $imgsrc = $value->getAttribute('src');
+//     $arr_src[] = $imgsrc;
+//
+//     // $dir = pathinfo($imgsrc);
+//     $host = 'mbd.baidu.com';
+//     $result = curl_get_content($imgsrc, $host);
+//
+//     $img_path = dirname(__DIR__) . '/uploads/';
+//     $filename = $img_path.md5($imgsrc);
+//     file_put_contents($filename, $result);
+//     $xinarc = create_img($filename, $img_path);
+//
+//     $xinarc = str_replace(dirname(__DIR__), "http://php-study.test", $xinarc);
+//     $new_src[] = $xinarc;
+//
+//     $value->setAttribute('src', $xinarc);
+// }
 
 
-$content = preg_replace('/^\s*<(section)[^>]*>(.*?)<\/\1>\s*$/is', '$2', $content);
-$content = trim($content);
-$content = preg_replace('/<(header)[^>]*>.*?<\/\1>/is', '', $content);
-$content = preg_replace('/<(section)[^>]*>.*?<\/\1>/is', '', $content);
 
-// $content = preg_replace('/(\s*<div[^>]*>\s*)*/i', '$1', $content);
-// $content = preg_replace('/(\s*<\/div>\s*)*/i', '$1', $content);
+// $content = \phpQuery::newDocumentHTML($content);
+// // echo $html;die;
+// $ddd = $content->find('img');
+//
+// foreach ($ddd as $k => $img) {
+//     pq($img)->attr('src', $new_src[$k]);
+// }
 
-echo $content;
+// print_r($new_src);die;
+// print_r(current($new_src));die;
+
+// $content = preg_replace_callback(
+/*    '/(<img[^>]*?src=")([^>]*?)("[^>]*?>)/',*/
+//     function($matches) use(&$new_src) {
+//         $s = $matches[1]. array_shift($new_src) . $matches[3];
+//         // unset($new_src[0]);
+//         // echo '<pre>';
+//         // print_r($new_src);
+//         return $s;
+//     },
+//     $content);
+
+echo $content;die;
+
+
+
+$img = "https://f10.baidu.com/it/u=8730783,2168837162&fm=173&app=49&f=JPEG?w=545&h=362&s=AD5AE15F1F4B504B08D480DA0100C032&access=215967316";
+$dir = pathinfo($img);
+$host = $dir['dirname'];
+
+$result = curl_get_content($img, $host);
+// echo $result;die;
+$img_path = dirname(__DIR__) . '/uploads/';
+$filename = $img_path.md5($img);
+file_put_contents($filename, $result);
+$src = create_img($filename, $img_path);
+unlink($filename);
+
+// E:\laragon\www\php-study\public/uploads/8a6e33d1d8a7f2b0f59de107bc13b2a4.jpg
+
+$src = str_replace('E:\laragon\www\php-study\public', 'http://php-study.test', $src);
+echo '<img src="'.$src.'">';

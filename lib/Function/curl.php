@@ -14,6 +14,9 @@ function curl_get($url) {
     $output = curl_exec($curl);
     // $error = curl_error($curl);
     curl_close($curl);
+    // if ($output == false) {
+    //     return $error;
+    // }
     return $output;
 }
 

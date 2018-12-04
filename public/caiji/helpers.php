@@ -95,9 +95,9 @@ function get_images($content) {
  */
 function img_url_local($content, $flag = '')
 {
-    $doc = new DOMDocument('1.0', 'utf-8');
+    $doc = new \DOMDocument('1.0', 'utf-8');
     @$doc->loadHTML($content);
-    $xpath = new DOMXPath($doc);
+    $xpath = new \DOMXPath($doc);
     $result = $xpath->query("//img");
     // print_r( $result);
     foreach ($result as $value) {
@@ -136,7 +136,7 @@ function img_url_local($content, $flag = '')
 /**
  * 生成图片
  * @param string $img_src
- * @param array $img_path
+ * @param string $img_path
  * @return string
  */
 function create_img($img_src, $img_path)
