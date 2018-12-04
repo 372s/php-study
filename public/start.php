@@ -11,4 +11,4 @@ define('CLASS_EXT',   '.class.php');
 //     require_once ROOT_PATH . 'vendor/autoload.php';
 // }
 
-require_once LIB_PATH . 'helpers.php';
+require_once LIB_PATH . 'functions.php';

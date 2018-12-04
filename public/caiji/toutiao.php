@@ -9,18 +9,18 @@ $content = "<div>\n      <p style=\"text-align: center;\">图片来源：视觉�
 // $content = format($content);
 // echo $content;die;
 $content = preg_replace('/<(div|p|span)[^>]*>\s*<\/\1>/is', '', $content);
-$content = preg_replace('/(<img)[^<>]*?(src="[^<>"\']*?")[^<>]*?(>)/is', '$1 $2$3', $content);
-$content = preg_replace('/<a[^>]*?href=[^>]*?>/is', '', $content);
-$content = preg_replace('/<\/a>/i', '', $content);
+// $content = preg_replace('/(<img)[^<>]*?(src="[^<>"\']*?")[^<>]*?(>)/is', '$1 $2$3', $content);
+/*$content = preg_replace('/<a[^>]*?href=[^>]*?>/is', '', $content);*/
+// $content = preg_replace('/<\/a>/i', '', $content);
 $content = trim($content);
 
-if (preg_match('/^<(div)[^>]*>(.*)<\/\1>$/is', $content, $matches)) {
-    $content = trim($matches[2]);
-}
+// if (preg_match('/^<(div)[^>]*>(.*)<\/\1>$/is', $content, $matches)) {
+//     $content = trim($matches[2]);
+// }
 
 
 // $content = strip_tags($content, '<div><img><p><span><blockquote><sup><sub><br><table><tr><td><ul><li><ol>');
-// echo $content;die;
+echo $content;die;
 
 // $content = format($content);
 // $appends = array('深圳', '大鹏新区', '很难想象','资料图','图片来源：');
