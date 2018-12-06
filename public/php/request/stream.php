@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * 流操作
+ * HTTP context选项 文档地址 http://php.net/manual/zh/context.http.php
+ */
 $data = array(
     'foo'=>'bar',
     'baz'=>'boom',
@@ -19,7 +22,9 @@ $options = array(
 );
 
 $url = "http://php-study.test/php/request/test1.php";
+
 $context = stream_context_create($options);
+
 $result = file_get_contents($url, false, $context);
 
 echo $result;
