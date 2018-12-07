@@ -351,9 +351,10 @@ function format($content) {
 function has_keyword($str, $words) {
     foreach ((array) $words as $w) {
         if (mb_stripos($str, $w) !== false ) {
-            return $w;
+            return true;
         }
     }
+    return false;
 }
 
 function preg_str($content, $words) {
@@ -373,3 +374,9 @@ function strlt100($content) {
         return false;
     }
 }
+
+$keywords = array(
+    '不得转载','责任编辑', '本文来源','原标题', '原文链接', '作者',
+    '公众号', '一点号', '微信号', '头条号', '微信平台', '蓝字', '搜狐知道', '新浪女性',
+    '加威信', '加微心', '关注我们', '关注我',
+);

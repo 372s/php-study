@@ -1,4 +1,34 @@
 <?php
+/**
+ * http://php.net/manual/zh/function.date.php
+ */
+
+/**
+ *  计算两个日期相隔时间：年、月、日、时、分、秒 总计天数
+ * @author TekinTian <tekintian#gmail.com>
+ * @param string $start_time 开始时间 必须 [格式如：2011-11-5 10:01:01]
+ * @param string $end_time 结束时间 选填，不提供默认未当前时间 [格式如：2012-12-01 10:01:01]
+ * @return array Array ( [y] => 年 [m] => 月 [d] => 日 [h] => 时 [i] => 分 [s] => 秒 [a] => 合计天数 )
+ */
+function get_date_diff($start_time,$end_time=''){
+    $end_time = ($end_time=='')?date("Y-m-d H:i:s"):$end_time;
+    $datetime1 = new \DateTime($start_time);
+    $datetime2 = new \DateTime($end_time);
+    $interval = $datetime1->diff($datetime2);
+    $time['y'] = $interval->format('%y');
+    $time['m'] = $interval->format('%m');
+    $time['d'] = $interval->format('%d');
+    $time['h'] = $interval->format('%H');
+    $time['i'] = $interval->format('%i');
+    $time['s'] = $interval->format('%s');
+    $time['a'] = $interval->format('%a');    // 两个时间相差总天数
+    return $time;
+}
+
+//demo use
+// echo '<pre>';
+print_r(get_date_diff('2016-10-15 10:01:56'));
+// echo '</pre>';
 
 /* 时间戳格式化 */
 $date = new DateTime();
