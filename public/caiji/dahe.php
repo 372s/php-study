@@ -1,14 +1,23 @@
 <?php
-
+/**
+ * 大河网
+ * https://4g.dahe.cn
+ */
 set_time_limit(0);
 header("Content-type: text/html; charset=utf-8");
 
 $urls = array(
     'https://4g.dahe.cn/list/0/0/10',
-    'https://4g.dahe.cn/list/2/0/10',
     'https://4g.dahe.cn/list/3/0/10',
+    'https://4g.dahe.cn/list/1/0/10',
+    'https://4g.dahe.cn/list/2/0/10',
+    'https://4g.dahe.cn/list/4/0/10',
     'https://4g.dahe.cn/list/5/0/10',
     'https://4g.dahe.cn/list/7/0/10',
+    'https://4g.dahe.cn/list/11/0/10',
+    'https://4g.dahe.cn/list/14/0/10',
+    'https://4g.dahe.cn/list/15/0/10',
+    'https://4g.dahe.cn/list/18/0/10',
 );
 
 foreach ($urls as $url) {
@@ -32,19 +41,15 @@ function get_content ($arr, $num) {
             $url = $dh['url'];
         }
 
-//        echo $url . "<br>";
+        echo $url . "<br>";
         $content = get_dahe_content($url, $num);
-
-//        preg_match('/<h1>([\s\S]*?)<\/h1>/', $content, $head);
-//        $title = $head[1];
-
 
 
         if (preg_match('/<section class=\"newInfo\"[\s\S]*?>([\s\S]*?)<\/section>/', $content, $matches)) {
 //        print_r($matches[1]);
             $content = $matches[1];
             $content = preg_replace('/(<img[\S\s]*?src=)(\"[\S\s]*?\"[\S\s]*?data-echo=)(\"[\S\s]*?\">[\S\s]*?)/', '$1$3', $content);
-            echo $content .  "<br>";
+            echo $content .  "<br>";die;
         } else {
             continue;
         }
