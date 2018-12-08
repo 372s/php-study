@@ -50,8 +50,6 @@ foreach ($arr['obj']['content'] as $con) {
     $content = preg_replace('/<(article|section)[^<>]*?>/', '', $content);
     $content = preg_replace('/<\/(article|section)>/', '', $content);
 
-    // preg_match('/<(article)>([\s\S]*?)<\/\1>/', $content, $ss);
-    // print_r($ss);die;
     echo $content . "<br>";
 }
 
