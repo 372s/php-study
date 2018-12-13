@@ -6,8 +6,9 @@ require_once __DIR__. '/start.php';
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
-echo date('Y-m-d', strtotime("-1 days"));die;
-var_dump('2018-12-01' <= '2018-12-02');die;
+// echo date('Y-m-d', strtotime("-1 days"));die;
+// var_dump('2018-12-01' <= '2018-12-02');die;
+
 // $str = '11612651314';
 // echo preg_match('/1[2-9]\d{9}/', $str);die;
 // echo '<pre>';
