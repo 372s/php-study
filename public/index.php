@@ -7,6 +7,8 @@ $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
 
+echo date('Y-m-d', strtotime('-2 days'));die;
+
 preg_match('/' . str_replace(' ', '.{0,10}', '氰化钾 买') . '/', '买');
 
 $se = 'a:6:{i:0;s:13:"氰化钾 买";i:1;s:11:"yishengshuo";i:2;s:15:"测试敏感词";i:3;s:6:"美女";i:4;s:7:"枪 支";i:5;s:7:"毒 品";}';
