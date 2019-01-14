@@ -6,8 +6,8 @@ require_once __DIR__. '/start.php';
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
-
-echo date('Y-m-d', strtotime('-2 days'));die;
+echo strtotime('-1 days');die;
+echo date('Y-m-d', strtotime('-1 days'));die;
 
 preg_match('/' . str_replace(' ', '.{0,10}', '氰化钾 买') . '/', '买');
 
