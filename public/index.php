@@ -6,6 +6,11 @@ require_once __DIR__ . '/start.php';
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+$data['user_id'] = 'o8wusbsmh2rnfdikijWazIW4HD3TDJ1Kl2KAiw==';
+$data['from'] = 'wap';
+
+echo http_build_query($data);die;
+
 $info = '[{"sk":"e9688e4b","size":"5.6K","fn":"0RqcGVn.jpg","fsn":"0RqcGVn.jpg","ft":"image","id":"51722510a5a69164cc3af86631ab42f2"}]';
 $arr_info = json_decode($info, true);
 $tmp = array();
