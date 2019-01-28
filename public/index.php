@@ -6,6 +6,11 @@ require_once __DIR__ . '/start.php';
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+echo intval('');die;
+$str = 'appid=wx427b42ffc0cfef3a&redirect_uri=http%3A%2F%2Fwxpay.medlive.cn%2Fapi.php%3Faction%3Dcallbackauthuserinfo&response_type=code&scope=snsapi_userinfo&state=aHR0cDovL2FjdGl2aXR5Lm1lZGxpdmUudGVzdC9kdXR5L3NoYXJlY2FyZD9mcm9tPXd4Jm9wZW5faWQ9cnBuN3A2cWk2MDEzbDZ6NDV3QWJWOXR1RUNMbURXaUJsd3BXbSUyRkRHYkdJQlNKUiUyQkhmZW05VXkzTSUyQmslM0QmaW5mbz0=';
+parse_str($str, $arr);
+print_r($arr);die;
+
 $data['user_id'] = 'o8wusbsmh2rnfdikijWazIW4HD3TDJ1Kl2KAiw==';
 $data['from'] = 'wap';
 
