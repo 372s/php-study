@@ -6,6 +6,11 @@ require_once __DIR__ . '/start.php';
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+echo date('Y-m-d', strtotime('-1 years'));die;
+
+echo time() . '<br>';
+echo md5(strrev('18612651314') . time() . '123' . 'hahdjflkadfhadfp9uwradkdhf20170925');die;
+
 print_r($_SERVER);die;
 
 echo intval('');die;
@@ -562,6 +567,3 @@ $str = 'app_id=1547628075525549&account=3239599&content=吸食海洛因，吸毒
 parse_str($str, $arr);
 extract($arr);
 echo md5($app_id . $key . $content . $account . $device_id . $device_type . $ip . $source . $time);die;
-
-echo time() . '<br>';
-echo md5(strrev('18612651314') . time() . '123' . 'hahdjflkadfhadfp9uwradkdhf20170925');die;

@@ -16,8 +16,8 @@ $options = array(
     'http' => array(
         'method' => 'POST',
         'header' => 'Content-type:application/x-www-form-urlencoded',
-        'content' => $data
-        //'timeout' => 60 * 60 // 超时时间（单位:s）
+        'content' => $data,
+        'timeout' => 4 // 超时时间（单位:s）
     )
 );
 

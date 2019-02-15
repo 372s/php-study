@@ -4,9 +4,9 @@ function httpsSend($url, $params = array(), $method = 'get')
 {
     $ch = curl_init();
     if ($method == 'get') {
-        $sParm = http_build_query($params);
+        $sParam = http_build_query($params);
         if (!empty($sParm)) {
-            $url = $url . '?' . $sParm;
+            $url = $url . '?' . $sParam;
         }
     } else {
         curl_setopt($ch, CURLOPT_POST, true);
@@ -19,19 +19,9 @@ function httpsSend($url, $params = array(), $method = 'get')
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-    try {
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        if (!$response) {
-            $response = json_encode(array());
-        }
-    } catch (Exception $e) {
-        $response = json_encode(array());
-    }
-
-    return json_decode($response, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
 }
 
 $url = "http://api.medlive.test/adcms/ads";
