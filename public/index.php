@@ -6,6 +6,41 @@ require_once __DIR__ . '/start.php';
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+function hashUser($user, $key='') {
+    if (empty($user)) {
+        return '0';
+    }
+    $crc = intval(sprintf('%u', crc32($key . "asdfwrew.USER_SEED")));
+    $hash = $crc - $user;
+    $hash2 = sprintf('%u', crc32($hash . 'werhhs.USER_SEED2'));
+    $k1 = substr($hash2, 0, 3);
+    $k2 = substr($hash2, -2);
+    return $k1 . $hash . $k2;
+}
+
+echo hashUser(3239599, 'dasfgfsdbz').'<br>';
+echo hashUser(3239599, 'hiewrsbzxc');die;
+
+function unhashUser($hash, $key='') {
+    $_k1 = substr($hash, 0, 3);
+    $_k2 = substr($hash, -2);
+    $hash = intval(substr($hash, 3, strlen($hash) - 5));
+    $hash2 = sprintf('%u', crc32($hash . 'werhhs.USER_SEED2'));
+    $k1 = substr($hash2, 0, 3);
+    $k2 = substr($hash2, -2);
+    if ($_k1 !== $k1 || $_k2 !== $k2) {
+        return 0;
+    }
+    $crc = intval(sprintf('%u', crc32($key . "asdfwrew.USER_SEED")));
+    $user = $crc - $hash;
+    return $user;
+}
+
+$str = 'app_id=1547702707620225&account=3239599&image_url=["http://webres.medlive.cn/upload/thumb/000/641/600_cv700"]&device_id=&device_type=1&ip=186.154.154.44&source=medlive_iphone&time=1547178106&key=s8nchzbq6pyw9hfzxesn';
+parse_str($str, $arr);
+extract($arr);
+echo md5($app_id . $key . $image_url . $account . $device_id . $device_type . $ip . $source . $time);die;
+
 echo date('Y-m-d', strtotime('-1 years'));die;
 
 echo time() . '<br>';
