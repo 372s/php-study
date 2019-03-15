@@ -2,9 +2,83 @@
 header("HTTP/1.1 403 Forbidden");
 
 require_once __DIR__ . '/start.php';
+require_once FUNC_PATH. '/curl.php';
 
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
+
+$arr = array();
+switch ($arr['index']) {
+    case 1:
+        echo 1;
+        break;
+    default :
+        echo 2;
+        break;
+}
+die;
+
+echo 'ca5c370346aa99be1dcdab9bf63e5669'."<br>";
+echo md5('medlive_meeting1118568@meeting');die;
+
+
+echo date( "Y-m-d", strtotime( "2009-01-31 +1 month" ) ) . "<br>"; // PHP:  2009-03-03
+echo date( "Y-m-d", strtotime( "2009-01-31 +2 month" ) ) . "<br>"; // PHP:  2009-03-31
+// die;
+echo strtotime('2019-01') . "<br>";
+echo strtotime('2019-01-01 00:00:00') . "<br>";
+echo date('Y-m-d', strtotime("+1 month", strtotime("2009-02-01"))) . "<br>";
+echo date('Y-m-d', strtotime( "2009-01-01 +1 month" )) . "<br>";
+echo strtotime('2019-02') . "<br>";
+echo strtotime('2019-01-31 23:59:59');
+die;
+echo date('Y-m-d', strtotime('-72 hour'));die;
+// echo date('Y-m-d H:i:s', strtotime('-72 hour'));die;
+
+// $params['invoke_name'] = 'M1551342241988';
+// $params['list'] = array();
+// $params['subject'] = '医生，医脉通新用户专享特权，限时1周，领取《全医药学大词典》';
+// $params['list']['to'][] = 'wq455133@163.com';
+// $params['list']['sub']['%invite_certify_tmp_email_content%'][] = '1234324';//内容
+//
+// $res = curl_post('http://emailpush.medlive.test/api/sendmail', $params);
+// print_r($res);
+// die;
+
+
+
+echo hashUser(1118568, 'dasfgfsdbz').'<br>';
+echo hashUser(1118568, 'hiewrsbzxc');die;
+function hashUser($user, $key='') {
+    if (empty($user)) {
+        return '0';
+    }
+    $crc = intval(sprintf('%u', crc32($key . "asdfwrew.USER_SEED")));
+    $hash = $crc - $user;
+    $hash2 = sprintf('%u', crc32($hash . 'werhhs.USER_SEED2'));
+    $k1 = substr($hash2, 0, 3);
+    $k2 = substr($hash2, -2);
+    return $k1 . $hash . $k2;
+}
+function unhashUser($hash, $key='') {
+    $_k1 = substr($hash, 0, 3);
+    $_k2 = substr($hash, -2);
+    $hash = intval(substr($hash, 3, strlen($hash) - 5));
+    $hash2 = sprintf('%u', crc32($hash . 'werhhs.USER_SEED2'));
+    $k1 = substr($hash2, 0, 3);
+    $k2 = substr($hash2, -2);
+    if ($_k1 !== $k1 || $_k2 !== $k2) {
+        return 0;
+    }
+    $crc = intval(sprintf('%u', crc32($key . "asdfwrew.USER_SEED")));
+    $user = $crc - $hash;
+    return $user;
+}
+
+$str = 'app_id=1547702707620225&account=3239599&image_url=["http://webres.medlive.cn/upload/thumb/000/641/600_cv700"]&device_id=&device_type=1&ip=186.154.154.44&source=medlive_iphone&time=1547178106&key=s8nchzbq6pyw9hfzxesn';
+parse_str($str, $arr);
+extract($arr);
+echo md5($app_id . $key . $image_url . $account . $device_id . $device_type . $ip . $source . $time);die;
 
 echo date('Y-m-d', strtotime('-1 years'));die;
 
