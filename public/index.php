@@ -3,9 +3,88 @@ header("HTTP/1.1 403 Forbidden");
 
 require_once __DIR__ . '/start.php';
 
+function sg(&$val, $def = '') {
+    $val = trim($val);
+    return empty($val) ? $def : $val;
+}
+
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+/**********************************************/
+
+// $a = [1,2,3];
+// $b = [3,4,5,6,7];
+// print_r($a+$b);die;
+$aMeetingDesc = array (
+    'company_id' => 1,
+    'company_product_id' => 2,
+);
+$aMeetingDesc2 = array (
+    'company_id' => 0,
+    'company_product_id' => 2,
+);
+print_r(array_diff($aMeetingDesc, $aMeetingDesc2));die;
+
+$arr = array (
+    'id' => '11364',
+    'meeting_id' => '11531',
+    'meeting_admin' => '',
+    'is_jijiao' => '0',
+    'jijiao_type' => '0',
+    'jijiao_credit' => '0',
+    'jijiao_info' => 'a:1:{i:0;a:2:{s:11:"jijiao_type";s:1:"0";s:13:"jijiao_credit";s:0:"";}}',
+    'contact_info' => 'a:1:{i:0;a:6:{s:7:"contact";s:0:"";s:6:"mobile";s:0:"";s:9:"telephone";s:25:"028-85501189转505或 501";s:3:"fax";s:15:" 028 - 85501386";s:6:"e_mail";s:15:"cnbdms@163.com ";s:7:"address";s:0:"";}}',
+    'meeting_type' => '7',
+    'jijiao_property' => '',
+    'is_multi_qi' => '0',
+    'contribute_endtime' => '0',
+    'register_endtime' => '0',
+    'meeting_scale' => '',
+    'contact' => '',
+    'telephone' => '',
+    'mobile' => '',
+    'e_mail' => 'cnbdms@163.com',
+    'attachment' => '',
+    'updatetime' => '1439781135',
+    'inputtime' => '1439781080',
+    'ip' => '223.81.192.243',
+    'fax' => '028 - 85501386',
+    'address' => '',
+);
+
+print_r(array_diff($aMeetingDesc, $arr));die;
+
+
+
+
+
+
+$a = '    dddd';
+$c = sg($a);
+echo $c;
+echo strlen($a);die;
+
+// echo date('Y-m', '1543593600');die;
+
+
+$aInfo['year'] = '2019';
+$aInfo['month'] = '1';
+$aInfo['date'] = $aInfo['year'].'-'.$aInfo['month'];
+
+// $start_unix = strtotime($aInfo['year'].'-'.$aInfo['month']);
+// $end_unix = strtotime("+1 month", $start_unix);
+// echo $start_unix . "\n". $end_unix . "<br>";
+//
+// echo strtotime($aInfo['date']) . "<br>";
+// echo strtotime('2019-00') . "<br>";
+$new_year = strtotime("+1 month", strtotime($aInfo['date']));
+// echo $new_year;die;
+echo date('Y_m_d_H', time()). "<br>";
+// echo strtotime('2019-01');
+die;
+$dif = date('Y-m') < '2019-01';
+var_dump($dif);die;
 echo date('Y-m-d', strtotime('-1 years'));die;
 
 echo time() . '<br>';
