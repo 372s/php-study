@@ -116,3 +116,8 @@ function https($num) {
     );
     header($http[$num]);
 }
+
+function sg(&$val, $def = '') {
+    $val = trim($val);
+    return empty($val) ? $def : $val;
+}
