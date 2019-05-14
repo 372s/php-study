@@ -29,13 +29,11 @@ class CsvReader
      */
     private $file_name;
 
-    public function __construct($csv_file)
+    public function __construct($csv_file = '')
     {
         if ($csv_file && file_exists($csv_file)) {
             $this->file = $csv_file;
             $this->spl_object = new SplFileObject($csv_file);
-        } else {
-            throw new Exception('NOT FOUND FILE!');
         }
     }
 
@@ -81,7 +79,7 @@ class CsvReader
         return count($resoure);
 
         // return $excelData;
-        $chunkData = array_chunk($excelData, 5000); // 将这个10W+ 的数组分割成5000一个的小数组。这样就一次批量插入5000条数据。mysql 是支持的。
+        // $chunkData = array_chunk($excelData, 5000); // 将这个10W+ 的数组分割成5000一个的小数组。这样就一次批量插入5000条数据。mysql 是支持的。
         // $count = count($chunkData);
         // $data = [];
         // foreach($chunkData as $k => $chunk) {

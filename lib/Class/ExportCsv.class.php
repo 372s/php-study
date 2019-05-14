@@ -9,7 +9,7 @@ class ExportCsv
      * @param int $offset      起始行数
      * @return array|bool
      */
-    public function read_csv_lines($csv_file = '', $lines = 0, $offset = 0)
+    public static function read_csv_lines($csv_file = '', $lines = 0, $offset = 0)
     {
         if (!$fp = fopen($csv_file, 'r')) {
             return false;
@@ -35,41 +35,38 @@ class ExportCsv
  * @param string $file_name  文件名称
  * @return string
  */
-    public function export_csv_1($data = [], $header_data = [], $file_name = '')
+    public static function export_csv_1($data, $header_data, $file_name = '')
     {
         header('Content-Type: application/octet-stream');
         header('Content-Disposition: attachment; filename=' . $file_name);
-        if (!empty($header_data)) {
+        if ($header_data) {
             echo iconv('utf-8', 'gbk//TRANSLIT', '"' . implode('","', $header_data) . '"' . "\n");
         }
         foreach ($data as $key => $value) {
-            $output = array();
-            $output[] = $value['id'];
-            $output[] = $value['name'];
-            echo iconv('utf-8', 'gbk//TRANSLIT', '"' . implode('","', $output) . "\"\n");
+            echo iconv('utf-8', 'gbk//TRANSLIT', '"' . implode('","', $value) . "\"\n");
         }
     }
 /**
  * 导出CSV文件
  * @param array $data        数据
- * @param array $header_data 首行数据
+ * @param array $header      首行数据
  * @param string $file_name  文件名称
  * @return string
  */
-    public function export_csv_2($data = [], $header_data = [], $file_name = '')
+    public static function export_csv_2($data, $header, $file_name = '')
     {
         if (!$file_name) {
             $file_name = date('Ymd_His') . '.csv';
         }
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename=' . $file_name);
-        header('Cache-Control: max-age=0');
+        // header('Cache-Control: max-age=0');
         $fp = fopen('php://output', 'a');
-        if (!empty($header_data)) {
-            foreach ($header_data as $key => $value) {
-                $header_data[$key] = iconv('utf-8', 'gbk', $value);
-            }
-            fputcsv($fp, $header_data);
+        if ($header) {
+            // foreach ($header_data as $key => $value) {
+            //     $header_data[$key] = iconv('utf-8', 'gbk', $value);
+            // }
+            fputcsv($fp, $header);
         }
         
         $count = count($data);
@@ -86,7 +83,11 @@ class ExportCsv
                     $num = 0;
                 }
                 foreach ($item as $key => $value) {
-                    $item[$key] = iconv('utf-8', 'gbk', $value);
+                    if (is_numeric($value)) {
+                        $item[$key] = $value . "\t";
+                    } else {
+                        $item[$key] = iconv('utf-8', 'gbk', strval($value));
+                    }
                 }
                 fputcsv($fp, $item);
             }
@@ -94,7 +95,7 @@ class ExportCsv
         fclose($fp);
     }
 
-    public function export_excel($file_name, $data, $title = array())
+    public static function export_excel($file_name, $data, $title = array())
     {
         header("Content-Type: application/vnd.ms-execl;charset=UTF-8");
         header("Content-Disposition: attachment;filename = {$file_name}.xls");
