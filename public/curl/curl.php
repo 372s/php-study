@@ -55,7 +55,7 @@ function post($url, $params)
     }
 }
 
-function curl_post($url, $data)
+function post2($url, $data)
 {
     $ch = curl_init();
     curl_setopt_array($ch, array(
@@ -76,7 +76,7 @@ function curl_post($url, $data)
     return $output;
 }
 
-function curlPost($url, $data)
+function post3($url, $data)
 {
     $ch = curl_init(); //初始化
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -92,17 +92,3 @@ function curlPost($url, $data)
     }
     return $output;
 }
-
-// var_dump(curlPost('http://sms-cly.cn/sendData.do?', array(
-//     'username' => 'clyymt',
-//     'password' => '55b4bfec5492cf0aadfe8f1ec2962781',
-//     'mobile' => '18612651314,13733822332',
-//     'content' => '您的验证码是465654【医脉通】,您的验证码是132131【医脉通】',
-//     'dstime' => '',
-//     'ext'=> '',
-//     'msgid'=> ''
-// )));
-
-print_r(curlPost('http://api.medlive.test/sms/report.php', array(
-    'report' => '18612651314|DELIVRD|1049207374241983489|78084|2018-10-08 15:58:28')
-));

@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__) . '/../vendor/autoload.php';
+require_once __DIR__. '/autoload.php';
 
 $filename = "example.xlsx";
 header('Content-disposition: attachment; filename="'.XLSXWriter::sanitize_filename($filename).'"');

@@ -1,23 +1,5 @@
 <?php
-
-require_once dirname(__DIR__) . '/../vendor/autoload.php';
-
-
-
-/**
- * Carbon\Carbon
- */
-use Carbon\Carbon;
-printf("Right now is %s", Carbon::now()->toDateTimeString() . "\n");
-printf("Right now in Shanghai is %s", Carbon::now());  //implicit __toString()
-
-/**
- * 验证码
- */
-use Gregwar\Captcha\CaptchaBuilder;
-header('Content-type: image/jpeg');
-CaptchaBuilder::create()->build()->output();
-print_r(glob(dirname(__FILE__).'/*.php'));die;
+require __DIR__.'/autoload.php';
 
 /**
  * 获取文件夹内文件
