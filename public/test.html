@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文字、图片的垂直水平居中</title>
+    <!-- div的垂直水平居中常用的方法 是绝对定位，left top 各自50%  margin-lef  margin-top -50% 不定宽高居中transform: translate(-50%, -50%);  在此不再详解 -->
+    <!-- 主要讲解图片垂直水平居中的方法 -->
+    <!-- table：指定对象作为块元素级的表格。类同于html标签<table>（CSS2）
+	inline-table：指定对象作为内联元素级的表格。类同于html标签<table>（CSS2）
+	table-caption：指定对象作为表格标题。类同于html标签<caption>（CSS2）
+	table-cell：指定对象作为表格单元格。类同于html标签<td>（CSS2）
+	table-row：指定对象作为表格行。类同于html标签<tr>（CSS2）
+	table-row-group：指定对象作为表格行组。类同于html标签<tbody>（CSS2）
+	table-column：指定对象作为表格列。类同于html标签<col>（CSS2）
+	table-column-group：指定对象作为表格列组显示。类同于html标签<colgroup>（CSS2）
+	table-header-group：指定对象作为表格标题组。类同于html标签<thead>（CSS2）
+	table-footer-group：指定对象作为表格脚注组。类同于html标签<tfoot>（CSS2） -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .img_box_1 {
+            width: 300px;
+            border: 1px solid red;
+            text-align: center;
+            /*可以让内部图片水平居中   但是图片下面会留下一条空白*/
+        }
+
+        .img_box_2 {
+            width: 300px;
+            border: 1px solid red;
+            /*text-align: center;对 block图片不起作用*/
+        }
+
+        .img_box_2 img {
+            display: block;
+            margin: 0 auto;
+            /*解决图片下面空白  和 水平居中的问题*/
+        }
+        .img_box_3 {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            /*上面两个属性可以实现 图片垂直水平居中  但是仍有一条空白*/
+            width: 300px;
+            height: 300px;
+            border: 1px solid green;
+        }
+
+        .img_box_4 {
+            display: table-cell;
+            vertical-align: middle;
+            /*text-align: center;去掉这个属性 可以实现没有白条 但是需要重新规划img*/
+            width: 300px;
+            height: 300px;
+            border: 1px solid green;
+        }
+
+        .img_box_4 img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            /*如果希望图片宽高都不超过父元素的宽高，并且垂直水平居中  这么设计*/
+            max-height: 100%;
+        }
+
+        .img_box_5 {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            width: 300px;
+            height: 300px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+<div class="img_box_1">
+    <img src="/uploads/0b0d58282320679e781ed776d173ab74.jpg" alt="" title="1">
+</div>
+<div class="img_box_2">
+    <img src="/uploads/0b0d58282320679e781ed776d173ab74.jpg" alt="" title="2">
+</div>
+<div class="img_box_3">
+    <img src="/uploads/0b0d58282320679e781ed776d173ab74.jpg" alt="" title="3">
+</div>
+<div class="img_box_4">
+    <img src="/uploads/0b0d58282320679e781ed776d173ab74.jpg" alt="" title="4">
+</div>
+<!-- 如果display:table-cell 没有父元素  默认和同一级相同属性 排在一样  类似td标签 但是父元素单独加上display:table 会另起一行 如下：文字的垂直水平居中-->
+<div class="display:table">
+    <div class="img_box_5">
+        <p>窗前明月光</p>
+    </div>
+</div>
+</body>
+
+</html>

@@ -9,6 +9,15 @@ $spl_class = spl_classes();
 define('APP_START', microtime(true));
 // echo APP_START;die;
 
+preg_match('/IF1395联系/', 'IF1395联系243234', $match);
+print_r($match);die;
+
+
+$img = 'http://news.medlive.cn/uploadfile/thumb/2018/0122/20180122025713150_jpg_h200';
+$arr = getimagesize($img);
+print_r($arr);die;
+echo md5_file($img);die;
+
 function emp($a, $def = '') {
     if (empty($a)) {
         return $def;
