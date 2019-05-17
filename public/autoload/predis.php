@@ -34,9 +34,9 @@ $multiple_servers = array(
     ),
 );
 
-$client = new Predis\Client($single_server, array('prefix' => 'nrk:'));
+$client = new Predis\Client($single_server);
 
-$client->mset(array('foo' => 'bar', 'lol' => 'wut'));
+$client->mset(array('wq:foo' => 'bar', 'wq:lol' => 'wut'));
 var_export($client->mget(array('foo', 'lol')));
 /*
 array (
@@ -45,7 +45,7 @@ array (
 )
 */
 
-var_export($client->keys('*'));
+var_export($client->keys('wq:*'));
 /*
 array (
   0 => 'nrk:foo',
