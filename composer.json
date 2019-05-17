@@ -2,6 +2,10 @@
     "name": "study",
     "description": "php study composer",
     "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        },
         "codeguy/upload": {
             "type": "vcs",
             "url": "git@github.com:brandonsavage/Upload.git"
@@ -31,7 +35,10 @@
         "rmccue/requests": "^1.7",
         "rap2hpoutre/fast-excel": "^0.9.0",
         "php-curl-class/php-curl-class": "@dev",
-        "noahbuscher/macaw": "dev-master"
+        "noahbuscher/macaw": "dev-master",
+        "predis/predis": "1.1.1",
+        " nesbot/carbon": "1.37.*"
+
     },
     "autoload": {
         "files": [],
