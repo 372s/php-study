@@ -9,6 +9,17 @@ $spl_class = spl_classes();
 define('APP_START', microtime(true));
 // echo APP_START;die;
 
+
+$json = '{"tag_name":"奇奇怪怪","parent_id":"139694","parent_catid":"44"}';
+$arr = json_decode($json, true);
+unset($arr['tag_name'], $arr['parent_id']);
+print_r($arr);
+echo end($arr);die;
+
+echo htmlspecialchars("恤彤&reg;丹参川芎嗪注射液临床应用专家共识");
+echo htmlspecialchars_decode('恤彤&reg;丹参川芎嗪注射液临床应用专家共识');
+die;
+
 preg_match('/IF1395联系/', 'IF1395联系243234', $match);
 print_r($match);die;
 
