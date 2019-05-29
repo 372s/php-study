@@ -1,17 +1,23 @@
 <?php
 
 /**
+ * 验证time
+ * @param $str
+ * @return mixed
+ */
+function preg_time($str) {
+    $pattern = '/^\d{1,2}:\d{2}:*\d{0,2}$/';
+    return (bool) preg_match($pattern, $str);
+}
+
+/**
  * 验证：必须包含字母、数字、下划线；
  * @param $str
  * @return bool
  */
 function preg_pwd($str) {
     $pattern = '/^[a-z_0-9]+$/i';
-    if (preg_match($pattern, $str)) {
-        return true;
-    } else {
-        return false;
-    }
+    return (bool) preg_match($pattern, $str);
 }
 
 /**
@@ -22,11 +28,7 @@ function preg_pwd($str) {
  */
 function preg_email($str) {
     $pattern = '/^(\w)+([-.]\w+)*@(\w)+(\.\w{2,4}){1,3}$/';
-    if (preg_match($pattern, $str)) {
-        return true;
-    } else {
-        return false;
-    }
+    return (bool) preg_match($pattern, $str);
 }
 
 /**
@@ -36,11 +38,7 @@ function preg_email($str) {
  */
 function preg_url($str) {
     $pattern = '/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(:\d+)?(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?/';
-    if (preg_match($pattern, $str)) {
-        return true;
-    } else {
-        return false;
-    }
+    return (bool) preg_match($pattern, $str);
 }
 
 /**
@@ -61,12 +59,12 @@ function preg_zh($str) {
  * @param $str
  * @return string
  */
-function removeAdjacentRepetition($str) {
+function remove_adjacent_repetition($str) {
     $pattern = '/(.)\1/';
-    return preg_replace($pattern,'$1',$str);
+    return preg_replace($pattern,'$1', $str);
 }
 
-function replaceImageStyle($str) {
+function replace_image_style($str) {
     $pattern = '/(<img\s*.*?\s*style=\").*?(\".*?\/?\s*>)/i';
     return preg_replace($pattern, '${1}width:100%;height:auto;${2}', $str);
 }
@@ -77,7 +75,7 @@ function replaceImageStyle($str) {
  * @param string $str
  * @return array
  */
-function noCaptureSymbol($str) {
+function no_capture_symbol($str) {
     $str = "你好<我>(爱)[北京]{天安门}";
     preg_match("/(?:<)(.*)(?:>)/i", $str, $result1);
     return $result1;
