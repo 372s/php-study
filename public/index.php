@@ -9,6 +9,16 @@ $spl_class = spl_classes();
 define('APP_START', microtime(true));
 // echo APP_START;die;
 
+$a = 1;
+$b = &$a;
+
+$a = 2;
+echo $b;die;
+
+var_dump(1559114619886 < 1556640000000);die;
+
+echo date('Y-m-d H:i', strtotime('-60 minutes'));die;
+
 $a = date('H:i');
 preg_match('/^\d{1,2}:\d{2}:*\d{0,2}$/', $a, $match);
 print_r($match);die;
