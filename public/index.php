@@ -8,6 +8,12 @@ $spl_class = spl_classes();
 
 define('APP_START', microtime(true));
 
+$time = strtotime('2019-5-2 7:10');
+var_dump($time);die;
+$date = date('Y-m-d H:i', $time);
+var_dump($date);die;
+
+
 echo date('Y-m-d H:i', strtotime('-60 minutes'));die;
 
 $a = date('H:i');
