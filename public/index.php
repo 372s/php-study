@@ -8,11 +8,32 @@ $spl_class = spl_classes();
 
 define('APP_START', microtime(true));
 
-$time = strtotime('2019-5-2 7:10');
-var_dump($time);die;
-$date = date('Y-m-d H:i', $time);
-var_dump($date);die;
+$emails = Array(
+    '777@qq.com' => 5,
+    '789@qq.com' => 7,
+    '555@qq.com' => 8,
+    '13412341@qq.com' => 19,
+    'hdfghdf@163.com' => 21,
+    '814778694@qq.com' => 23,
+    'konokochan@126.com' => 24,
+);
+echo $emails['777@qq.com'];
 
+$arr = (array) false;
+$k = array_keys($arr);
+var_dump(!empty($k));die;
+
+// $time = strtotime('2019-5-2 7:10');
+// var_dump($time);die;
+// $date = date('Y-m-d H:i', $time);
+// var_dump($date);die;
+
+if ('2019-6-26 15:00' < '2019-06-26 4:00') {
+    echo 1;
+} else {
+    echo 2;
+}
+die;
 
 echo date('Y-m-d H:i', strtotime('-60 minutes'));die;
 
