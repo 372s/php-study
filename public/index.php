@@ -8,20 +8,32 @@ $spl_class = spl_classes();
 
 define('APP_START', microtime(true));
 
-$emails = Array(
-    '777@qq.com' => 5,
-    '789@qq.com' => 7,
-    '555@qq.com' => 8,
-    '13412341@qq.com' => 19,
-    'hdfghdf@163.com' => 21,
-    '814778694@qq.com' => 23,
-    'konokochan@126.com' => 24,
-);
-echo $emails['777@qq.com'];
+function getValue(callable $callable, array $array) {
+    if (is_callable($callable)) {
+        return call_user_func_array($callable, $array);
+    }
+}
+$a = 1;
+$b = 2;
+$s = getValue(function ($a, $b) {
+    return $a + $b;
+}, array($a, $b));
+echo $s;die;
 
-$arr = (array) false;
-$k = array_keys($arr);
-var_dump(!empty($k));die;
+$arr = [1,2,3];
+array_unshift($arr, 4);
+print_r($arr);die;
+
+
+echo date('Y-m-d', 1556099880);die;
+
+$startTime = "20190614100517";
+$startTime = substr($startTime, 0,4).'-'.substr($startTime, 4,2).'-'.substr($startTime, 6,2).' '.substr($startTime, 8,2).':'.substr($startTime, 10,2).':'.substr($startTime, 12,2);
+echo $startTime;die;
+
+$time = preg_replace('/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/', "$1-$2-$3 $4:$5:$6", $startTime);
+echo $time;die;
+
 
 // $time = strtotime('2019-5-2 7:10');
 // var_dump($time);die;
