@@ -1,6 +1,9 @@
 <?php
 
 // 字符串处理
+echo intval(" 1");die;
+echo sprintf("%d", " ad001");die;
+echo sprintf("%03d", 1);die;
 
 echo sprintf('%09d', 3322) . "<br>"; // 十位数 000003322
 

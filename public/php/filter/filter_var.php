@@ -1,5 +1,10 @@
 <?php
 
+var_dump(filter_var('bob@example.com', FILTER_VALIDATE_EMAIL));
+var_dump(filter_var('http://www.baidu.com', FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED));
+die;
+
+
 $a = 'select * from table where user_id = 1118568 " and 1=1"';
 // $a = '<a>2222</a>';
 // echo preg_quote($a);die;
