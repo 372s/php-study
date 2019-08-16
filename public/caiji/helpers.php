@@ -4,6 +4,11 @@ require_once dirname(__DIR__) . '/../lib/PHPQuery/phpQuery.php';
 // header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
 
+define('CAIJI_PATH', __DIR__);
+define('PUBLIC_PATH', dirname(__DIR__));
+define('UPLOAD_PATH', PUBLIC_PATH . '/uploads/');
+define('LOCAL_URL', 'http://php-study.local/');
+
 function microsecond() {
     list($s1, $s2) = explode(' ', microtime());
     return (float) sprintf('%.0f', (floatval($s1) + floatval($s2)) * 1000);
@@ -85,6 +90,94 @@ function get_images($content) {
         echo $img_num;
     }
     return $arrimg;
+}
+
+function curl_get_content($url, $referer = '') {
+    $curl = curl_init();
+    $setopt = array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_REFERER => $referer,
+    );
+    curl_setopt_array($curl, $setopt);
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    if ($response === false) {
+        return false;
+    } else {
+        return $response;
+    }
+}
+
+function img_download($content, $referer = '') {
+    $doc = new \DOMDocument('1.0', 'utf-8');
+    @$doc->loadHTML($content);
+    $xpath = new \DOMXPath($doc);
+    $result = $xpath->query("//img");
+
+    if ($result->length == 0) {
+        return $content;
+    }
+    foreach ($result as $value) {
+        $imgsrc = $value->getAttribute('src');
+        echo $imgsrc . "<br>";
+        $lj = UPLOAD_PATH . date('ymd') . '/';
+        $url = LOCAL_URL . date('ymd') . '/';
+        $result = curl_get_content($imgsrc, $referer);
+        $filename = $lj . md5($imgsrc);
+        $file_url = $url . md5($imgsrc);
+        file_put_contents($filename, $result);
+        create_img($file_url, $lj);
+    }
+}
+
+function img_replace($content, $referer = '') {
+    $doc = new \DOMDocument('1.0', 'utf-8');
+    @$doc->loadHTML($content);
+    $xpath = new \DOMXPath($doc);
+    $result = $xpath->query("//img");
+
+    if ($result->length == 0) {
+        return $content;
+    }
+
+    $new_src = array();
+    foreach ($result as $value) {
+        $imgsrc = $value->getAttribute('src');
+        $lj = UPLOAD_PATH . date('ymd') . '/';
+
+        if (strpos($imgsrc, 'baidu.com') !== false) {
+
+            $result = curl_get_content($imgsrc, $referer);
+            $filename = $lj . md5($imgsrc);
+            file_put_contents($filename, $result);
+            $xinarc = create_img($filename, $lj);
+            @unlink($filename);
+
+        } else {
+            $xinarc = create_img($imgsrc, $lj);
+        }
+        $new_src[] = $xinarc;
+    }
+
+    $content = preg_replace_callback(
+        '/(<img[^>]*?src=")([^>]*?)("[^>]*?>)/',
+        function ($matches) use (&$new_src) {
+            $src = array_shift($new_src);
+            if (empty($src)) {
+                return '';
+            }
+            return $matches[1] . $src . $matches[3];
+        },
+        $content);
+
+    return $content;
 }
 
 /**
