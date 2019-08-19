@@ -9,7 +9,7 @@ $arr = array(
     array('id' => 5, 'name' => '深圳市', 'pid' => 4),
 );
 
-print_r(array_map('key', $arr));die;
+// print_r(array_map('key', $arr));die;
 
 
 $a = [1,2];

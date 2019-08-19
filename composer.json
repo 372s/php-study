@@ -37,7 +37,8 @@
         "php-curl-class/php-curl-class": "@dev",
         "noahbuscher/macaw": "dev-master",
         "predis/predis": "1.1.1",
-        " nesbot/carbon": "1.37.*"
+        "nesbot/carbon": "1.37.*",
+        "phpunit/phpunit": "^8.2"
 
     },
     "autoload": {
