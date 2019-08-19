@@ -6,6 +6,8 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+$str = '';
+echo base64_encode($str);die;
 
 $str = "C:\Users\wangqiang\AppData\Local\Temp\php9724.tmp";
 echo addslashes($str);die;
