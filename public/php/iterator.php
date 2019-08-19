@@ -114,7 +114,7 @@ foreach ($it as $file) {
 $it = new FilesystemIterator(dirname(__FILE__));
 foreach ($it as $fileinfo) {
     if ($fileinfo->isFile()) {
-        // echo $fileinfo->getFilename() . "\n";
+        echo $fileinfo->getFilename() . "\n";
     }
 }
 
