@@ -7,13 +7,14 @@ $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
 
-echo intval('-1');die;
+echo strtotime('adbdaf');die;
+// echo intval('-1');die;
 
-$arr = array('test' => NULL, 'test2' => 1);
-echo http_build_query($arr); die;
+// $arr = array('test' => NULL, 'test2' => 1);
+// echo http_build_query($arr); die;
 
 $start = date('Y-m-d H:i:s');
-$start = date('Y-m-d H:i:s', strtotime("+1 day", strtotime($start)));
+$start = date('Y-m-d H:i:s', strtotime("+1 hours", strtotime($start)));
 echo $start;die;
 
 $str = '';
