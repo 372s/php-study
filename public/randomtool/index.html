@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机生成密码</title>
+    <script src="./jquery.min.js"></script>
+</head>
+<body>
+    <form action="" method="post" id="form">
+        <div>
+            <p><label for="number"><input type="checkbox" name="number" id="number" checked value="1">数字</label></p>
+            <p><label for="little_zm"><input type="checkbox" name="little_zm" id="little_zm" checked value="1">小写字母</label></p>
+            <p><label for="big_zm"><input type="checkbox" name="big_zm" id="big_zm" value="1" checked>大写字母</label></p>
+            <p><label for="bdfh"><input type="checkbox" name="bdfh" id="bdfh" value="1">标点符号</label></p>
+            <!-- <p><label for="number"><input type="checkbox" name="number" id="number" value="1">数字</label></p> -->
+            <p><input type="text" name="length" value="20">密码长度</p>
+            <p><input type="button" id="submit" value="生成密码"></p>
+            <p id="secret_container"></p>
+        </div>
+    </form>
+    <script>
+        $('#submit').click(function(){
+            var data = $('form').serialize();
+            $.getJSON('/randomtool/getcode.php', data, function(res) {
+                console.log(res);
+                $('#secret_container').html(res);
+            });
+        })
+    </script>
+</body>
+</html>
