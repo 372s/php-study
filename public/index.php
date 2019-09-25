@@ -6,22 +6,10 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
-function aesEncrypt($input, $key)
-{
-    $size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_ECB);
-    $pad = $size - (strlen($input) % $size);
-    $input = $input . str_repeat(chr($pad), $pad);
-    $td = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_ECB, '');
-    $iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
-    mcrypt_generic_init($td, $key, $iv);
-    $data = mcrypt_generic($td, $input);
-    mcrypt_generic_deinit($td);
-    mcrypt_module_close($td);
-    $data = base64_encode($data);
-    return $data;
-}
+echo hash('sha256', 'The quick brown fox jumped over the lazy dog.');
+// $array = array("blue", "red", "green", "blue", "blue");
+// print_r(array_keys($array, "a"));die;
 
-echo aesEncrypt(1118568, 'rSgTWFeNDTy9VwvMYwG2');die;
 echo str_random(20, 3);die;
 echo strtotime('adbdaf');die;
 // echo intval('-1');die;
