@@ -6,6 +6,8 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+echo date('Y-m-d', strtotime('-3 months'));die;
+
 echo trim('___a___', '_');die;
 echo hash('sha256', 'The quick brown fox jumped over the lazy dog.');
 // $array = array("blue", "red", "green", "blue", "blue");
