@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>测试</title>
     <script>
+        
+        // location.href：得到整个如上的完整url
+        // location.protocol：得到传输协议http:
+        // location.host：得到主机名连同端口http://www.joymood.cn:8080/
+        // location.hostname：得到主机名http://www.joymood.cn/
+        // location.pathname：得到主机后部分不包括问号?后部分的/test.php
+        // location.search：得到url中问号?之后井号#之前的部分?user=admin&pwd=admin
+        // location.hash：得到#之前的部分#login 
+        // http://www.joymood.cn:8080/test.php?user=admin&pwd=admin#login
+        // 想得到整个如上的完整url，我们用：location.href;
+        // 得到传输协议http:,我们用：location.protocol;
+        // 得到主机名连同端口www.joymood.cn:8080，我们用：location.host;
+        // 得到主机名www.joymood.cn，我们用：location.hostname;
+        // 得到主机后部分不包括问号?后部分的/test.php，就用我们刚才讲的：location.pathname;
+        // 得到url中问号?之后井号#之前的部分?user=admin&pwd=admin，我们就用：
+        // location.search;
+        // 得到#之前的部分#login，我们就用location.hash;
+
         function dw(a) {
             document.write(a);
         }
@@ -14,10 +33,20 @@
         }
         cl(location.search);
         cl(location.href);
-        
-    
+        cl(location.pathname);
+
+        // location.href 随之改变
+        window.history.pushState(
+            { pageIndex: 2, keywords: '善了个哉' },
+            document.title,
+            window.location.pathname + '?pageIndex=1'
+        );
+
+        // location.href 不会改变
+        history.replaceState(null, null, '?page=2');
+
         let a = 1;
-        function fun () {
+        function fun() {
             var b = 2;
             let c = 3;
             cl(a);
@@ -28,15 +57,27 @@
             cl(a);
         }
         fun1();
-    
+
         let c;
         cl(c);
 
         let v1 = c || 10;
         cl(v1);
+
+        // 参考 https://www.toutiao.com/i6735054756739285512/
+        let fruits = ['mango', 'peach', 'banana'];
+        for (let fruit of fruits) {
+            cl(fruit);
+        }
+
+        for (let index in fruits) {
+            cl(fruits[index]);
+        }
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
