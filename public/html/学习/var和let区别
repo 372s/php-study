@@ -1,0 +1,66 @@
+let是es6中新增命令，也是用来声明变量的，可能很多小伙伴都像我一样，定义变量的时候都会用var而很少用到let，那么，let和var到底有什么区别呢？
+
+let和var的区别体现在作用域上。var的作用域被规定为一个函数作用域，而let则被规定为块作用域，块作用域要比函数作用域小一些，但是如果两者既没在函数中，也没在块作用域中定义，那么两者都属于全局作用域。
+全局作用域
+
+var 和 let 声明的变量在全局作用域中被定义时，两者非常相似
+
+let bar = 'hehe';
+var baz = 'lala'; 
+
+但是，被let声明的变量不会作为全局对象window的属性，而被var声明的变量却可以
+
+console.log(window.bar);  //undefined
+console.log(window.baz); // 'able'
+
+函数作用域
+
+var 和 let 在函数作用域中声明一个变量，两个变量的意义是相同的。
+
+function  aFun(){
+    let bar = 'hehe'; // 函数作用域中的变量
+    var baz = 'lala'; // 函数作用域中的变量
+}
+
+块作用域
+
+在块作用域中两者的区别较为明显， let只在for()循环中可用，而 var是对于包围for循环的整个函数可用
+
+function  aFun1(){
+    // i 对于for循环外的范围是不可见的(i is not defined)
+    for(let i = 1; i<5; i++){
+        //  i只有在这里是可见的
+    }
+    // i 对于for循环外的范围是不可见的(i is not defined)
+}
+function aFun2(){
+    // i 对于for循环外的范围是可见的
+    for(var i = 1;i<5; i++){
+        // i 在for 在整个函数体内都是可见的
+    }
+    // i 对于for循环外的范围是可见的
+}
+
+let 和var 重新声明
+
+var允许在同一作用域中声明同名的变量，而let不可以
+
+let me  = 'foo';
+let me  = 'bar'; //SyntaxError: Identifier 'me' has already been declared
+
+var me = 'foo';
+var me = 'bar'; //这里me被替代了，是可以重复声明的
+
+es6中还有一个声明变量的命令const，const和let都是在声明的块作用域中有效，但是let声明的变量可变，值和类型都可以改变，没有限制。const声明额变量不能改变，所以，const一旦声明一个变量，就必须马上初始化，不能留到以后赋值
+
+const hehe; //报错，Missing initializer in const declaration
+
+const a = 3;
+a = 5; //报错，Uncaught TypeError: Assignment to constant variable.
+
+以上就是let和var在不同作用域下的区别
+那么在什么情况下要用到let呢？
+
+let 在块作用域中有效，有的时候，我们为了降低变量污染的风险，在块作用域中使用let来代替var，这样不会污染块作用域的外部作用域，降低 bug率，使代码更安全。
+
+对学习抱有热情的开发小伙伴欢迎加入 qq群685421881，更欢迎热爱编程的妹子进入，让我们一起学习 并进步吧！

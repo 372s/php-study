@@ -1,4 +1,42 @@
-<script>
-    console.log(location.search);
-    console.log(location.href);
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function dw(a) {
+            document.write(a);
+        }
+        function cl(a) {
+            console.log(a);
+        }
+        cl(location.search);
+        cl(location.href);
+        
+    
+        let a = 1;
+        function fun () {
+            var b = 2;
+            let c = 3;
+            cl(a);
+        }
+        // fun();
+        // dw(a);
+        function fun1() {
+            cl(a);
+        }
+        fun1();
+    
+        let c;
+        cl(c);
+
+        let v1 = c || 10;
+        cl(v1);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
