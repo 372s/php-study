@@ -6,7 +6,7 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
-$decoded = "ABC123";
+$decoded = "yangshanshan@medlive.cn:KINGYEE@SMS.COM";
 // base64 URL (RFC 6920):
 // base64 XML name token:
 $encoded = base64_encode($decoded);

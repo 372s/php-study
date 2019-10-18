@@ -1,6 +1,8 @@
 <?php 
 /**
- * 使用 ... 运算符定义变长参数函数
+ * 使用 ... 运算符定义
+ * 可变函数参数
+ * 区分: 可变长参数 func_get_args()
  * @param 
  * @param
  */
@@ -31,3 +33,5 @@ function add($a, $b, $c) {
 
 $operators = [2, 3];
 echo add(1, ...$operators); // 6
+
+

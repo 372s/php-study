@@ -1,0 +1,44 @@
+首先要知道类当中方法访问控制。
+
+    public 公开的，可以被继承，也可以被外部访问。
+    protected 可以被继承，但是不可以被外部访问。
+    private 不可以被继承，也不能被外部访问。
+
+在 laravel 中，有一些方法不管是静态调用，还是动态调用，都能够使用。这都要归功于 php 的__callStatic 和__call 魔术方法以及 laravel 作者的设计。
+
+class Model
+{
+    protected function increment($column, $amount = 1, array $extra = [])
+    {
+        return $this->incrementOrDecrement($column, $amount, $extra, 'increment');
+    }
+
+    public function __call($method, $parameters)
+    {
+        if (in_array($method, ['increment', 'decrement'])) {
+            return $this->$method(...$parameters);
+        }
+
+        return $this->forwardCallTo($this->newQuery(), $method, $parameters);
+    }
+
+    public static function __callStatic($method, $parameters)
+    {
+        return (new static)->$method(...$parameters);
+    }
+}
+
+举个例子，比如说有一个用户表，里面有一个年龄字段，我们想要让年龄能够自增，于是我们有两种写法
+
+    (new User)->increment('age');
+    User::increment('age');
+
+首先看第一种，因为我们 User 继承了 Model 类，但是 increment 方法前有个 protected 导致我们无法从外部访问这个方法。但是不用慌张，这个时候__call 魔术方法就起到了效果，他会帮我们去访问 increment 方法。
+
+第二种，我们用静态调用 increment 方法，运行的时候，程序就去找有没有定义的静态 increment 方法，找了一圈没有找到，怎么办？这个时候__callStatic 开始发挥作用。我们用的是 User 类，因为延迟静态绑定的缘故，可以看成:
+
+return (new User)->increment('age');
+
+是不是回到了第一种写法的样子。
+
+基础真滴很重要！！！
