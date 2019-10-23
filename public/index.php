@@ -6,6 +6,23 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+var_dump(is_numeric('a18612651314'));die;
+echo floatval("a18612651314");die;
+if (! preg_match('/\d{11}/', "'1861265114", $m)) {
+    echo 0;die;
+}
+print_r($m);die;
+
+$array1 = array("a" => "green", "1", "2", "3", '5');
+$array2 = array("b" => "green", 1, 2, 3, 4);
+$result = array_diff($array1, $array2);
+print_r($result);die;
+
+echo date('Y-m-d H:i:00', strtotime('-30 minutes'));
+$str = '$40 for a g3/400 +';
+// echo preg_quote($str, '/');die;
+
+var_dump(preg_match('/^(\+86)?\d{11}$/', '18612651314'));die;
 $decoded = "yangshanshan@medlive.cn:KINGYEE@SMS.COM";
 // base64 URL (RFC 6920):
 // base64 XML name token:
