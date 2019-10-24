@@ -6,6 +6,19 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+$arr = array('${2}', '${3}');
+$arr2 = array(1 => 'wangqiang', '');
+$arr3 = array_combine($arr, $arr2);
+print_r($arr3);die;
+
+$str = '亲爱的老师,戳${1}阅读文章得麦粒，答题正确再得${2}麦粒，${3}麦粒即可兑话费。回N退订';
+if (preg_match_all('/\$?\{\d+?\}/', $str, $matches)) {
+    print_r($matches);
+}
+if (preg_match_all('/\$\{[\S\s]+?\}/', $str, $matches)) {
+    print_r($matches);
+}
+die;
 var_dump(is_numeric('a18612651314'));die;
 echo floatval("a18612651314");die;
 if (! preg_match('/\d{11}/', "'1861265114", $m)) {
