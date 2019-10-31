@@ -6,6 +6,11 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+
+$arr = array('${2}', '${3}');
+echo $arr [0];die;
+
+
 $str = '邀您阅读e信使最新文章,戳http://t.yimt.cn/ak 领70麦粒,答题再得30麦粒，30麦粒可兑话费。回N退订';
 if (mb_strrpos($str, 'N') === false) {
     print_r(array('error' => '短信内容不能缺少退订信息', 'status' => 'error'));
