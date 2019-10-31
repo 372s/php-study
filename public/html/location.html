@@ -77,7 +77,20 @@
 </head>
 
 <body>
-
+<div id="div">这是一个div</div>
+<p></p>
+<a href="javascript:;" onclick="divToggle()">点击</a>
 </body>
-
+<script>
+    var doc = document.getElementById('div');
+    cl(doc.style.display);
+    function divToggle()
+    {
+        if (doc !== null) {
+            doc.style.display = 'none';
+        } else {
+            doc.style.display = 'block';
+        }
+    }
+</script>
 </html>

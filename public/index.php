@@ -6,24 +6,141 @@ define('APP_START', microtime(true));
 $spl_auto_func = spl_autoload_functions();
 $spl_class = spl_classes();
 
+
+$arr = array('${2}', '${3}');
+echo $arr [0];die;
+
+
+$str = '邀您阅读e信使最新文章,戳http://t.yimt.cn/ak 领70麦粒,答题再得30麦粒，30麦粒可兑话费。回N退订';
+if (mb_strrpos($str, 'N') === false) {
+    print_r(array('error' => '短信内容不能缺少退订信息', 'status' => 'error'));
+} else {
+    print_r(1);
+}
+die;
+
+
+$string = '网强，';
+// 编码
+function String2Hex($string)
+{
+    $hex = '';
+    for ($i = 0; $i < strlen($string); $i++) {
+        // echo $string[$i] . "<br>";
+        $hex .= dechex(ord($string[$i]));
+    }
+    return strtoupper($hex);
+}
+// 解码
+function Hex2String($hex)
+{
+    $string = '';
+    for ($i = 0; $i < strlen($hex) - 1; $i += 2) {
+        $string .= chr(hexdec($hex[$i] . $hex[$i + 1]));
+    }
+    return $string;
+}
+echo 'E78E8BE5BCBAEFBC8C' . "<br>";
+echo String2Hex('邀您阅读e信使最新文章,戳http://t.yimt.cn/ak 领70麦粒,答题再得30麦粒，30麦粒可兑话费。回N退订') . "<br>";
+var_dump('E78E8BE5BCBAEFBC8C' == String2Hex($string));
+die;
+
+function curl_post($url, $data)
+{
+    $ch = curl_init();    //初始化
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    $output = curl_exec($ch);
+    $error = curl_error($ch);
+    curl_close($ch);
+    return $output;
+}
+$params = array(
+    'username' => 'ymtemr',
+    'password' => md5('ymtemr' . md5('iati89')),
+    'content' => '18612651314,'.$data['content'],
+    'dstime' => '',
+    'ext' => '',
+    'msgid' => '',
+);
+$res = curl_post('http://sms-cly.cn/customSmsSend.do', $params);
+print_r($res);
+
+$str = '邀您阅读e信使最新文章,戳http://t.yimt.cn/ak 领70麦粒,答题再得30麦粒，30麦粒可兑话费。回N退订';
+// echo iconv("UTF-8", "GB2312", $str);die;
+echo iconv("GB2312", "UTF-8", $str);die;
+echo strtr($str, array(',' => '，'));
+die;
+
+$url = '/smspush/contact/smsContent';
+$url = parse_url($url,  PHP_URL_PATH);
+echo strtr(trim($url, '/'), '/', '.');
+die;
+
+$arr = array('${2}', '${3}');
+$arr2 = array(1 => 'wangqiang', '');
+$arr3 = array_combine($arr, $arr2);
+print_r($arr3);
+die;
+
+$str = '亲爱的老师,戳${1}阅读文章得麦粒，答题正确再得${2}麦粒，${3}麦粒即可兑话费。回N退订';
+if (preg_match_all('/\$?\{\d+?\}/', $str, $matches)) {
+    print_r($matches);
+}
+if (preg_match_all('/\$\{[\S\s]+?\}/', $str, $matches)) {
+    print_r($matches);
+}
+die;
+var_dump(is_numeric('a18612651314'));
+die;
+echo floatval("a18612651314");
+die;
+if (!preg_match('/\d{11}/', "'1861265114", $m)) {
+    echo 0;
+    die;
+}
+print_r($m);
+die;
+
+$array1 = array("a" => "green", "1", "2", "3", '5');
+$array2 = array("b" => "green", 1, 2, 3, 4);
+$result = array_diff($array1, $array2);
+print_r($result);
+die;
+
+echo date('Y-m-d H:i:00', strtotime('-30 minutes'));
+$str = '$40 for a g3/400 +';
+// echo preg_quote($str, '/');die;
+
+var_dump(preg_match('/^(\+86)?\d{11}$/', '18612651314'));
+die;
 $decoded = "yangshanshan@medlive.cn:KINGYEE@SMS.COM";
 // base64 URL (RFC 6920):
 // base64 XML name token:
 $encoded = base64_encode($decoded);
-echo $encoded;die;
+echo $encoded;
+die;
 $decoded = base64_decode($encoded);
 
-echo microtime(true);die;
+echo microtime(true);
+die;
 
-echo date('Y-m-d', strtotime('-3 months'));die;
+echo date('Y-m-d', strtotime('-3 months'));
+die;
 
-echo trim('___a___', '_');die;
+echo trim('___a___', '_');
+die;
 echo hash('sha256', 'The quick brown fox jumped over the lazy dog.');
 // $array = array("blue", "red", "green", "blue", "blue");
 // print_r(array_keys($array, "a"));die;
 
-echo str_random(20, 3);die;
-echo strtotime('adbdaf');die;
+echo str_random(20, 3);
+die;
+echo strtotime('adbdaf');
+die;
 // echo intval('-1');die;
 
 // $arr = array('test' => NULL, 'test2' => 1);
@@ -31,21 +148,26 @@ echo strtotime('adbdaf');die;
 
 $start = date('Y-m-d H:i:s');
 $start = date('Y-m-d H:i:s', strtotime("+1 hours", strtotime($start)));
-echo $start;die;
+echo $start;
+die;
 
 $str = '';
-echo base64_encode($str);die;
+echo base64_encode($str);
+die;
 
 $str = "C:\Users\wangqiang\AppData\Local\Temp\php9724.tmp";
-echo addslashes($str);die;
+echo addslashes($str);
+die;
 //用户ID加密
 $hash = 'dasfgfsdbz';
 $check = 'hiewrsbzxc';
 $user_id = 1118660;
-echo hashUser($user_id, $hash). "<br>";
-echo hashUser($user_id, $check). "<br>";die;
+echo hashUser($user_id, $hash) . "<br>";
+echo hashUser($user_id, $check) . "<br>";
+die;
 
-function hashUser($user, $downloadKey='') {
+function hashUser($user, $downloadKey = '')
+{
     if (empty($user)) {
         return '0';
     }
@@ -57,18 +179,21 @@ function hashUser($user, $downloadKey='') {
     return $k1 . $hash . $k2;
 }
 
-echo time();die;
+echo time();
+die;
 echo (strtotime('+7 days') - time()) / 3600 / 24 . "\n\t";
-echo strtotime('+7 days');die;
+echo strtotime('+7 days');
+die;
 echo "<pre>";
 
 $total = $loop = 100;
 $i = 0;
-while($loop--) {
-    $r = mt_rand(1,100);
+while ($loop--) {
+    $r = mt_rand(1, 100);
     ($r <= 10) && ($i++);
 }
-echo '执行'.$total.'次,命中'.$i;die;
+echo '执行' . $total . '次,命中' . $i;
+die;
 
 
 function get_rand($proArr)
@@ -114,7 +239,8 @@ for ($i = 0; $i < count($prize_arr); $i++) {
     $pr[] = $prize_arr[$i]['prize'];
 }
 $res['no'] = $pr;
-print_r($res);die;
+print_r($res);
+die;
 
 
 $arr = array(
@@ -216,3 +342,6 @@ if (empty($a)) {
 }
 // echo emp($s, 1);
 // 
+?>
+
+<p></p>
