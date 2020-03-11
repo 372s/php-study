@@ -16,3 +16,6 @@ yarn-error.log
 *.csv
 *.xlsx
 *.txt
+.settings
+.project
+.buildpath
